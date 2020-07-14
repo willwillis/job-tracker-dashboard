@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/willwillis/job-tracker-dashboard/issues"
   },
-  "homepage": "https://github.com/willwillis/job-tracker-dashboard#readme"
+  "homepage": "https://github.com/willwillis/job-tracker-dashboard#readme",
+  "devDependencies": {
+    "@prisma/cli": "^2.2.2",
+    "@types/node": "^14.0.23",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
 }
