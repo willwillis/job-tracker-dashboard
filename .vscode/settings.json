@@ -1,0 +1,22 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.formatOnPaste": true,
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
+    "[json]": {
+        "editor.formatOnSave": true
+    },
+    "editor.formatOnSave": true,
+    "files.autoSaveDelay": 10000,
+    "auto-rename-tag.activationOnLanguage": ["html"],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.spec.ts": true,
+        "node_modules": true
+    }
+}
