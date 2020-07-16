@@ -52,9 +52,7 @@ async function main() {
     await prisma.step.create({
       data: {
         section: {
-          connect: {
-            id: 2,
-          },
+          connect: { id: i },
         },
         name: 'Step ' + makeid(3) + makeid(4),
         job: {
