@@ -4,7 +4,7 @@ import { PrismaTable } from '@paljs/admin';
 
 const Table: React.FC<{ model: string }> = ({ model }) => {
   const router = useRouter();
-  return <PrismaTable model={model} push={router.push} query={router.query} pagesPath="/models" />;
+  return <PrismaTable model={model} push={router.push} query={router.query} pagesPath="/models/" />;
 };
 
 export default Table;
