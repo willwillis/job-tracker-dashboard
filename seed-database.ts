@@ -2,11 +2,11 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-function makeid(length) {
-  var result = '';
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
+function makeid(length: number) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   charactersLength = 0;
@@ -20,10 +20,10 @@ async function main() {
   // );
   // console.log(user)
 
-  let range = [1, 1, 1, 1, 19, 10, 11, 12, 22, 30];
+  const range: number[] = [1, 1, 1, 1, 19, 10, 11, 12, 22, 30];
 
-  for (let i in range) {
-    const newJob = await prisma.job.create({
+  for (const i of range) {
+    await prisma.job.create({
       data: {
         name: makeid(i) + makeid(3) + ' job',
         jobType: 'AUTOSYS',
@@ -45,12 +45,11 @@ async function main() {
 
   const jobCount = await prisma.job.count();
 
-  let sectionIds: Array<number>;
-  sectionIds = [1, 2, 3, 4, 5, 6];
+  const sectionIds: number[] = [1, 2, 3, 4, 5, 6];
 
-  for (let i in sectionIds) {
+  for (const i of sectionIds) {
     console.log(i);
-    const newStep = await prisma.step.create({
+    await prisma.step.create({
       data: {
         section: {
           connect: {
