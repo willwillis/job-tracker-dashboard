@@ -62,7 +62,7 @@
       "tag": "CreateField",
       "model": "Group",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -88,7 +88,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -216,7 +216,7 @@
       "tag": "CreateField",
       "model": "Dashboard",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -242,7 +242,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -402,7 +402,7 @@
       "tag": "CreateField",
       "model": "User",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -428,7 +428,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -555,7 +555,7 @@
       "tag": "CreateField",
       "model": "User",
       "field": "groupId",
-      "type": "String",
+      "type": "Int",
       "arity": "Optional"
     },
     {
@@ -566,7 +566,7 @@
       "tag": "CreateField",
       "model": "Section",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -592,7 +592,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -722,7 +722,7 @@
     {
       "tag": "CreateField",
       "model": "Section",
-      "field": "dashboards",
+      "field": "dashboard",
       "type": "Dashboard",
       "arity": "Optional"
     },
@@ -732,7 +732,7 @@
         "path": {
           "tag": "Field",
           "model": "Section",
-          "field": "dashboards"
+          "field": "dashboard"
         },
         "directive": "relation"
       }
@@ -744,7 +744,7 @@
         "path": {
           "tag": "Field",
           "model": "Section",
-          "field": "dashboards"
+          "field": "dashboard"
         },
         "directive": "relation"
       },
@@ -758,7 +758,7 @@
         "path": {
           "tag": "Field",
           "model": "Section",
-          "field": "dashboards"
+          "field": "dashboard"
         },
         "directive": "relation"
       },
@@ -769,7 +769,7 @@
       "tag": "CreateField",
       "model": "Section",
       "field": "dashboardId",
-      "type": "String",
+      "type": "Int",
       "arity": "Optional"
     },
     {
@@ -787,7 +787,7 @@
       "tag": "CreateField",
       "model": "Step",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -813,7 +813,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -944,7 +944,7 @@
       "tag": "CreateField",
       "model": "Step",
       "field": "jobId",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1018,7 +1018,7 @@
       "tag": "CreateField",
       "model": "Step",
       "field": "sectionId",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1029,7 +1029,7 @@
       "tag": "CreateField",
       "model": "JournalEntry",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1055,7 +1055,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -1125,7 +1125,7 @@
       "tag": "CreateField",
       "model": "JournalEntry",
       "field": "stepId",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1136,7 +1136,7 @@
       "tag": "CreateField",
       "model": "Job",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1162,7 +1162,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -1301,6 +1301,13 @@
       "value": "AUTOSYS"
     },
     {
+      "tag": "CreateField",
+      "model": "Job",
+      "field": "Step",
+      "type": "Step",
+      "arity": "List"
+    },
+    {
       "tag": "CreateModel",
       "model": "JobRun"
     },
@@ -1308,7 +1315,7 @@
       "tag": "CreateField",
       "model": "JobRun",
       "field": "id",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {
@@ -1334,7 +1341,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "uuid()"
+      "value": "autoincrement()"
     },
     {
       "tag": "CreateDirective",
@@ -1482,7 +1489,7 @@
       "tag": "CreateField",
       "model": "JobRun",
       "field": "jobId",
-      "type": "String",
+      "type": "Int",
       "arity": "Required"
     },
     {

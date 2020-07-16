@@ -13,6 +13,8 @@
     "codegen": "graphql-codegen --config codegen.yml",
     "create-migration": "prisma migrate save --experimental",
     "migrate-database": "prisma migrate up --experimental --auto-approve --create-db",
+    "db-start": "docker-compose up -d",
+    "db-stop": "docker-compose down",
     "seed": "ts-node --transpile-only -P nexus.tsconfig.json seed-database"
   },
   "dependencies": {
