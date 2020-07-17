@@ -87,11 +87,13 @@ type Dashboard {
 
 type DashboardAvgAggregateOutputType {
   id: Float!
+  minuteOffset: Float!
 }
 
 input DashboardCreateInput {
   createdAt: DateTime
   groups: GroupCreateManyWithoutDashboardsInput
+  minuteOffset: Int
   name: String!
   published: Boolean
   sections: SectionCreateManyWithoutDashboardInput
@@ -110,6 +112,7 @@ input DashboardCreateOneWithoutSectionsInput {
 
 input DashboardCreateWithoutGroupsInput {
   createdAt: DateTime
+  minuteOffset: Int
   name: String!
   published: Boolean
   sections: SectionCreateManyWithoutDashboardInput
@@ -119,6 +122,7 @@ input DashboardCreateWithoutGroupsInput {
 input DashboardCreateWithoutSectionsInput {
   createdAt: DateTime
   groups: GroupCreateManyWithoutDashboardsInput
+  minuteOffset: Int
   name: String!
   published: Boolean
   updatedAt: DateTime
@@ -132,15 +136,18 @@ input DashboardFilter {
 
 type DashboardMaxAggregateOutputType {
   id: Int!
+  minuteOffset: Int!
 }
 
 type DashboardMinAggregateOutputType {
   id: Int!
+  minuteOffset: Int!
 }
 
 input DashboardOrderByInput {
   createdAt: OrderByArg
   id: OrderByArg
+  minuteOffset: OrderByArg
   name: OrderByArg
   published: OrderByArg
   updatedAt: OrderByArg
@@ -151,6 +158,7 @@ input DashboardScalarWhereInput {
   createdAt: DateTimeFilter
   groups: GroupFilter
   id: IntFilter
+  minuteOffset: IntFilter
   name: StringFilter
   NOT: [DashboardScalarWhereInput!]
   OR: [DashboardScalarWhereInput!]
@@ -161,12 +169,14 @@ input DashboardScalarWhereInput {
 
 type DashboardSumAggregateOutputType {
   id: Int!
+  minuteOffset: Int!
 }
 
 input DashboardUpdateInput {
   createdAt: DateTime
   groups: GroupUpdateManyWithoutDashboardsInput
   id: Int
+  minuteOffset: Int
   name: String
   published: Boolean
   sections: SectionUpdateManyWithoutDashboardInput
@@ -176,6 +186,7 @@ input DashboardUpdateInput {
 input DashboardUpdateManyDataInput {
   createdAt: DateTime
   id: Int
+  minuteOffset: Int
   name: String
   published: Boolean
   updatedAt: DateTime
@@ -184,6 +195,7 @@ input DashboardUpdateManyDataInput {
 input DashboardUpdateManyMutationInput {
   createdAt: DateTime
   id: Int
+  minuteOffset: Int
   name: String
   published: Boolean
   updatedAt: DateTime
@@ -218,6 +230,7 @@ input DashboardUpdateOneWithoutSectionsInput {
 input DashboardUpdateWithoutGroupsDataInput {
   createdAt: DateTime
   id: Int
+  minuteOffset: Int
   name: String
   published: Boolean
   sections: SectionUpdateManyWithoutDashboardInput
@@ -228,6 +241,7 @@ input DashboardUpdateWithoutSectionsDataInput {
   createdAt: DateTime
   groups: GroupUpdateManyWithoutDashboardsInput
   id: Int
+  minuteOffset: Int
   name: String
   published: Boolean
   updatedAt: DateTime
@@ -254,6 +268,7 @@ input DashboardWhereInput {
   createdAt: DateTimeFilter
   groups: GroupFilter
   id: IntFilter
+  minuteOffset: IntFilter
   name: StringFilter
   NOT: [DashboardWhereInput!]
   OR: [DashboardWhereInput!]

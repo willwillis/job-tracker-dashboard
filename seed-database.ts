@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { networkInterfaces } from 'os';
 
 const prisma = new PrismaClient();
 
@@ -13,57 +14,147 @@ function makeid(length: number) {
   return result;
 }
 
+async function createUser(name: string, email: string, password: string) {
+  return (newUser = await prisma.user.create({
+    data: {
+      name: name,
+      email: email,
+      password: password,
+    },
+  }));
+}
+
+let dashboards = [1, 2, 3, 4, 5, 6, 7, 8];
+let sections = [1, 2, 3, 4, 5, 6];
+let steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
 // A `main` function so that you can use async/await
 async function main() {
-  // const user = await prisma.user.findMany(
-  //     {include: {group: true}}
-  // );
-  // console.log(user)
+  //createUser('will', 'will@will.com', '$2a$10$a60i6HKPyqSY9.prEz9Uju/1x6EZ0zkHTLikMWD9JVnYf6zgra69y');
 
-  const range: number[] = [1, 1, 1, 1, 19, 10, 11, 12, 22, 30];
+  const user = await prisma.user.findMany({ include: { group: true } });
+  console.log(user);
 
-  for (const i of range) {
-    await prisma.job.create({
+  const allJobs = await prisma.job.findMany();
+  console.log(allJobs);
+
+  for (let num: number of dashboards) {
+    console.log('Creating Dashboard' + num);
+
+    const dashboard = await prisma.dashboard.create({
       data: {
-        name: makeid(i) + makeid(3) + ' job',
-        jobType: 'AUTOSYS',
+        name: makeid(7) + ' Dashboard',
+        sections: {
+          create: [
+            {
+              name: 'Section A' + makeid(4),
+              order: 0,
+              steps: {
+                create: {
+                  name: makeid(9) + 'Step',
+                  job: {
+                    create: {
+                      name: makeid(9) + ' Job',
+                    },
+                  },
+                },
+              },
+            },
+            {
+              name: 'Section B' + makeid(5),
+              order: 1,
+              steps: {
+                create: {
+                  name: makeid(9) + 'Step',
+                  job: {
+                    create: {
+                      name: makeid(9) + ' Job',
+                    },
+                  },
+                },
+              },
+            },
+            {
+              name: 'Section C' + makeid(6),
+              order: 2,
+              steps: {
+                create: {
+                  name: makeid(9) + 'Step',
+                  job: {
+                    create: {
+                      name: makeid(9) + ' Job',
+                    },
+                  },
+                },
+              },
+            },
+            {
+              name: 'Section D' + makeid(7),
+              order: 3,
+              steps: {
+                create: {
+                  name: makeid(9) + 'Step',
+                  job: {
+                    create: {
+                      name: makeid(9) + ' Job',
+                    },
+                  },
+                },
+              },
+            },
+          ],
+        },
       },
     });
-
-    //   const dashboard = await prisma.dashboard.create({
-    //     data: {
-    //       name: makeid(7) + ' Dashboard',
-    //       sections: {
-    //         create: { name: 'Section ' + makeid(4) },
-    //       },
-    //     },
-    //   });
-
-    const dashboardCount = await prisma.dashboard.count();
-    console.log('Dashboard Count:' + dashboardCount);
   }
 
-  const jobCount = await prisma.job.count();
+  for (let job of allJobs) {
+    const startDate: Date = new Date();
 
-  const sectionIds: number[] = [1, 2, 3, 4, 5, 6];
+    const endDate: Date = new Date(startDate.getTime() + Math.floor(Math.random() * 300) * 60000);
 
-  for (const i of sectionIds) {
-    console.log(i);
-    await prisma.step.create({
+    const runningJob = {
       data: {
-        section: {
-          connect: { id: i },
-        },
-        name: 'Step ' + makeid(3) + makeid(4),
+        startTime: startDate,
+        status: 'RUNNING',
         job: {
           connect: {
-            id: Math.floor(Math.random() * jobCount),
+            id: job.id,
           },
         },
       },
-    });
+    };
+    const failedJob = {
+      data: {
+        startTime: startDate,
+        status: 'TERMINATED',
+        endTime: endDate,
+        job: {
+          connect: {
+            id: job.id,
+          },
+        },
+      },
+    };
+    const successfulJob = {
+      data: {
+        startTime: startDate,
+        endTime: endDate,
+        status: 'SUCCESS',
+        job: {
+          connect: {
+            id: job.id,
+          },
+        },
+      },
+    };
+    const runStates = [runningJob, successfulJob, successfulJob, failedJob, runningJob];
+
+    const randomRunState = runStates[Math.floor(Math.random() * runStates.length)];
+
+    const newJobRun = await prisma.jobRun.create(randomRunState);
+    //const newJobRun2 = await prisma.jobRun.create(randomRunState);
   }
-  // console.log(dashboard);
 }
 main()
   .catch((e) => {

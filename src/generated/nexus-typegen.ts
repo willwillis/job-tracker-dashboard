@@ -21,6 +21,7 @@ export interface NexusGenInputs {
   DashboardCreateInput: { // input type
     createdAt?: any | null; // DateTime
     groups?: NexusGenInputs['GroupCreateManyWithoutDashboardsInput'] | null; // GroupCreateManyWithoutDashboardsInput
+    minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionCreateManyWithoutDashboardInput'] | null; // SectionCreateManyWithoutDashboardInput
@@ -36,6 +37,7 @@ export interface NexusGenInputs {
   }
   DashboardCreateWithoutGroupsInput: { // input type
     createdAt?: any | null; // DateTime
+    minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionCreateManyWithoutDashboardInput'] | null; // SectionCreateManyWithoutDashboardInput
@@ -44,6 +46,7 @@ export interface NexusGenInputs {
   DashboardCreateWithoutSectionsInput: { // input type
     createdAt?: any | null; // DateTime
     groups?: NexusGenInputs['GroupCreateManyWithoutDashboardsInput'] | null; // GroupCreateManyWithoutDashboardsInput
+    minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
     updatedAt?: any | null; // DateTime
@@ -56,6 +59,7 @@ export interface NexusGenInputs {
   DashboardOrderByInput: { // input type
     createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    minuteOffset?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     published?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
@@ -65,6 +69,7 @@ export interface NexusGenInputs {
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     groups?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    minuteOffset?: NexusGenInputs['IntFilter'] | null; // IntFilter
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['DashboardScalarWhereInput'][] | null; // [DashboardScalarWhereInput!]
     OR?: NexusGenInputs['DashboardScalarWhereInput'][] | null; // [DashboardScalarWhereInput!]
@@ -76,6 +81,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     groups?: NexusGenInputs['GroupUpdateManyWithoutDashboardsInput'] | null; // GroupUpdateManyWithoutDashboardsInput
     id?: number | null; // Int
+    minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionUpdateManyWithoutDashboardInput'] | null; // SectionUpdateManyWithoutDashboardInput
@@ -84,6 +90,7 @@ export interface NexusGenInputs {
   DashboardUpdateManyDataInput: { // input type
     createdAt?: any | null; // DateTime
     id?: number | null; // Int
+    minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     updatedAt?: any | null; // DateTime
@@ -91,6 +98,7 @@ export interface NexusGenInputs {
   DashboardUpdateManyMutationInput: { // input type
     createdAt?: any | null; // DateTime
     id?: number | null; // Int
+    minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     updatedAt?: any | null; // DateTime
@@ -125,6 +133,7 @@ export interface NexusGenInputs {
   DashboardUpdateWithoutGroupsDataInput: { // input type
     createdAt?: any | null; // DateTime
     id?: number | null; // Int
+    minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionUpdateManyWithoutDashboardInput'] | null; // SectionUpdateManyWithoutDashboardInput
@@ -134,6 +143,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     groups?: NexusGenInputs['GroupUpdateManyWithoutDashboardsInput'] | null; // GroupUpdateManyWithoutDashboardsInput
     id?: number | null; // Int
+    minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     updatedAt?: any | null; // DateTime
@@ -152,6 +162,7 @@ export interface NexusGenInputs {
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     groups?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    minuteOffset?: NexusGenInputs['IntFilter'] | null; // IntFilter
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['DashboardWhereInput'][] | null; // [DashboardWhereInput!]
     OR?: NexusGenInputs['DashboardWhereInput'][] | null; // [DashboardWhereInput!]
@@ -1319,15 +1330,19 @@ export interface NexusGenRootTypes {
   }
   DashboardAvgAggregateOutputType: { // root type
     id: number; // Float!
+    minuteOffset: number; // Float!
   }
   DashboardMaxAggregateOutputType: { // root type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   DashboardMinAggregateOutputType: { // root type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   DashboardSumAggregateOutputType: { // root type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   Enum: { // root type
     fields: string[]; // [String!]!
@@ -1812,15 +1827,19 @@ export interface NexusGenFieldTypes {
   }
   DashboardAvgAggregateOutputType: { // field return type
     id: number; // Float!
+    minuteOffset: number; // Float!
   }
   DashboardMaxAggregateOutputType: { // field return type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   DashboardMinAggregateOutputType: { // field return type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   DashboardSumAggregateOutputType: { // field return type
     id: number; // Int!
+    minuteOffset: number; // Int!
   }
   Enum: { // field return type
     fields: string[]; // [String!]!
