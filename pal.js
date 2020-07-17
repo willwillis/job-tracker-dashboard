@@ -9,5 +9,6 @@ module.exports = {
     admin: {
       outPut: 'src/pages/models',
     },
+    graphql: true,
   },
 };
