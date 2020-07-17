@@ -53,7 +53,7 @@ const LayoutPage: React.FC = ({ children }) => {
             <LayoutContainer>
               <LayoutContent>
                 <LayoutColumns>
-                  <LayoutColumn>{userData}</LayoutColumn>
+                  <LayoutColumn>Hi</LayoutColumn>
                 </LayoutColumns>
               </LayoutContent>
             </LayoutContainer>
