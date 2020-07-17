@@ -4,9 +4,7 @@
       "id": "Group",
       "name": "Group",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -135,9 +133,7 @@
       "id": "Dashboard",
       "name": "Dashboard",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -286,9 +282,7 @@
       "id": "User",
       "name": "User",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -439,9 +433,7 @@
       "id": "Section",
       "name": "Section",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -650,9 +642,7 @@
       "id": "Step",
       "name": "Step",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -880,9 +870,7 @@
       "id": "JournalEntry",
       "name": "Journal Entry",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -972,9 +960,7 @@
       "id": "Job",
       "name": "Job",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1143,9 +1129,7 @@
       "id": "JobRun",
       "name": "Job Run",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1415,12 +1399,7 @@
     },
     {
       "name": "JobType",
-      "fields": [
-        "AUTOSYS",
-        "FMC",
-        "DATABASE",
-        "INSTRUMENTED"
-      ]
+      "fields": ["AUTOSYS", "FMC", "DATABASE", "INSTRUMENTED"]
     }
   ]
 }

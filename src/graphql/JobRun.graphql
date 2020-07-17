@@ -1,0 +1,78 @@
+fragment JobRunFields on JobRun {
+  id
+  joid
+  jobRunId
+  createdAt
+  updatedAt
+  startTime
+  endTime
+  status
+  jobId
+  exitCode
+  moreInfo
+}
+
+fragment JobRun on JobRun {
+  ...JobRunFields
+  job {
+    ...JobFields
+  }
+}
+
+query findOneJobRun($where: JobRunWhereUniqueInput!) {
+  findOneJobRun(where: $where) {
+    ...JobRun
+  }
+}
+
+query findManyJobRun(
+  $where: JobRunWhereInput
+  $orderBy: JobRunOrderByInput
+  $cursor: JobRunWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyJobRun(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    ...JobRun
+  }
+}
+
+query findManyJobRunCount(
+  $where: JobRunWhereInput
+  $orderBy: JobRunOrderByInput
+  $cursor: JobRunWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyJobRunCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
+}
+
+mutation createOneJobRun($data: JobRunCreateInput!) {
+  createOneJobRun(data: $data) {
+    ...JobRun
+  }
+}
+
+mutation updateOneJobRun($where: JobRunWhereUniqueInput!, $data: JobRunUpdateInput!) {
+  updateOneJobRun(where: $where, data: $data) {
+    ...JobRun
+  }
+}
+
+mutation deleteOneJobRun($where: JobRunWhereUniqueInput!) {
+  deleteOneJobRun(where: $where) {
+    id
+  }
+}
+
+mutation deleteManyJobRun($where: JobRunWhereInput) {
+  deleteManyJobRun(where: $where) {
+    count
+  }
+}
+
+mutation updateManyJobRun($where: JobRunWhereInput, $data: JobRunUpdateManyMutationInput!) {
+  updateManyJobRun(where: $where, data: $data) {
+    count
+  }
+}

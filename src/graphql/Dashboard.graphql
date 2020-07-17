@@ -1,0 +1,69 @@
+fragment DashboardFields on Dashboard {
+  id
+  name
+  createdAt
+  updatedAt
+  published
+}
+
+fragment Dashboard on Dashboard {
+  ...DashboardFields
+}
+
+query findOneDashboard($where: DashboardWhereUniqueInput!) {
+  findOneDashboard(where: $where) {
+    ...Dashboard
+  }
+}
+
+query findManyDashboard(
+  $where: DashboardWhereInput
+  $orderBy: DashboardOrderByInput
+  $cursor: DashboardWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyDashboard(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    ...Dashboard
+  }
+}
+
+query findManyDashboardCount(
+  $where: DashboardWhereInput
+  $orderBy: DashboardOrderByInput
+  $cursor: DashboardWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyDashboardCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
+}
+
+mutation createOneDashboard($data: DashboardCreateInput!) {
+  createOneDashboard(data: $data) {
+    ...Dashboard
+  }
+}
+
+mutation updateOneDashboard($where: DashboardWhereUniqueInput!, $data: DashboardUpdateInput!) {
+  updateOneDashboard(where: $where, data: $data) {
+    ...Dashboard
+  }
+}
+
+mutation deleteOneDashboard($where: DashboardWhereUniqueInput!) {
+  deleteOneDashboard(where: $where) {
+    id
+  }
+}
+
+mutation deleteManyDashboard($where: DashboardWhereInput) {
+  deleteManyDashboard(where: $where) {
+    count
+  }
+}
+
+mutation updateManyDashboard($where: DashboardWhereInput, $data: DashboardUpdateManyMutationInput!) {
+  updateManyDashboard(where: $where, data: $data) {
+    count
+  }
+}
