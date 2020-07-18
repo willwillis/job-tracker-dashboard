@@ -4,6 +4,7 @@ fragment DashboardFields on Dashboard {
   createdAt
   updatedAt
   published
+  minuteOffset
 }
 
 fragment Dashboard on Dashboard {
@@ -53,17 +54,5 @@ mutation updateOneDashboard($where: DashboardWhereUniqueInput!, $data: Dashboard
 mutation deleteOneDashboard($where: DashboardWhereUniqueInput!) {
   deleteOneDashboard(where: $where) {
     id
-  }
-}
-
-mutation deleteManyDashboard($where: DashboardWhereInput) {
-  deleteManyDashboard(where: $where) {
-    count
-  }
-}
-
-mutation updateManyDashboard($where: DashboardWhereInput, $data: DashboardUpdateManyMutationInput!) {
-  updateManyDashboard(where: $where, data: $data) {
-    count
   }
 }

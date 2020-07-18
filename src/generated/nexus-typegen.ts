@@ -1324,6 +1324,7 @@ export interface NexusGenRootTypes {
   Dashboard: { // root type
     createdAt: any; // DateTime!
     id: number; // Int!
+    minuteOffset: number; // Int!
     name: string; // String!
     published: boolean; // Boolean!
     updatedAt: any; // DateTime!
@@ -1820,6 +1821,7 @@ export interface NexusGenFieldTypes {
     createdAt: any; // DateTime!
     groups: NexusGenRootTypes['Group'][]; // [Group!]!
     id: number; // Int!
+    minuteOffset: number; // Int!
     name: string; // String!
     published: boolean; // Boolean!
     sections: NexusGenRootTypes['Section'][]; // [Section!]!

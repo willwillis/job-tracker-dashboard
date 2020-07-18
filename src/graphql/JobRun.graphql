@@ -64,15 +64,3 @@ mutation deleteOneJobRun($where: JobRunWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyJobRun($where: JobRunWhereInput) {
-  deleteManyJobRun(where: $where) {
-    count
-  }
-}
-
-mutation updateManyJobRun($where: JobRunWhereInput, $data: JobRunUpdateManyMutationInput!) {
-  updateManyJobRun(where: $where, data: $data) {
-    count
-  }
-}

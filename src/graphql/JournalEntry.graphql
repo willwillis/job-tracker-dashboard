@@ -56,15 +56,3 @@ mutation deleteOneJournalEntry($where: JournalEntryWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyJournalEntry($where: JournalEntryWhereInput) {
-  deleteManyJournalEntry(where: $where) {
-    count
-  }
-}
-
-mutation updateManyJournalEntry($where: JournalEntryWhereInput, $data: JournalEntryUpdateManyMutationInput!) {
-  updateManyJournalEntry(where: $where, data: $data) {
-    count
-  }
-}

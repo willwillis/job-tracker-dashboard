@@ -59,15 +59,3 @@ mutation deleteOneUser($where: UserWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyUser($where: UserWhereInput) {
-  deleteManyUser(where: $where) {
-    count
-  }
-}
-
-mutation updateManyUser($where: UserWhereInput, $data: UserUpdateManyMutationInput!) {
-  updateManyUser(where: $where, data: $data) {
-    count
-  }
-}

@@ -64,15 +64,3 @@ mutation deleteOneStep($where: StepWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyStep($where: StepWhereInput) {
-  deleteManyStep(where: $where) {
-    count
-  }
-}
-
-mutation updateManyStep($where: StepWhereInput, $data: StepUpdateManyMutationInput!) {
-  updateManyStep(where: $where, data: $data) {
-    count
-  }
-}

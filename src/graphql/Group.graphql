@@ -54,15 +54,3 @@ mutation deleteOneGroup($where: GroupWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyGroup($where: GroupWhereInput) {
-  deleteManyGroup(where: $where) {
-    count
-  }
-}
-
-mutation updateManyGroup($where: GroupWhereInput, $data: GroupUpdateManyMutationInput!) {
-  updateManyGroup(where: $where, data: $data) {
-    count
-  }
-}

@@ -47,7 +47,25 @@
   dependencies:
     cross-fetch "3.0.5"
 
-"@apollo/client@3.0.0", "@apollo/client@latest":
+"@apollo/client@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.2.tgz#fadb2b39a0e32950baaef2566442cb3f6de74a52"
+  integrity sha512-4ighan5Anlj4tK/tdUHs4Mi1njqXZ7AxRCVolz/H702DjPphAJfm+FRkIadPTmwz+OLO+d+tX+6V1VBshf02rg==
+  dependencies:
+    "@types/zen-observable" "^0.8.0"
+    "@wry/context" "^0.5.2"
+    "@wry/equality" "^0.1.9"
+    fast-json-stable-stringify "^2.0.0"
+    graphql-tag "^2.10.4"
+    hoist-non-react-statics "^3.3.2"
+    optimism "^0.12.1"
+    prop-types "^15.7.2"
+    symbol-observable "^1.2.0"
+    ts-invariant "^0.4.4"
+    tslib "^1.10.0"
+    zen-observable "^0.8.14"
+
+"@apollo/client@latest":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0.tgz#d620fdd660e590920a3fcfed85b8602b74d3fe45"
   integrity sha512-r9fYhjUpcwcvLJuNmJQlY1gkPyU08icXtekxY3ZNYMR5FUrml0QTIBHsgJTsVQX7HecNF+bPHJyrJhmv5O1jWQ==
@@ -1679,10 +1697,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@paljs/admin@1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-1.1.3.tgz#8a28ea683122cd77f97ee2b3b60b06e4960159b7"
-  integrity sha512-lp3dID1cklqCsEx0gQQhHCZOuKkdxiY26btSYBD0NtaGUJFfyZgGTlA3Sh6I+0jmLwL0/FcT/JZtHJH4c2+wjA==
+"@paljs/admin@1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-1.1.6.tgz#5a3ee567169cea2c3aaa7cd379d2e2cacdcae12f"
+  integrity sha512-2Ne0GkJU/YWPvBPELM7KRvGvKlc58qpDpxzrS2C7PNxZd10kh3KfIWrwEAt6XKSVUrfFsy5B3dvW7mmkRqOWaw==
   dependencies:
     "@paljs/types" "^1.1.0"
     moment "2.26.0"
@@ -1701,19 +1719,19 @@
   dependencies:
     eva-icons "^1.1.3"
 
-"@paljs/nexus@1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@paljs/nexus/-/nexus-1.1.3.tgz#015849bcd972411548f6369ffe69a00811ee4b0d"
-  integrity sha512-jRL+ietFXVBznPrxNKsUIuTQDh+ujAor8/n3YeA2mbme2c3qKYGUMqv8FQdOwNiOMaejHdU3+mK2Z2rZGD8+uw==
+"@paljs/nexus@1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@paljs/nexus/-/nexus-1.1.7.tgz#5fe9c0e64e3173bc02ab4778453c229980b653e3"
+  integrity sha512-ry/cWd3eTm4FUM+knua4X4wYLcyqj+jhM9MfJbPJ+F+LkmeEnnUCPfrSYY1xEPnCx4EyRpDi4078f1lSFSI4rA==
   dependencies:
-    "@paljs/plugins" "^1.1.3"
+    "@paljs/plugins" "^1.1.7"
     fs-extra "^9.0.1"
     lowdb "^1.0.0"
 
-"@paljs/plugins@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@paljs/plugins/-/plugins-1.1.3.tgz#a34a2940f345971cb9a7a875cdf01db396a65d56"
-  integrity sha512-rLaC5lU36tUJ/+9c/iFYg3e92RWApoZ6KGCGbcho/FRdw1fYhV5P1AUdATVknzMEjB/vFaWO/RHyj9YRfBr6bA==
+"@paljs/plugins@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@paljs/plugins/-/plugins-1.1.7.tgz#150dd4fb718ad471fc75264a990c5423534d6feb"
+  integrity sha512-Qfd1VJGfHUe8mjZ7Sxs51OxcDntDBsb3C1z0FeFCdB1XiAhiDSsPzRb0csMzQYl0Z9prZzc3qwxcaAQnGtqvcw==
   dependencies:
     "@paljs/types" "^1.1.0"
     graphql-fields "2.0.3"

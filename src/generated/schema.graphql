@@ -79,6 +79,7 @@ type Dashboard {
   createdAt: DateTime!
   groups(cursor: GroupWhereUniqueInput, orderBy: GroupOrderByInput, skip: Int, take: Int, where: GroupWhereInput): [Group!]!
   id: Int!
+  minuteOffset: Int!
   name: String!
   published: Boolean!
   sections(cursor: SectionWhereUniqueInput, orderBy: SectionOrderByInput, skip: Int, take: Int, where: SectionWhereInput): [Section!]!

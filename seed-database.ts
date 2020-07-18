@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-import { networkInterfaces } from 'os';
+import { PrismaClient, JobRunCreateArgs } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -14,19 +13,17 @@ function makeid(length: number) {
   return result;
 }
 
-async function createUser(name: string, email: string, password: string) {
-  return (newUser = await prisma.user.create({
-    data: {
-      name: name,
-      email: email,
-      password: password,
-    },
-  }));
-}
+// async function createUser(name: string, email: string, password: string) {
+//   return await prisma.user.create({
+//     data: {
+//       name: name,
+//       email: email,
+//       password: password,
+//     },
+//   });
+// }
 
-let dashboards = [1, 2, 3, 4, 5, 6, 7, 8];
-let sections = [1, 2, 3, 4, 5, 6];
-let steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+const dashboards = [1, 2, 3, 4, 5, 6, 7, 8];
 
 // A `main` function so that you can use async/await
 async function main() {
@@ -38,10 +35,10 @@ async function main() {
   const allJobs = await prisma.job.findMany();
   console.log(allJobs);
 
-  for (let num: number of dashboards) {
+  for (const num of dashboards) {
     console.log('Creating Dashboard' + num);
 
-    const dashboard = await prisma.dashboard.create({
+    await prisma.dashboard.create({
       data: {
         name: makeid(7) + ' Dashboard',
         sections: {
@@ -108,12 +105,12 @@ async function main() {
     });
   }
 
-  for (let job of allJobs) {
+  for (const job of allJobs) {
     const startDate: Date = new Date();
 
     const endDate: Date = new Date(startDate.getTime() + Math.floor(Math.random() * 300) * 60000);
 
-    const runningJob = {
+    const runningJob: JobRunCreateArgs = {
       data: {
         startTime: startDate,
         status: 'RUNNING',
@@ -124,7 +121,7 @@ async function main() {
         },
       },
     };
-    const failedJob = {
+    const failedJob: JobRunCreateArgs = {
       data: {
         startTime: startDate,
         status: 'TERMINATED',
@@ -136,7 +133,7 @@ async function main() {
         },
       },
     };
-    const successfulJob = {
+    const successfulJob: JobRunCreateArgs = {
       data: {
         startTime: startDate,
         endTime: endDate,
@@ -152,7 +149,7 @@ async function main() {
 
     const randomRunState = runStates[Math.floor(Math.random() * runStates.length)];
 
-    const newJobRun = await prisma.jobRun.create(randomRunState);
+    await prisma.jobRun.create(randomRunState);
     //const newJobRun2 = await prisma.jobRun.create(randomRunState);
   }
 }

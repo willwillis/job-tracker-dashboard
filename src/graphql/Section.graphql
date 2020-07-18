@@ -61,15 +61,3 @@ mutation deleteOneSection($where: SectionWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManySection($where: SectionWhereInput) {
-  deleteManySection(where: $where) {
-    count
-  }
-}
-
-mutation updateManySection($where: SectionWhereInput, $data: SectionUpdateManyMutationInput!) {
-  updateManySection(where: $where, data: $data) {
-    count
-  }
-}

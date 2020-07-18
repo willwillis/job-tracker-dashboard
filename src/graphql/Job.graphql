@@ -56,15 +56,3 @@ mutation deleteOneJob($where: JobWhereUniqueInput!) {
     id
   }
 }
-
-mutation deleteManyJob($where: JobWhereInput) {
-  deleteManyJob(where: $where) {
-    count
-  }
-}
-
-mutation updateManyJob($where: JobWhereInput, $data: JobUpdateManyMutationInput!) {
-  updateManyJob(where: $where, data: $data) {
-    count
-  }
-}

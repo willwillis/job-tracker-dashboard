@@ -38,5 +38,6 @@ export const Dashboard = objectType({
     t.field('createdAt', { nullable: false, type: 'DateTime' })
     t.field('updatedAt', { nullable: false, type: 'DateTime' })
     t.boolean('published', { nullable: false })
+    t.int('minuteOffset', { nullable: false })
   },
 })
