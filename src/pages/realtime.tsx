@@ -1,18 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
-import themes from '../Layouts/themes';
+import React, { useEffect } from 'react';
 import { Layout, LayoutContent, LayoutContainer, LayoutColumns, LayoutColumn } from '@paljs/ui/Layout';
-import { SidebarRefObject, Sidebar, SidebarBody } from '@paljs/ui/Sidebar';
 import icons from '@paljs/icons';
-import { Menu, MenuRefObject } from '@paljs/ui/Menu';
 import Spinner from '@paljs/ui/Spinner';
-import Header from '../Layouts/Header';
 import SimpleLayout from '../Layouts/SimpleLayout';
-import menuItems from '../Layouts/menuItem';
 import { MeQuery, MeQueryVariables, useMeQuery } from 'generated';
 import { ApolloQueryResult } from '@apollo/client';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 interface ContextProps {
   me?: MeQuery['me'] | null;
@@ -24,16 +17,16 @@ const initialContext: ContextProps = {};
 
 export const LayoutContext: React.Context<ContextProps> = React.createContext(initialContext);
 
-const LayoutPage: React.FC = ({ children }) => {
+const LayoutPage: React.FC = () => {
   const { data: userData, loading, refetch } = useMeQuery();
   const router = useRouter();
-  const authLayout = router.pathname.startsWith('/admin/auth');
+  const authLayout = router.pathname.startsWith('/auth');
 
   useEffect(() => {
     if (!loading && !userData?.me && !authLayout) {
-      router.push('/admin/auth/login');
+      router.push('/auth/login');
     } else if (authLayout && userData?.me && !loading) {
-      router.push('/admin');
+      router.push('/');
     }
   }, [loading, userData]);
 

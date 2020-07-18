@@ -6,6 +6,7 @@ const items: MenuItemType[] = [
     title: 'Models',
     icon: { name: 'layers-outline' },
     children: [
+      { title: 'Config', link: { href: '/models/config' } },
       { title: 'Group', link: { href: '/models/Group' } },
       { title: 'Dashboard', link: { href: '/models/Dashboard' } },
       { title: 'User', link: { href: '/models/User' } },
