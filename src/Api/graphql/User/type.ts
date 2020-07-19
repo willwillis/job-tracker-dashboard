@@ -16,5 +16,6 @@ export const User = objectType({
       },
     })
     t.int('groupId', { nullable: true })
+    t.boolean('isAdmin', { nullable: false })
   },
 })

@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -35,7 +35,6 @@ model User {
   password  String
   group     Group?   @relation(fields: [groupId], references: [id])
   groupId   Int?
-  isAdmin   Boolean  @default(false)
 }
 
 model Section {
@@ -58,7 +57,7 @@ model Step {
   updatedAt       DateTime       @updatedAt
   job             Job            @relation(fields: [jobId], references: [id])
   jobId           Int
-  order           Int            @default(0)
+  order           Int	         @default(0)
   successCriteria String?
   journalEntries  JournalEntry[]
   section         Section        @relation(fields: [sectionId], references: [id])
@@ -86,15 +85,15 @@ model Job {
 }
 
 model JobRun {
-  id        Int       @default(autoincrement()) @id
+  id        Int        @default(autoincrement()) @id
   joid      Int?
   jobRunId  Int?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   startTime DateTime
   endTime   DateTime?
-  status    JobStatus @default(ACTIVATED)
-  job       Job       @relation(fields: [jobId], references: [id])
+  status    JobStatus  @default(ACTIVATED)
+  job       Job        @relation(fields: [jobId], references: [id])
   jobId     Int
   exitCode  Int?
   moreInfo  String?

@@ -1728,7 +1728,7 @@ export type SectionCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1748,7 +1748,7 @@ export type SectionCreateOneWithoutStepsInput = {
 export type SectionCreateWithoutDashboardInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1759,7 +1759,7 @@ export type SectionCreateWithoutStepsInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1970,7 +1970,7 @@ export type StepCreateInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1995,7 +1995,7 @@ export type StepCreateWithoutJobInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2005,7 +2005,7 @@ export type StepCreateWithoutJournalEntriesInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   job: JobCreateOneWithoutStepInput;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2016,7 +2016,7 @@ export type StepCreateWithoutSectionInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -2277,6 +2277,7 @@ export type User = {
   group?: Maybe<Group>;
   groupId?: Maybe<Scalars['Int']>;
   id: Scalars['Int'];
+  isAdmin: Scalars['Boolean'];
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
 };
@@ -2291,6 +2292,7 @@ export type UserCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
   group?: Maybe<GroupCreateOneWithoutUsersInput>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
 };
@@ -2303,6 +2305,7 @@ export type UserCreateManyWithoutGroupInput = {
 export type UserCreateWithoutGroupInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
 };
@@ -2330,6 +2333,7 @@ export type UserOrderByInput = {
   email?: Maybe<OrderByArg>;
   groupId?: Maybe<OrderByArg>;
   id?: Maybe<OrderByArg>;
+  isAdmin?: Maybe<OrderByArg>;
   name?: Maybe<OrderByArg>;
   password?: Maybe<OrderByArg>;
 };
@@ -2340,6 +2344,7 @@ export type UserScalarWhereInput = {
   email?: Maybe<StringFilter>;
   groupId?: Maybe<NullableIntFilter>;
   id?: Maybe<IntFilter>;
+  isAdmin?: Maybe<BooleanFilter>;
   name?: Maybe<NullableStringFilter>;
   NOT?: Maybe<Array<UserScalarWhereInput>>;
   OR?: Maybe<Array<UserScalarWhereInput>>;
@@ -2357,6 +2362,7 @@ export type UserUpdateInput = {
   email?: Maybe<Scalars['String']>;
   group?: Maybe<GroupUpdateOneWithoutUsersInput>;
   id?: Maybe<Scalars['Int']>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2365,6 +2371,7 @@ export type UserUpdateManyDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2373,6 +2380,7 @@ export type UserUpdateManyMutationInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2398,6 +2406,7 @@ export type UserUpdateWithoutGroupDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2420,6 +2429,7 @@ export type UserWhereInput = {
   group?: Maybe<GroupWhereInput>;
   groupId?: Maybe<NullableIntFilter>;
   id?: Maybe<IntFilter>;
+  isAdmin?: Maybe<BooleanFilter>;
   name?: Maybe<NullableStringFilter>;
   NOT?: Maybe<Array<UserWhereInput>>;
   OR?: Maybe<Array<UserWhereInput>>;
@@ -2679,7 +2689,7 @@ export const FindOneDashboardDocument = gql`
   findOneDashboard(where: $where) {
     id
     name
-    sections {
+    sections(orderBy: {order: asc}) {
       id
       name
       order

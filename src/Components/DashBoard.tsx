@@ -50,6 +50,9 @@ export const DashBoard: React.FC<{ id: number }> = ({ id }) => {
                             <EvaIcon name={statusIcons[lastRun.status]} />
                             <span>{lastRun.status}</span>
                           </Button>
+                          <Badge position="bottomLeft" status={status[lastRun.status]}>
+                            {runs}
+                          </Badge>
                         </StyledCol>
                         <StyledCol
                           breakPoint={{ xs: 12, lg: 8, xl: 4 }}
@@ -61,9 +64,6 @@ export const DashBoard: React.FC<{ id: number }> = ({ id }) => {
                             content={step.job.name}
                             status={status[lastRun.status]}
                           >
-                            <Badge position="topLeft" status={status[lastRun.status]}>
-                              {runs}
-                            </Badge>
                             <span>{step.name}</span>
                           </Tooltip>
                         </StyledCol>
