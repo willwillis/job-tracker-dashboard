@@ -427,7 +427,7 @@ export interface NexusGenInputs {
     NOT?: NexusGenInputs['JobRunScalarWhereInput'][] | null; // [JobRunScalarWhereInput!]
     OR?: NexusGenInputs['JobRunScalarWhereInput'][] | null; // [JobRunScalarWhereInput!]
     startTime?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    status?: NexusGenInputs['NullableJobStatusFilter'] | null; // NullableJobStatusFilter
+    status?: NexusGenInputs['JobStatusFilter'] | null; // JobStatusFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   JobRunUpdateInput: { // input type
@@ -517,11 +517,17 @@ export interface NexusGenInputs {
     NOT?: NexusGenInputs['JobRunWhereInput'][] | null; // [JobRunWhereInput!]
     OR?: NexusGenInputs['JobRunWhereInput'][] | null; // [JobRunWhereInput!]
     startTime?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    status?: NexusGenInputs['NullableJobStatusFilter'] | null; // NullableJobStatusFilter
+    status?: NexusGenInputs['JobStatusFilter'] | null; // JobStatusFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   JobRunWhereUniqueInput: { // input type
     id?: number | null; // Int
+  }
+  JobStatusFilter: { // input type
+    equals?: NexusGenEnums['JobStatus'] | null; // JobStatus
+    in?: NexusGenEnums['JobStatus'][] | null; // [JobStatus!]
+    not?: NexusGenEnums['JobStatus'] | null; // JobStatus
+    notIn?: NexusGenEnums['JobStatus'][] | null; // [JobStatus!]
   }
   JobUpdateInput: { // input type
     createdAt?: any | null; // DateTime
@@ -699,12 +705,6 @@ export interface NexusGenInputs {
     not?: number | null; // Int
     notIn?: number[] | null; // [Int!]
   }
-  NullableJobStatusFilter: { // input type
-    equals?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    in?: NexusGenEnums['JobStatus'][] | null; // [JobStatus!]
-    not?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    notIn?: NexusGenEnums['JobStatus'][] | null; // [JobStatus!]
-  }
   NullableJobTypeFilter: { // input type
     equals?: NexusGenEnums['JobType'] | null; // JobType
     in?: NexusGenEnums['JobType'][] | null; // [JobType!]
@@ -728,7 +728,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -745,7 +745,7 @@ export interface NexusGenInputs {
   SectionCreateWithoutDashboardInput: { // input type
     createdAt?: any | null; // DateTime
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -755,7 +755,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -896,7 +896,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -917,7 +917,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -926,7 +926,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -936,7 +936,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
   }
@@ -1653,6 +1653,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   JobRunUpsertWithWhereUniqueWithoutJobInput: NexusGenInputs['JobRunUpsertWithWhereUniqueWithoutJobInput'];
   JobRunWhereInput: NexusGenInputs['JobRunWhereInput'];
   JobRunWhereUniqueInput: NexusGenInputs['JobRunWhereUniqueInput'];
+  JobStatusFilter: NexusGenInputs['JobStatusFilter'];
   JobUpdateInput: NexusGenInputs['JobUpdateInput'];
   JobUpdateManyMutationInput: NexusGenInputs['JobUpdateManyMutationInput'];
   JobUpdateOneRequiredWithoutRunsInput: NexusGenInputs['JobUpdateOneRequiredWithoutRunsInput'];
@@ -1681,7 +1682,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   JournalEntryWhereUniqueInput: NexusGenInputs['JournalEntryWhereUniqueInput'];
   NullableDateTimeFilter: NexusGenInputs['NullableDateTimeFilter'];
   NullableIntFilter: NexusGenInputs['NullableIntFilter'];
-  NullableJobStatusFilter: NexusGenInputs['NullableJobStatusFilter'];
   NullableJobTypeFilter: NexusGenInputs['NullableJobTypeFilter'];
   NullableStringFilter: NexusGenInputs['NullableStringFilter'];
   SectionCreateInput: NexusGenInputs['SectionCreateInput'];
@@ -2513,7 +2513,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AggregateDashboard" | "AggregateGroup" | "AggregateJob" | "AggregateJobRun" | "AggregateJournalEntry" | "AggregateSection" | "AggregateStep" | "AggregateUser" | "BatchPayload" | "Dashboard" | "DashboardAvgAggregateOutputType" | "DashboardMaxAggregateOutputType" | "DashboardMinAggregateOutputType" | "DashboardSumAggregateOutputType" | "Enum" | "Field" | "Group" | "GroupAvgAggregateOutputType" | "GroupMaxAggregateOutputType" | "GroupMinAggregateOutputType" | "GroupSumAggregateOutputType" | "Job" | "JobAvgAggregateOutputType" | "JobMaxAggregateOutputType" | "JobMinAggregateOutputType" | "JobRun" | "JobRunAvgAggregateOutputType" | "JobRunMaxAggregateOutputType" | "JobRunMinAggregateOutputType" | "JobRunSumAggregateOutputType" | "JobSumAggregateOutputType" | "JournalEntry" | "JournalEntryAvgAggregateOutputType" | "JournalEntryMaxAggregateOutputType" | "JournalEntryMinAggregateOutputType" | "JournalEntrySumAggregateOutputType" | "Model" | "Mutation" | "Query" | "Schema" | "Section" | "SectionAvgAggregateOutputType" | "SectionMaxAggregateOutputType" | "SectionMinAggregateOutputType" | "SectionSumAggregateOutputType" | "Step" | "StepAvgAggregateOutputType" | "StepMaxAggregateOutputType" | "StepMinAggregateOutputType" | "StepSumAggregateOutputType" | "User" | "UserAvgAggregateOutputType" | "UserMaxAggregateOutputType" | "UserMinAggregateOutputType" | "UserSumAggregateOutputType";
 
-export type NexusGenInputNames = "BooleanFilter" | "DashboardCreateInput" | "DashboardCreateManyWithoutGroupsInput" | "DashboardCreateOneWithoutSectionsInput" | "DashboardCreateWithoutGroupsInput" | "DashboardCreateWithoutSectionsInput" | "DashboardFilter" | "DashboardOrderByInput" | "DashboardScalarWhereInput" | "DashboardUpdateInput" | "DashboardUpdateManyDataInput" | "DashboardUpdateManyMutationInput" | "DashboardUpdateManyWithWhereNestedInput" | "DashboardUpdateManyWithoutGroupsInput" | "DashboardUpdateOneWithoutSectionsInput" | "DashboardUpdateWithWhereUniqueWithoutGroupsInput" | "DashboardUpdateWithoutGroupsDataInput" | "DashboardUpdateWithoutSectionsDataInput" | "DashboardUpsertWithWhereUniqueWithoutGroupsInput" | "DashboardUpsertWithoutSectionsInput" | "DashboardWhereInput" | "DashboardWhereUniqueInput" | "DateTimeFilter" | "GroupCreateInput" | "GroupCreateManyWithoutDashboardsInput" | "GroupCreateOneWithoutUsersInput" | "GroupCreateWithoutDashboardsInput" | "GroupCreateWithoutUsersInput" | "GroupFilter" | "GroupOrderByInput" | "GroupScalarWhereInput" | "GroupUpdateInput" | "GroupUpdateManyDataInput" | "GroupUpdateManyMutationInput" | "GroupUpdateManyWithWhereNestedInput" | "GroupUpdateManyWithoutDashboardsInput" | "GroupUpdateOneWithoutUsersInput" | "GroupUpdateWithWhereUniqueWithoutDashboardsInput" | "GroupUpdateWithoutDashboardsDataInput" | "GroupUpdateWithoutUsersDataInput" | "GroupUpsertWithWhereUniqueWithoutDashboardsInput" | "GroupUpsertWithoutUsersInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "IntFilter" | "JobCreateInput" | "JobCreateOneWithoutRunsInput" | "JobCreateOneWithoutStepInput" | "JobCreateWithoutRunsInput" | "JobCreateWithoutStepInput" | "JobOrderByInput" | "JobRunCreateInput" | "JobRunCreateManyWithoutJobInput" | "JobRunCreateWithoutJobInput" | "JobRunFilter" | "JobRunOrderByInput" | "JobRunScalarWhereInput" | "JobRunUpdateInput" | "JobRunUpdateManyDataInput" | "JobRunUpdateManyMutationInput" | "JobRunUpdateManyWithWhereNestedInput" | "JobRunUpdateManyWithoutJobInput" | "JobRunUpdateWithWhereUniqueWithoutJobInput" | "JobRunUpdateWithoutJobDataInput" | "JobRunUpsertWithWhereUniqueWithoutJobInput" | "JobRunWhereInput" | "JobRunWhereUniqueInput" | "JobUpdateInput" | "JobUpdateManyMutationInput" | "JobUpdateOneRequiredWithoutRunsInput" | "JobUpdateOneRequiredWithoutStepInput" | "JobUpdateWithoutRunsDataInput" | "JobUpdateWithoutStepDataInput" | "JobUpsertWithoutRunsInput" | "JobUpsertWithoutStepInput" | "JobWhereInput" | "JobWhereUniqueInput" | "JournalEntryCreateInput" | "JournalEntryCreateManyWithoutStepInput" | "JournalEntryCreateWithoutStepInput" | "JournalEntryFilter" | "JournalEntryOrderByInput" | "JournalEntryScalarWhereInput" | "JournalEntryUpdateInput" | "JournalEntryUpdateManyDataInput" | "JournalEntryUpdateManyMutationInput" | "JournalEntryUpdateManyWithWhereNestedInput" | "JournalEntryUpdateManyWithoutStepInput" | "JournalEntryUpdateWithWhereUniqueWithoutStepInput" | "JournalEntryUpdateWithoutStepDataInput" | "JournalEntryUpsertWithWhereUniqueWithoutStepInput" | "JournalEntryWhereInput" | "JournalEntryWhereUniqueInput" | "NullableDateTimeFilter" | "NullableIntFilter" | "NullableJobStatusFilter" | "NullableJobTypeFilter" | "NullableStringFilter" | "SectionCreateInput" | "SectionCreateManyWithoutDashboardInput" | "SectionCreateOneWithoutStepsInput" | "SectionCreateWithoutDashboardInput" | "SectionCreateWithoutStepsInput" | "SectionFilter" | "SectionOrderByInput" | "SectionScalarWhereInput" | "SectionUpdateInput" | "SectionUpdateManyDataInput" | "SectionUpdateManyMutationInput" | "SectionUpdateManyWithWhereNestedInput" | "SectionUpdateManyWithoutDashboardInput" | "SectionUpdateOneRequiredWithoutStepsInput" | "SectionUpdateWithWhereUniqueWithoutDashboardInput" | "SectionUpdateWithoutDashboardDataInput" | "SectionUpdateWithoutStepsDataInput" | "SectionUpsertWithWhereUniqueWithoutDashboardInput" | "SectionUpsertWithoutStepsInput" | "SectionWhereInput" | "SectionWhereUniqueInput" | "StepCreateInput" | "StepCreateManyWithoutJobInput" | "StepCreateManyWithoutSectionInput" | "StepCreateOneWithoutJournalEntriesInput" | "StepCreateWithoutJobInput" | "StepCreateWithoutJournalEntriesInput" | "StepCreateWithoutSectionInput" | "StepFilter" | "StepOrderByInput" | "StepScalarWhereInput" | "StepUpdateInput" | "StepUpdateManyDataInput" | "StepUpdateManyMutationInput" | "StepUpdateManyWithWhereNestedInput" | "StepUpdateManyWithoutJobInput" | "StepUpdateManyWithoutSectionInput" | "StepUpdateOneRequiredWithoutJournalEntriesInput" | "StepUpdateWithWhereUniqueWithoutJobInput" | "StepUpdateWithWhereUniqueWithoutSectionInput" | "StepUpdateWithoutJobDataInput" | "StepUpdateWithoutJournalEntriesDataInput" | "StepUpdateWithoutSectionDataInput" | "StepUpsertWithWhereUniqueWithoutJobInput" | "StepUpsertWithWhereUniqueWithoutSectionInput" | "StepUpsertWithoutJournalEntriesInput" | "StepWhereInput" | "StepWhereUniqueInput" | "StringFilter" | "UpdateFieldInput" | "UpdateModelInput" | "UserCreateInput" | "UserCreateManyWithoutGroupInput" | "UserCreateWithoutGroupInput" | "UserFilter" | "UserOrderByInput" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyDataInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereNestedInput" | "UserUpdateManyWithoutGroupInput" | "UserUpdateWithWhereUniqueWithoutGroupInput" | "UserUpdateWithoutGroupDataInput" | "UserUpsertWithWhereUniqueWithoutGroupInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "BooleanFilter" | "DashboardCreateInput" | "DashboardCreateManyWithoutGroupsInput" | "DashboardCreateOneWithoutSectionsInput" | "DashboardCreateWithoutGroupsInput" | "DashboardCreateWithoutSectionsInput" | "DashboardFilter" | "DashboardOrderByInput" | "DashboardScalarWhereInput" | "DashboardUpdateInput" | "DashboardUpdateManyDataInput" | "DashboardUpdateManyMutationInput" | "DashboardUpdateManyWithWhereNestedInput" | "DashboardUpdateManyWithoutGroupsInput" | "DashboardUpdateOneWithoutSectionsInput" | "DashboardUpdateWithWhereUniqueWithoutGroupsInput" | "DashboardUpdateWithoutGroupsDataInput" | "DashboardUpdateWithoutSectionsDataInput" | "DashboardUpsertWithWhereUniqueWithoutGroupsInput" | "DashboardUpsertWithoutSectionsInput" | "DashboardWhereInput" | "DashboardWhereUniqueInput" | "DateTimeFilter" | "GroupCreateInput" | "GroupCreateManyWithoutDashboardsInput" | "GroupCreateOneWithoutUsersInput" | "GroupCreateWithoutDashboardsInput" | "GroupCreateWithoutUsersInput" | "GroupFilter" | "GroupOrderByInput" | "GroupScalarWhereInput" | "GroupUpdateInput" | "GroupUpdateManyDataInput" | "GroupUpdateManyMutationInput" | "GroupUpdateManyWithWhereNestedInput" | "GroupUpdateManyWithoutDashboardsInput" | "GroupUpdateOneWithoutUsersInput" | "GroupUpdateWithWhereUniqueWithoutDashboardsInput" | "GroupUpdateWithoutDashboardsDataInput" | "GroupUpdateWithoutUsersDataInput" | "GroupUpsertWithWhereUniqueWithoutDashboardsInput" | "GroupUpsertWithoutUsersInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "IntFilter" | "JobCreateInput" | "JobCreateOneWithoutRunsInput" | "JobCreateOneWithoutStepInput" | "JobCreateWithoutRunsInput" | "JobCreateWithoutStepInput" | "JobOrderByInput" | "JobRunCreateInput" | "JobRunCreateManyWithoutJobInput" | "JobRunCreateWithoutJobInput" | "JobRunFilter" | "JobRunOrderByInput" | "JobRunScalarWhereInput" | "JobRunUpdateInput" | "JobRunUpdateManyDataInput" | "JobRunUpdateManyMutationInput" | "JobRunUpdateManyWithWhereNestedInput" | "JobRunUpdateManyWithoutJobInput" | "JobRunUpdateWithWhereUniqueWithoutJobInput" | "JobRunUpdateWithoutJobDataInput" | "JobRunUpsertWithWhereUniqueWithoutJobInput" | "JobRunWhereInput" | "JobRunWhereUniqueInput" | "JobStatusFilter" | "JobUpdateInput" | "JobUpdateManyMutationInput" | "JobUpdateOneRequiredWithoutRunsInput" | "JobUpdateOneRequiredWithoutStepInput" | "JobUpdateWithoutRunsDataInput" | "JobUpdateWithoutStepDataInput" | "JobUpsertWithoutRunsInput" | "JobUpsertWithoutStepInput" | "JobWhereInput" | "JobWhereUniqueInput" | "JournalEntryCreateInput" | "JournalEntryCreateManyWithoutStepInput" | "JournalEntryCreateWithoutStepInput" | "JournalEntryFilter" | "JournalEntryOrderByInput" | "JournalEntryScalarWhereInput" | "JournalEntryUpdateInput" | "JournalEntryUpdateManyDataInput" | "JournalEntryUpdateManyMutationInput" | "JournalEntryUpdateManyWithWhereNestedInput" | "JournalEntryUpdateManyWithoutStepInput" | "JournalEntryUpdateWithWhereUniqueWithoutStepInput" | "JournalEntryUpdateWithoutStepDataInput" | "JournalEntryUpsertWithWhereUniqueWithoutStepInput" | "JournalEntryWhereInput" | "JournalEntryWhereUniqueInput" | "NullableDateTimeFilter" | "NullableIntFilter" | "NullableJobTypeFilter" | "NullableStringFilter" | "SectionCreateInput" | "SectionCreateManyWithoutDashboardInput" | "SectionCreateOneWithoutStepsInput" | "SectionCreateWithoutDashboardInput" | "SectionCreateWithoutStepsInput" | "SectionFilter" | "SectionOrderByInput" | "SectionScalarWhereInput" | "SectionUpdateInput" | "SectionUpdateManyDataInput" | "SectionUpdateManyMutationInput" | "SectionUpdateManyWithWhereNestedInput" | "SectionUpdateManyWithoutDashboardInput" | "SectionUpdateOneRequiredWithoutStepsInput" | "SectionUpdateWithWhereUniqueWithoutDashboardInput" | "SectionUpdateWithoutDashboardDataInput" | "SectionUpdateWithoutStepsDataInput" | "SectionUpsertWithWhereUniqueWithoutDashboardInput" | "SectionUpsertWithoutStepsInput" | "SectionWhereInput" | "SectionWhereUniqueInput" | "StepCreateInput" | "StepCreateManyWithoutJobInput" | "StepCreateManyWithoutSectionInput" | "StepCreateOneWithoutJournalEntriesInput" | "StepCreateWithoutJobInput" | "StepCreateWithoutJournalEntriesInput" | "StepCreateWithoutSectionInput" | "StepFilter" | "StepOrderByInput" | "StepScalarWhereInput" | "StepUpdateInput" | "StepUpdateManyDataInput" | "StepUpdateManyMutationInput" | "StepUpdateManyWithWhereNestedInput" | "StepUpdateManyWithoutJobInput" | "StepUpdateManyWithoutSectionInput" | "StepUpdateOneRequiredWithoutJournalEntriesInput" | "StepUpdateWithWhereUniqueWithoutJobInput" | "StepUpdateWithWhereUniqueWithoutSectionInput" | "StepUpdateWithoutJobDataInput" | "StepUpdateWithoutJournalEntriesDataInput" | "StepUpdateWithoutSectionDataInput" | "StepUpsertWithWhereUniqueWithoutJobInput" | "StepUpsertWithWhereUniqueWithoutSectionInput" | "StepUpsertWithoutJournalEntriesInput" | "StepWhereInput" | "StepWhereUniqueInput" | "StringFilter" | "UpdateFieldInput" | "UpdateModelInput" | "UserCreateInput" | "UserCreateManyWithoutGroupInput" | "UserCreateWithoutGroupInput" | "UserFilter" | "UserOrderByInput" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyDataInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereNestedInput" | "UserUpdateManyWithoutGroupInput" | "UserUpdateWithWhereUniqueWithoutGroupInput" | "UserUpdateWithoutGroupDataInput" | "UserUpsertWithWhereUniqueWithoutGroupInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = "JobStatus" | "JobType" | "KindEnum" | "OrderByArg";
 

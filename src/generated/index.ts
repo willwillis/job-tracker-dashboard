@@ -1728,7 +1728,7 @@ export type SectionCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1748,7 +1748,7 @@ export type SectionCreateOneWithoutStepsInput = {
 export type SectionCreateWithoutDashboardInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1759,7 +1759,7 @@ export type SectionCreateWithoutStepsInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1970,7 +1970,7 @@ export type StepCreateInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1995,7 +1995,7 @@ export type StepCreateWithoutJobInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2005,7 +2005,7 @@ export type StepCreateWithoutJournalEntriesInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   job: JobCreateOneWithoutStepInput;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2016,7 +2016,7 @@ export type StepCreateWithoutSectionInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order: Scalars['Int'];
+  order?: Maybe<Scalars['Int']>;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
