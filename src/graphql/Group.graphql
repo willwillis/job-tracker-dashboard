@@ -1,0 +1,12 @@
+query findManyGroup(
+  $where: GroupWhereInput
+  $orderBy: GroupOrderByInput
+  $cursor: GroupWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    id
+    name
+  }
+}

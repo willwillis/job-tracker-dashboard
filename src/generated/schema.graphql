@@ -689,7 +689,7 @@ input JobRunScalarWhereInput {
   NOT: [JobRunScalarWhereInput!]
   OR: [JobRunScalarWhereInput!]
   startTime: DateTimeFilter
-  status: NullableJobStatusFilter
+  status: JobStatusFilter
   updatedAt: DateTimeFilter
 }
 
@@ -796,7 +796,7 @@ input JobRunWhereInput {
   NOT: [JobRunWhereInput!]
   OR: [JobRunWhereInput!]
   startTime: DateTimeFilter
-  status: NullableJobStatusFilter
+  status: JobStatusFilter
   updatedAt: DateTimeFilter
 }
 
@@ -820,6 +820,13 @@ enum JobStatus {
   SUCCESS
   TERMINATED
   WAIT_REPLY
+}
+
+input JobStatusFilter {
+  equals: JobStatus
+  in: [JobStatus!]
+  not: JobStatus
+  notIn: [JobStatus!]
 }
 
 type JobSumAggregateOutputType {
@@ -1121,13 +1128,6 @@ input NullableIntFilter {
   lte: Int
   not: Int
   notIn: [Int!]
-}
-
-input NullableJobStatusFilter {
-  equals: JobStatus
-  in: [JobStatus!]
-  not: JobStatus
-  notIn: [JobStatus!]
 }
 
 input NullableJobTypeFilter {

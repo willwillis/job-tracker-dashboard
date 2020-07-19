@@ -24,3 +24,19 @@ query findOneDashboard($where: DashboardWhereUniqueInput!) {
     }
   }
 }
+
+query findManyDashboard(
+  $where: DashboardWhereInput
+  $orderBy: DashboardOrderByInput
+  $cursor: DashboardWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyDashboard(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    id
+    name
+    groups {
+      id
+    }
+  }
+}

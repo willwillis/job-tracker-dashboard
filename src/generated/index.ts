@@ -782,7 +782,7 @@ export type JobRunScalarWhereInput = {
   NOT?: Maybe<Array<JobRunScalarWhereInput>>;
   OR?: Maybe<Array<JobRunScalarWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<JobStatusFilter>;
+  status?: Maybe<NullableJobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -890,7 +890,7 @@ export type JobRunWhereInput = {
   NOT?: Maybe<Array<JobRunWhereInput>>;
   OR?: Maybe<Array<JobRunWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<JobStatusFilter>;
+  status?: Maybe<NullableJobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -915,13 +915,6 @@ export enum JobStatus {
   Terminated = 'TERMINATED',
   WaitReply = 'WAIT_REPLY'
 }
-
-export type JobStatusFilter = {
-  equals?: Maybe<JobStatus>;
-  in?: Maybe<Array<JobStatus>>;
-  not?: Maybe<JobStatus>;
-  notIn?: Maybe<Array<JobStatus>>;
-};
 
 export type JobSumAggregateOutputType = {
   __typename?: 'JobSumAggregateOutputType';
@@ -1446,6 +1439,13 @@ export type NullableIntFilter = {
   lte?: Maybe<Scalars['Int']>;
   not?: Maybe<Scalars['Int']>;
   notIn?: Maybe<Array<Scalars['Int']>>;
+};
+
+export type NullableJobStatusFilter = {
+  equals?: Maybe<JobStatus>;
+  in?: Maybe<Array<JobStatus>>;
+  not?: Maybe<JobStatus>;
+  notIn?: Maybe<Array<JobStatus>>;
 };
 
 export type NullableJobTypeFilter = {
@@ -2508,6 +2508,44 @@ export type FindOneDashboardQuery = (
   )> }
 );
 
+export type FindManyDashboardQueryVariables = Exact<{
+  where?: Maybe<DashboardWhereInput>;
+  orderBy?: Maybe<DashboardOrderByInput>;
+  cursor?: Maybe<DashboardWhereUniqueInput>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type FindManyDashboardQuery = (
+  { __typename?: 'Query' }
+  & { findManyDashboard?: Maybe<Array<(
+    { __typename?: 'Dashboard' }
+    & Pick<Dashboard, 'id' | 'name'>
+    & { groups: Array<(
+      { __typename?: 'Group' }
+      & Pick<Group, 'id'>
+    )> }
+  )>> }
+);
+
+export type FindManyGroupQueryVariables = Exact<{
+  where?: Maybe<GroupWhereInput>;
+  orderBy?: Maybe<GroupOrderByInput>;
+  cursor?: Maybe<GroupWhereUniqueInput>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type FindManyGroupQuery = (
+  { __typename?: 'Query' }
+  & { findManyGroup?: Maybe<Array<(
+    { __typename?: 'Group' }
+    & Pick<Group, 'id' | 'name'>
+  )>> }
+);
+
 
 export const MeDocument = gql`
     query me {
@@ -2690,3 +2728,82 @@ export function useFindOneDashboardLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export type FindOneDashboardQueryHookResult = ReturnType<typeof useFindOneDashboardQuery>;
 export type FindOneDashboardLazyQueryHookResult = ReturnType<typeof useFindOneDashboardLazyQuery>;
 export type FindOneDashboardQueryResult = ApolloReactCommon.QueryResult<FindOneDashboardQuery, FindOneDashboardQueryVariables>;
+export const FindManyDashboardDocument = gql`
+    query findManyDashboard($where: DashboardWhereInput, $orderBy: DashboardOrderByInput, $cursor: DashboardWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyDashboard(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    id
+    name
+    groups {
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useFindManyDashboardQuery__
+ *
+ * To run a query within a React component, call `useFindManyDashboardQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindManyDashboardQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindManyDashboardQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      cursor: // value for 'cursor'
+ *      skip: // value for 'skip'
+ *      take: // value for 'take'
+ *   },
+ * });
+ */
+export function useFindManyDashboardQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
+      }
+export function useFindManyDashboardLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
+        }
+export type FindManyDashboardQueryHookResult = ReturnType<typeof useFindManyDashboardQuery>;
+export type FindManyDashboardLazyQueryHookResult = ReturnType<typeof useFindManyDashboardLazyQuery>;
+export type FindManyDashboardQueryResult = ApolloReactCommon.QueryResult<FindManyDashboardQuery, FindManyDashboardQueryVariables>;
+export const FindManyGroupDocument = gql`
+    query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $cursor: GroupWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useFindManyGroupQuery__
+ *
+ * To run a query within a React component, call `useFindManyGroupQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindManyGroupQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      cursor: // value for 'cursor'
+ *      skip: // value for 'skip'
+ *      take: // value for 'take'
+ *   },
+ * });
+ */
+export function useFindManyGroupQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+      }
+export function useFindManyGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+        }
+export type FindManyGroupQueryHookResult = ReturnType<typeof useFindManyGroupQuery>;
+export type FindManyGroupLazyQueryHookResult = ReturnType<typeof useFindManyGroupLazyQuery>;
+export type FindManyGroupQueryResult = ApolloReactCommon.QueryResult<FindManyGroupQuery, FindManyGroupQueryVariables>;
