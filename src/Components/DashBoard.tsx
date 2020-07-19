@@ -48,7 +48,7 @@ export const DashBoard: React.FC<{ id: number }> = ({ id }) => {
                             size="Tiny"
                           >
                             <EvaIcon name={statusIcons[lastRun.status]} />
-                            <span>{lastRun.status}&nbsp; &nbsp;</span>
+                            <span>{lastRun.status}</span>
                           </Button>
                           <Badge position="bottomLeft" status={status[lastRun.status]}>
                             {runs}
