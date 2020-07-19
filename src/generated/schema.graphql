@@ -598,7 +598,7 @@ type JobRun {
   joid: Int
   moreInfo: String
   startTime: DateTime!
-  status: JobStatus
+  status: JobStatus!
   updatedAt: DateTime!
 }
 
@@ -1196,7 +1196,7 @@ type Section {
   dashboardId: Int
   id: Int!
   name: String!
-  order: Int
+  order: Int!
   published: Boolean!
   steps(cursor: StepWhereUniqueInput, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
   successCriteria: String
@@ -1213,7 +1213,7 @@ input SectionCreateInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1233,7 +1233,7 @@ input SectionCreateOneWithoutStepsInput {
 input SectionCreateWithoutDashboardInput {
   createdAt: DateTime
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1244,7 +1244,7 @@ input SectionCreateWithoutStepsInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   successCriteria: String
   updatedAt: DateTime
@@ -1287,7 +1287,7 @@ input SectionScalarWhereInput {
   name: StringFilter
   NOT: [SectionScalarWhereInput!]
   OR: [SectionScalarWhereInput!]
-  order: NullableIntFilter
+  order: IntFilter
   published: BooleanFilter
   steps: StepFilter
   successCriteria: NullableStringFilter
@@ -1403,7 +1403,7 @@ input SectionWhereInput {
   name: StringFilter
   NOT: [SectionWhereInput!]
   OR: [SectionWhereInput!]
-  order: NullableIntFilter
+  order: IntFilter
   published: BooleanFilter
   steps: StepFilter
   successCriteria: NullableStringFilter
@@ -1422,7 +1422,7 @@ type Step {
   jobId: Int!
   journalEntries(cursor: JournalEntryWhereUniqueInput, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
   name: String!
-  order: Int
+  order: Int!
   section: Section!
   sectionId: Int!
   successCriteria: String
@@ -1441,7 +1441,7 @@ input StepCreateInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1466,7 +1466,7 @@ input StepCreateWithoutJobInput {
   createdAt: DateTime
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1476,7 +1476,7 @@ input StepCreateWithoutJournalEntriesInput {
   createdAt: DateTime
   job: JobCreateOneWithoutStepInput!
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1487,7 +1487,7 @@ input StepCreateWithoutSectionInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   successCriteria: String
   updatedAt: DateTime
 }
@@ -1532,7 +1532,7 @@ input StepScalarWhereInput {
   name: StringFilter
   NOT: [StepScalarWhereInput!]
   OR: [StepScalarWhereInput!]
-  order: NullableIntFilter
+  order: IntFilter
   sectionId: IntFilter
   successCriteria: NullableStringFilter
   updatedAt: DateTimeFilter
@@ -1681,7 +1681,7 @@ input StepWhereInput {
   name: StringFilter
   NOT: [StepWhereInput!]
   OR: [StepWhereInput!]
-  order: NullableIntFilter
+  order: IntFilter
   section: SectionWhereInput
   sectionId: IntFilter
   successCriteria: NullableStringFilter

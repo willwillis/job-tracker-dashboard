@@ -32,9 +32,6 @@ async function main() {
   const user = await prisma.user.findMany({ include: { group: true } });
   console.log(user);
 
-  const allJobs = await prisma.job.findMany();
-  console.log(allJobs);
-
   for (const num of dashboards) {
     console.log('Creating Dashboard' + num);
 
@@ -49,6 +46,7 @@ async function main() {
               steps: {
                 create: {
                   name: makeid(9) + 'Step',
+                  order: 0,
                   job: {
                     create: {
                       name: makeid(9) + ' Job',
@@ -63,6 +61,7 @@ async function main() {
               steps: {
                 create: {
                   name: makeid(9) + 'Step',
+                  order: 0,
                   job: {
                     create: {
                       name: makeid(9) + ' Job',
@@ -77,6 +76,7 @@ async function main() {
               steps: {
                 create: {
                   name: makeid(9) + 'Step',
+                  order: 0,
                   job: {
                     create: {
                       name: makeid(9) + ' Job',
@@ -91,6 +91,7 @@ async function main() {
               steps: {
                 create: {
                   name: makeid(9) + 'Step',
+                  order: 0,
                   job: {
                     create: {
                       name: makeid(9) + ' Job',
@@ -104,6 +105,9 @@ async function main() {
       },
     });
   }
+
+  const allJobs = await prisma.job.findMany();
+  console.log(allJobs);
 
   for (const job of allJobs) {
     const startDate: Date = new Date();

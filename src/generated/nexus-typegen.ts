@@ -728,7 +728,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -745,7 +745,7 @@ export interface NexusGenInputs {
   SectionCreateWithoutDashboardInput: { // input type
     createdAt?: any | null; // DateTime
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -755,7 +755,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -783,7 +783,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['SectionScalarWhereInput'][] | null; // [SectionScalarWhereInput!]
     OR?: NexusGenInputs['SectionScalarWhereInput'][] | null; // [SectionScalarWhereInput!]
-    order?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    order?: NexusGenInputs['IntFilter'] | null; // IntFilter
     published?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
     steps?: NexusGenInputs['StepFilter'] | null; // StepFilter
     successCriteria?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
@@ -881,7 +881,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['SectionWhereInput'][] | null; // [SectionWhereInput!]
     OR?: NexusGenInputs['SectionWhereInput'][] | null; // [SectionWhereInput!]
-    order?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    order?: NexusGenInputs['IntFilter'] | null; // IntFilter
     published?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
     steps?: NexusGenInputs['StepFilter'] | null; // StepFilter
     successCriteria?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
@@ -896,7 +896,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -917,7 +917,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -926,7 +926,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -936,7 +936,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
   }
@@ -964,7 +964,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['StepScalarWhereInput'][] | null; // [StepScalarWhereInput!]
     OR?: NexusGenInputs['StepScalarWhereInput'][] | null; // [StepScalarWhereInput!]
-    order?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    order?: NexusGenInputs['IntFilter'] | null; // IntFilter
     sectionId?: NexusGenInputs['IntFilter'] | null; // IntFilter
     successCriteria?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
@@ -1090,7 +1090,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['StepWhereInput'][] | null; // [StepWhereInput!]
     OR?: NexusGenInputs['StepWhereInput'][] | null; // [StepWhereInput!]
-    order?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    order?: NexusGenInputs['IntFilter'] | null; // IntFilter
     section?: NexusGenInputs['SectionWhereInput'] | null; // SectionWhereInput
     sectionId?: NexusGenInputs['IntFilter'] | null; // IntFilter
     successCriteria?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
@@ -1417,7 +1417,7 @@ export interface NexusGenRootTypes {
     joid?: number | null; // Int
     moreInfo?: string | null; // String
     startTime: any; // DateTime!
-    status?: NexusGenEnums['JobStatus'] | null; // JobStatus
+    status: NexusGenEnums['JobStatus']; // JobStatus!
     updatedAt: any; // DateTime!
   }
   JobRunAvgAggregateOutputType: { // root type
@@ -1494,7 +1494,7 @@ export interface NexusGenRootTypes {
     dashboardId?: number | null; // Int
     id: number; // Int!
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published: boolean; // Boolean!
     successCriteria?: string | null; // String
     updatedAt: any; // DateTime!
@@ -1524,7 +1524,7 @@ export interface NexusGenRootTypes {
     id: number; // Int!
     jobId: number; // Int!
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     sectionId: number; // Int!
     successCriteria?: string | null; // String
     updatedAt: any; // DateTime!
@@ -1920,7 +1920,7 @@ export interface NexusGenFieldTypes {
     joid: number | null; // Int
     moreInfo: string | null; // String
     startTime: any; // DateTime!
-    status: NexusGenEnums['JobStatus'] | null; // JobStatus
+    status: NexusGenEnums['JobStatus']; // JobStatus!
     updatedAt: any; // DateTime!
   }
   JobRunAvgAggregateOutputType: { // field return type
@@ -2065,7 +2065,7 @@ export interface NexusGenFieldTypes {
     dashboardId: number | null; // Int
     id: number; // Int!
     name: string; // String!
-    order: number | null; // Int
+    order: number; // Int!
     published: boolean; // Boolean!
     steps: NexusGenRootTypes['Step'][]; // [Step!]!
     successCriteria: string | null; // String
@@ -2098,7 +2098,7 @@ export interface NexusGenFieldTypes {
     jobId: number; // Int!
     journalEntries: NexusGenRootTypes['JournalEntry'][]; // [JournalEntry!]!
     name: string; // String!
-    order: number | null; // Int
+    order: number; // Int!
     section: NexusGenRootTypes['Section']; // Section!
     sectionId: number; // Int!
     successCriteria: string | null; // String

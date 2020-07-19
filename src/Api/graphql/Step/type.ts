@@ -15,7 +15,7 @@ export const Step = objectType({
       },
     })
     t.int('jobId', { nullable: false })
-    t.int('order', { nullable: true })
+    t.int('order', { nullable: false })
     t.string('successCriteria', { nullable: true })
     t.field('journalEntries', {
       nullable: false,

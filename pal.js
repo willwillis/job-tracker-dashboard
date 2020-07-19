@@ -9,8 +9,5 @@ module.exports = {
     admin: {
       outPut: 'src/pages/models',
     },
-    graphql: {
-      excludeQueriesAndMutations: ['deleteMany', 'updateMany'],
-    },
   },
 };

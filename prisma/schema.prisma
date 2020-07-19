@@ -43,7 +43,7 @@ model Section {
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   published       Boolean    @default(false)
-  order           Int?
+  order           Int
   successCriteria String?
   dashboard       Dashboard? @relation(fields: [dashboardId], references: [id])
   dashboardId     Int?
@@ -57,7 +57,7 @@ model Step {
   updatedAt       DateTime       @updatedAt
   job             Job            @relation(fields: [jobId], references: [id])
   jobId           Int
-  order           Int?
+  order           Int
   successCriteria String?
   journalEntries  JournalEntry[]
   section         Section        @relation(fields: [sectionId], references: [id])
@@ -92,7 +92,7 @@ model JobRun {
   updatedAt DateTime   @updatedAt
   startTime DateTime
   endTime   DateTime?
-  status    JobStatus?
+  status    JobStatus  @default(STARTING)
   job       Job        @relation(fields: [jobId], references: [id])
   jobId     Int
   exitCode  Int?

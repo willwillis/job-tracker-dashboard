@@ -10,7 +10,7 @@ export const JobRun = objectType({
     t.field('updatedAt', { nullable: false, type: 'DateTime' })
     t.field('startTime', { nullable: false, type: 'DateTime' })
     t.field('endTime', { nullable: true, type: 'DateTime' })
-    t.field('status', { nullable: true, type: 'JobStatus' })
+    t.field('status', { nullable: false, type: 'JobStatus' })
     t.field('job', {
       nullable: false,
       type: 'Job',

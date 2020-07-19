@@ -4,9 +4,7 @@
       "id": "Group",
       "name": "Group",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -137,9 +135,7 @@
       "id": "Dashboard",
       "name": "Dashboard",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -308,9 +304,7 @@
       "id": "User",
       "name": "User",
       "idField": "id",
-      "displayFields": [
-        "group.name"
-      ],
+      "displayFields": ["group.name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -461,9 +455,7 @@
       "id": "Section",
       "name": "Section",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -575,7 +567,7 @@
           "isId": false,
           "unique": false,
           "list": false,
-          "required": false,
+          "required": true,
           "kind": "scalar",
           "relationField": false,
           "title": "Order",
@@ -672,9 +664,7 @@
       "id": "Step",
       "name": "Step",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -725,7 +715,7 @@
           "title": "Order",
           "type": "Int",
           "list": false,
-          "required": false,
+          "required": true,
           "isId": false,
           "unique": false,
           "create": true,
@@ -905,9 +895,7 @@
       "id": "JournalEntry",
       "name": "Journal Entry",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -997,9 +985,7 @@
       "id": "Job",
       "name": "Job",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1168,9 +1154,7 @@
       "id": "JobRun",
       "name": "Job Run",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1281,7 +1265,7 @@
           "title": "Status",
           "type": "JobStatus",
           "list": false,
-          "required": false,
+          "required": true,
           "isId": false,
           "unique": false,
           "create": true,
@@ -1441,12 +1425,7 @@
     },
     {
       "name": "JobType",
-      "fields": [
-        "AUTOSYS",
-        "FMC",
-        "DATABASE",
-        "INSTRUMENTED"
-      ]
+      "fields": ["AUTOSYS", "FMC", "DATABASE", "INSTRUMENTED"]
     }
   ]
 }
