@@ -2,7 +2,7 @@ query findOneDashboard($where: DashboardWhereUniqueInput!) {
   findOneDashboard(where: $where) {
     id
     name
-    sections {
+    sections(orderBy: { order: asc }) {
       id
       name
       order
