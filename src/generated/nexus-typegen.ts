@@ -728,7 +728,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -745,7 +745,7 @@ export interface NexusGenInputs {
   SectionCreateWithoutDashboardInput: { // input type
     createdAt?: any | null; // DateTime
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
@@ -755,7 +755,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -896,7 +896,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -917,7 +917,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -926,7 +926,7 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
@@ -936,7 +936,7 @@ export interface NexusGenInputs {
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order?: number | null; // Int
+    order: number; // Int!
     successCriteria?: string | null; // String
     updatedAt?: any | null; // DateTime
   }
@@ -1146,7 +1146,6 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     email: string; // String!
     group?: NexusGenInputs['GroupCreateOneWithoutUsersInput'] | null; // GroupCreateOneWithoutUsersInput
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
   }
@@ -1157,7 +1156,6 @@ export interface NexusGenInputs {
   UserCreateWithoutGroupInput: { // input type
     createdAt?: any | null; // DateTime
     email: string; // String!
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
   }
@@ -1171,7 +1169,6 @@ export interface NexusGenInputs {
     email?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     groupId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    isAdmin?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     password?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
   }
@@ -1181,7 +1178,6 @@ export interface NexusGenInputs {
     email?: NexusGenInputs['StringFilter'] | null; // StringFilter
     groupId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    isAdmin?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
     name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     NOT?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
     OR?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
@@ -1192,7 +1188,6 @@ export interface NexusGenInputs {
     email?: string | null; // String
     group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
     id?: number | null; // Int
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1200,7 +1195,6 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     email?: string | null; // String
     id?: number | null; // Int
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1208,7 +1202,6 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     email?: string | null; // String
     id?: number | null; // Int
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1235,7 +1228,6 @@ export interface NexusGenInputs {
     createdAt?: any | null; // DateTime
     email?: string | null; // String
     id?: number | null; // Int
-    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1251,7 +1243,6 @@ export interface NexusGenInputs {
     group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
     groupId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    isAdmin?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
     name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]

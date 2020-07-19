@@ -782,7 +782,7 @@ export type JobRunScalarWhereInput = {
   NOT?: Maybe<Array<JobRunScalarWhereInput>>;
   OR?: Maybe<Array<JobRunScalarWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<NullableJobStatusFilter>;
+  status?: Maybe<JobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -890,7 +890,7 @@ export type JobRunWhereInput = {
   NOT?: Maybe<Array<JobRunWhereInput>>;
   OR?: Maybe<Array<JobRunWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<NullableJobStatusFilter>;
+  status?: Maybe<JobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -915,6 +915,13 @@ export enum JobStatus {
   Terminated = 'TERMINATED',
   WaitReply = 'WAIT_REPLY'
 }
+
+export type JobStatusFilter = {
+  equals?: Maybe<JobStatus>;
+  in?: Maybe<Array<JobStatus>>;
+  not?: Maybe<JobStatus>;
+  notIn?: Maybe<Array<JobStatus>>;
+};
 
 export type JobSumAggregateOutputType = {
   __typename?: 'JobSumAggregateOutputType';
@@ -1439,13 +1446,6 @@ export type NullableIntFilter = {
   lte?: Maybe<Scalars['Int']>;
   not?: Maybe<Scalars['Int']>;
   notIn?: Maybe<Array<Scalars['Int']>>;
-};
-
-export type NullableJobStatusFilter = {
-  equals?: Maybe<JobStatus>;
-  in?: Maybe<Array<JobStatus>>;
-  not?: Maybe<JobStatus>;
-  notIn?: Maybe<Array<JobStatus>>;
 };
 
 export type NullableJobTypeFilter = {
@@ -2693,7 +2693,7 @@ export const FindOneDashboardDocument = gql`
       id
       name
       order
-      steps {
+      steps(orderBy: {order: asc}) {
         id
         name
         order

@@ -1213,7 +1213,7 @@ input SectionCreateInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1233,7 +1233,7 @@ input SectionCreateOneWithoutStepsInput {
 input SectionCreateWithoutDashboardInput {
   createdAt: DateTime
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1244,7 +1244,7 @@ input SectionCreateWithoutStepsInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int
+  order: Int!
   published: Boolean
   successCriteria: String
   updatedAt: DateTime
@@ -1441,7 +1441,7 @@ input StepCreateInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1466,7 +1466,7 @@ input StepCreateWithoutJobInput {
   createdAt: DateTime
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1476,7 +1476,7 @@ input StepCreateWithoutJournalEntriesInput {
   createdAt: DateTime
   job: JobCreateOneWithoutStepInput!
   name: String!
-  order: Int
+  order: Int!
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1487,7 +1487,7 @@ input StepCreateWithoutSectionInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int
+  order: Int!
   successCriteria: String
   updatedAt: DateTime
 }
@@ -1758,7 +1758,6 @@ input UserCreateInput {
   createdAt: DateTime
   email: String!
   group: GroupCreateOneWithoutUsersInput
-  isAdmin: Boolean
   name: String
   password: String!
 }
@@ -1771,7 +1770,6 @@ input UserCreateManyWithoutGroupInput {
 input UserCreateWithoutGroupInput {
   createdAt: DateTime
   email: String!
-  isAdmin: Boolean
   name: String
   password: String!
 }
@@ -1797,7 +1795,6 @@ input UserOrderByInput {
   email: OrderByArg
   groupId: OrderByArg
   id: OrderByArg
-  isAdmin: OrderByArg
   name: OrderByArg
   password: OrderByArg
 }
@@ -1808,7 +1805,6 @@ input UserScalarWhereInput {
   email: StringFilter
   groupId: NullableIntFilter
   id: IntFilter
-  isAdmin: BooleanFilter
   name: NullableStringFilter
   NOT: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
@@ -1825,7 +1821,6 @@ input UserUpdateInput {
   email: String
   group: GroupUpdateOneWithoutUsersInput
   id: Int
-  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1834,7 +1829,6 @@ input UserUpdateManyDataInput {
   createdAt: DateTime
   email: String
   id: Int
-  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1843,7 +1837,6 @@ input UserUpdateManyMutationInput {
   createdAt: DateTime
   email: String
   id: Int
-  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1869,7 +1862,6 @@ input UserUpdateWithoutGroupDataInput {
   createdAt: DateTime
   email: String
   id: Int
-  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1892,7 +1884,6 @@ input UserWhereInput {
   group: GroupWhereInput
   groupId: NullableIntFilter
   id: IntFilter
-  isAdmin: BooleanFilter
   name: NullableStringFilter
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
