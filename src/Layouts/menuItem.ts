@@ -3,15 +3,12 @@ import { MenuItemType } from '@paljs/ui/types';
 const items: MenuItemType[] = [
   // { title: 'Home', icon: { name: 'home' }, link: { href: '/' } },
   {
-    title: 'Dashboard Admin',
+    title: 'Dashboard Builder',
     icon: { name: 'layers-outline' },
     children: [
       { title: 'Dashboard', link: { href: '/models/Dashboard' } },
       { title: 'Section', link: { href: '/models/Section' } },
       { title: 'Step', link: { href: '/models/Step' } },
-      { title: 'Job', link: { href: '/models/Job' } },
-      { title: 'Job Run', link: { href: '/models/JobRun' } },
-      { title: 'Journal Entry', link: { href: '/models/JournalEntry' } },
     ],
   },
   {
@@ -21,6 +18,15 @@ const items: MenuItemType[] = [
     children: [
       { title: 'User', link: { href: '/models/User' } },
       { title: 'Group', link: { href: '/models/Group' } },
+    ],
+  },
+  {
+    title: 'Dashboard Admin',
+    icon: { name: 'layers-outline' },
+    children: [
+      { title: 'Job', link: { href: '/models/Job' } },
+      { title: 'Job Run', link: { href: '/models/JobRun' } },
+      { title: 'Journal Entry', link: { href: '/models/JournalEntry' } },
     ],
   },
   {
