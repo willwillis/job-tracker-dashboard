@@ -35,30 +35,42 @@ export const DashBoard: React.FC<{ id: number }> = ({ id }) => {
                 return (
                   <Row key={index} middle="xs" style={{ borderBottom: '1px solid #eee' }}>
                     <StyledCol breakPoint={{ xs: 12, lg: 4, xl: 2 }}>
-                      <Button
-                        status={status[lastRun.status]}
-                        appearance="outline"
-                        style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
-                        shape="Round"
-                        size="Tiny"
-                      >
-                        <EvaIcon name={statusIcons[lastRun.status]} />
-                        <span>{lastRun.status}</span>
-                      </Button>
-                      <Badge position="bottomLeft" status={status[lastRun.status]}>
-                        {runs}
-                      </Badge>
+                      {lastRun ? (
+                        <>
+                          <Button
+                            status={status[lastRun.status]}
+                            appearance="outline"
+                            style={{ position: 'relative', display: 'flex', alignItems: 'center', cursor: 'default' }}
+                            shape="Round"
+                            size="Tiny"
+                          >
+                            <EvaIcon name={statusIcons[lastRun.status]} />
+                            <span>{lastRun.status}</span>
+                          </Button>
+                          {runs > 1 && (
+                            <Badge position="bottomLeft" status={status[lastRun.status]}>
+                              {runs}
+                            </Badge>
+                          )}
+                        </>
+                      ) : (
+                        '_'
+                      )}
                     </StyledCol>
                     <StyledCol breakPoint={{ xs: 12, lg: 8, xl: 4 }} style={{ display: 'flex', alignItems: 'center' }}>
-                      <Tooltip trigger="hint" placement="top" content={step.job.name} status={status[lastRun.status]}>
-                        <span>{step.name}</span>
-                      </Tooltip>
+                      {lastRun ? (
+                        <Tooltip trigger="hint" placement="top" content={step.job.name} status={status[lastRun.status]}>
+                          <span>{step.name}</span>
+                        </Tooltip>
+                      ) : (
+                        step.name
+                      )}
                     </StyledCol>
                     <StyledCol breakPoint={{ xs: 12, lg: 4, xl: 2 }}>
-                      {moment(lastRun.startTime).format('YYYY-MM-DD HH:mm')}
+                      {lastRun ? moment(lastRun.startTime).format('YYYY-MM-DD HH:mm') : '_'}
                     </StyledCol>
                     <StyledCol breakPoint={{ xs: 12, lg: 4, xl: 2 }}>
-                      {moment(lastRun.startTime).format('YYYY-MM-DD HH:mm')}
+                      {lastRun ? moment(lastRun.startTime).format('YYYY-MM-DD HH:mm') : '_'}
                     </StyledCol>
                     <StyledCol breakPoint={{ xs: 12, lg: 4, xl: 2 }}>
                       <Button appearance="ghost" size="Tiny">
