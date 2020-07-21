@@ -28,14 +28,15 @@ model Dashboard {
 }
 
 model User {
-  id        Int      @default(autoincrement()) @id
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
-  password  String
-  group     Group?   @relation(fields: [groupId], references: [id])
-  groupId   Int?
-  isAdmin   Boolean  @default(false)
+  id             Int            @default(autoincrement()) @id
+  createdAt      DateTime       @default(now())
+  email          String         @unique
+  name           String?
+  password       String
+  group          Group?         @relation(fields: [groupId], references: [id])
+  groupId        Int?
+  isAdmin        Boolean        @default(false)
+  JournalEntries JournalEntry[]
 }
 
 model Section {
@@ -66,12 +67,13 @@ model Step {
 }
 
 model JournalEntry {
-  id     Int     @default(autoincrement()) @id
-  entry  String?
-  step   Step    @relation(fields: [stepId], references: [id])
-  stepId Int
-  // author   User    @relation(fields: [authorId], references: [id])
-  // authorId String
+  id        Int      @default(autoincrement()) @id
+  entry     String
+  step      Step     @relation(fields: [stepId], references: [id])
+  stepId    Int
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now())
 }
 
 model Job {
