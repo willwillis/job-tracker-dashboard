@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 import themes from './themes';
-import Select from '@paljs/ui/Select';
 import { Layout, LayoutContent, LayoutContainer, LayoutColumns, LayoutColumn } from '@paljs/ui/Layout';
 import { SidebarRefObject, Sidebar, SidebarBody } from '@paljs/ui/Sidebar';
 import icons from '@paljs/icons';
-import { EvaIcon } from '@paljs/ui/Icon';
 import { Menu, MenuRefObject } from '@paljs/ui/Menu';
 import Spinner from '@paljs/ui/Spinner';
 import Header from './Header';
@@ -20,57 +18,8 @@ interface ContextProps {
   me?: MeQuery['me'] | null;
   refetch?: (variables?: MeQueryVariables | undefined) => Promise<ApolloQueryResult<MeQuery>>;
   children?: React.ReactNode;
-  changeTheme: (value: DefaultTheme['name']) => void;
-  theme: DefaultTheme['name'];
 }
 
-const Label = styled.span`
-  display: flex;
-  align-items: center;
-`;
-
-const SelectStyled = styled(Select)`
-  min-width: 150px;
-`;
-const themeOptions = [
-  {
-    value: 'default',
-    label: (
-      <Label>
-        <EvaIcon name="droplet" options={{ fill: '#a6c1ff' }} />
-        Default
-      </Label>
-    ),
-  },
-  {
-    value: 'dark',
-    label: (
-      <Label>
-        <EvaIcon name="droplet" options={{ fill: '#192038' }} />
-        Dark
-      </Label>
-    ),
-  },
-  {
-    value: 'cosmic',
-    label: (
-      <Label>
-        <EvaIcon name="droplet" options={{ fill: '#5a37b8' }} />
-        Cosmic
-      </Label>
-    ),
-  },
-  {
-    value: 'corporate',
-    label: (
-      <Label>
-        <EvaIcon name="droplet" options={{ fill: '#3366ff' }} />
-        Corporate
-      </Label>
-    ),
-    selected: true,
-  },
-];
 const initialContext: ContextProps = {};
 
 export const LayoutContext: React.Context<ContextProps> = React.createContext(initialContext);
@@ -89,7 +38,7 @@ const LayoutPage: React.FC = ({ children }) => {
   const authLayout = router.pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (!loading && !userData?.me && !authLayout) {
+    if (!loading && !userData?.me && !authLayout && router.pathname !== '/') {
       router.push('/auth/login');
     } else if (authLayout && userData?.me && !loading) {
       router.push('/');
@@ -113,7 +62,7 @@ const LayoutPage: React.FC = ({ children }) => {
               <Header theme={theme} changeTheme={changeTheme} toggleSidebar={() => sidebarRef.current?.toggle()} />
             )}
             <LayoutContainer>
-              {!authLayout && (
+              {!authLayout && userData?.me && userData.me.isAdmin && (
                 <Sidebar ref={sidebarRef} property="start" containerFixed responsive className="menu-sidebar">
                   <SidebarBody>
                     <Menu

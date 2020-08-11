@@ -19,13 +19,13 @@ export interface NexusGenInputs {
     not?: boolean | null; // Boolean
   }
   DashboardCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     groups?: NexusGenInputs['GroupCreateManyWithoutDashboardsInput'] | null; // GroupCreateManyWithoutDashboardsInput
     minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionCreateManyWithoutDashboardInput'] | null; // SectionCreateManyWithoutDashboardInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardCreateManyWithoutGroupsInput: { // input type
     connect?: NexusGenInputs['DashboardWhereUniqueInput'][] | null; // [DashboardWhereUniqueInput!]
@@ -36,20 +36,20 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['DashboardCreateWithoutSectionsInput'] | null; // DashboardCreateWithoutSectionsInput
   }
   DashboardCreateWithoutGroupsInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionCreateManyWithoutDashboardInput'] | null; // SectionCreateManyWithoutDashboardInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardCreateWithoutSectionsInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     groups?: NexusGenInputs['GroupCreateManyWithoutDashboardsInput'] | null; // GroupCreateManyWithoutDashboardsInput
     minuteOffset?: number | null; // Int
     name: string; // String!
     published?: boolean | null; // Boolean
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardFilter: { // input type
     every?: NexusGenInputs['DashboardWhereInput'] | null; // DashboardWhereInput
@@ -57,12 +57,12 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['DashboardWhereInput'] | null; // DashboardWhereInput
   }
   DashboardOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    minuteOffset?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    published?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    minuteOffset?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    published?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   DashboardScalarWhereInput: { // input type
     AND?: NexusGenInputs['DashboardScalarWhereInput'][] | null; // [DashboardScalarWhereInput!]
@@ -78,30 +78,27 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   DashboardUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     groups?: NexusGenInputs['GroupUpdateManyWithoutDashboardsInput'] | null; // GroupUpdateManyWithoutDashboardsInput
-    id?: number | null; // Int
     minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionUpdateManyWithoutDashboardInput'] | null; // SectionUpdateManyWithoutDashboardInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['DashboardUpdateManyDataInput']; // DashboardUpdateManyDataInput!
@@ -131,22 +128,20 @@ export interface NexusGenInputs {
     where: NexusGenInputs['DashboardWhereUniqueInput']; // DashboardWhereUniqueInput!
   }
   DashboardUpdateWithoutGroupsDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
     sections?: NexusGenInputs['SectionUpdateManyWithoutDashboardInput'] | null; // SectionUpdateManyWithoutDashboardInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardUpdateWithoutSectionsDataInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     groups?: NexusGenInputs['GroupUpdateManyWithoutDashboardsInput'] | null; // GroupUpdateManyWithoutDashboardsInput
-    id?: number | null; // Int
     minuteOffset?: number | null; // Int
     name?: string | null; // String
     published?: boolean | null; // Boolean
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DashboardUpsertWithWhereUniqueWithoutGroupsInput: { // input type
     create: NexusGenInputs['DashboardCreateWithoutGroupsInput']; // DashboardCreateWithoutGroupsInput!
@@ -175,20 +170,20 @@ export interface NexusGenInputs {
     name?: string | null; // String
   }
   DateTimeFilter: { // input type
-    equals?: any | null; // DateTime
-    gt?: any | null; // DateTime
-    gte?: any | null; // DateTime
-    in?: any[] | null; // [DateTime!]
-    lt?: any | null; // DateTime
-    lte?: any | null; // DateTime
-    not?: any | null; // DateTime
-    notIn?: any[] | null; // [DateTime!]
+    equals?: NexusGenScalars['DateTime'] | null; // DateTime
+    gt?: NexusGenScalars['DateTime'] | null; // DateTime
+    gte?: NexusGenScalars['DateTime'] | null; // DateTime
+    in?: NexusGenScalars['DateTime'][] | null; // [DateTime!]
+    lt?: NexusGenScalars['DateTime'] | null; // DateTime
+    lte?: NexusGenScalars['DateTime'] | null; // DateTime
+    not?: NexusGenScalars['DateTime'] | null; // DateTime
+    notIn?: NexusGenScalars['DateTime'][] | null; // [DateTime!]
   }
   GroupCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboards?: NexusGenInputs['DashboardCreateManyWithoutGroupsInput'] | null; // DashboardCreateManyWithoutGroupsInput
     name: string; // String!
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     users?: NexusGenInputs['UserCreateManyWithoutGroupInput'] | null; // UserCreateManyWithoutGroupInput
   }
   GroupCreateManyWithoutDashboardsInput: { // input type
@@ -200,16 +195,16 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['GroupCreateWithoutUsersInput'] | null; // GroupCreateWithoutUsersInput
   }
   GroupCreateWithoutDashboardsInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name: string; // String!
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     users?: NexusGenInputs['UserCreateManyWithoutGroupInput'] | null; // UserCreateManyWithoutGroupInput
   }
   GroupCreateWithoutUsersInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboards?: NexusGenInputs['DashboardCreateManyWithoutGroupsInput'] | null; // DashboardCreateManyWithoutGroupsInput
     name: string; // String!
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupFilter: { // input type
     every?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
@@ -217,10 +212,10 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
   }
   GroupOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   GroupScalarWhereInput: { // input type
     AND?: NexusGenInputs['GroupScalarWhereInput'][] | null; // [GroupScalarWhereInput!]
@@ -234,24 +229,21 @@ export interface NexusGenInputs {
     users?: NexusGenInputs['UserFilter'] | null; // UserFilter
   }
   GroupUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboards?: NexusGenInputs['DashboardUpdateManyWithoutGroupsInput'] | null; // DashboardUpdateManyWithoutGroupsInput
-    id?: number | null; // Int
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     users?: NexusGenInputs['UserUpdateManyWithoutGroupInput'] | null; // UserUpdateManyWithoutGroupInput
   }
   GroupUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['GroupUpdateManyDataInput']; // GroupUpdateManyDataInput!
@@ -281,18 +273,16 @@ export interface NexusGenInputs {
     where: NexusGenInputs['GroupWhereUniqueInput']; // GroupWhereUniqueInput!
   }
   GroupUpdateWithoutDashboardsDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     users?: NexusGenInputs['UserUpdateManyWithoutGroupInput'] | null; // UserUpdateManyWithoutGroupInput
   }
   GroupUpdateWithoutUsersDataInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboards?: NexusGenInputs['DashboardUpdateManyWithoutGroupsInput'] | null; // DashboardUpdateManyWithoutGroupsInput
-    id?: number | null; // Int
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupUpsertWithWhereUniqueWithoutDashboardsInput: { // input type
     create: NexusGenInputs['GroupCreateWithoutDashboardsInput']; // GroupCreateWithoutDashboardsInput!
@@ -329,13 +319,13 @@ export interface NexusGenInputs {
     notIn?: number[] | null; // [Int!]
   }
   JobCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name: string; // String!
     runs?: NexusGenInputs['JobRunCreateManyWithoutJobInput'] | null; // JobRunCreateManyWithoutJobInput
     Step?: NexusGenInputs['StepCreateManyWithoutJobInput'] | null; // StepCreateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobCreateOneWithoutRunsInput: { // input type
     connect?: NexusGenInputs['JobWhereUniqueInput'] | null; // JobWhereUniqueInput
@@ -346,55 +336,55 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['JobCreateWithoutStepInput'] | null; // JobCreateWithoutStepInput
   }
   JobCreateWithoutRunsInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name: string; // String!
     Step?: NexusGenInputs['StepCreateManyWithoutJobInput'] | null; // StepCreateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobCreateWithoutStepInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name: string; // String!
     runs?: NexusGenInputs['JobRunCreateManyWithoutJobInput'] | null; // JobRunCreateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    jobType?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    joid?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobType?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    joid?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   JobRunCreateInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
     job: NexusGenInputs['JobCreateOneWithoutRunsInput']; // JobCreateOneWithoutRunsInput!
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime: any; // DateTime!
+    startTime: NexusGenScalars['DateTime']; // DateTime!
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunCreateManyWithoutJobInput: { // input type
     connect?: NexusGenInputs['JobRunWhereUniqueInput'][] | null; // [JobRunWhereUniqueInput!]
     create?: NexusGenInputs['JobRunCreateWithoutJobInput'][] | null; // [JobRunCreateWithoutJobInput!]
   }
   JobRunCreateWithoutJobInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime: any; // DateTime!
+    startTime: NexusGenScalars['DateTime']; // DateTime!
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunFilter: { // input type
     every?: NexusGenInputs['JobRunWhereInput'] | null; // JobRunWhereInput
@@ -402,17 +392,17 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['JobRunWhereInput'] | null; // JobRunWhereInput
   }
   JobRunOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    endTime?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    exitCode?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    jobId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    jobRunId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    joid?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    moreInfo?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    startTime?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    status?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    endTime?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    exitCode?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobRunId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    joid?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    moreInfo?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    startTime?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    status?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   JobRunScalarWhereInput: { // input type
     AND?: NexusGenInputs['JobRunScalarWhereInput'][] | null; // [JobRunScalarWhereInput!]
@@ -431,41 +421,38 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   JobRunUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
-    id?: number | null; // Int
     job?: NexusGenInputs['JobUpdateOneRequiredWithoutRunsInput'] | null; // JobUpdateOneRequiredWithoutRunsInput
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime?: any | null; // DateTime
+    startTime?: NexusGenScalars['DateTime'] | null; // DateTime
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
-    id?: number | null; // Int
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime?: any | null; // DateTime
+    startTime?: NexusGenScalars['DateTime'] | null; // DateTime
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
-    id?: number | null; // Int
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime?: any | null; // DateTime
+    startTime?: NexusGenScalars['DateTime'] | null; // DateTime
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['JobRunUpdateManyDataInput']; // JobRunUpdateManyDataInput!
@@ -487,16 +474,15 @@ export interface NexusGenInputs {
     where: NexusGenInputs['JobRunWhereUniqueInput']; // JobRunWhereUniqueInput!
   }
   JobRunUpdateWithoutJobDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    endTime?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
-    id?: number | null; // Int
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime?: any | null; // DateTime
+    startTime?: NexusGenScalars['DateTime'] | null; // DateTime
     status?: NexusGenEnums['JobStatus'] | null; // JobStatus
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobRunUpsertWithWhereUniqueWithoutJobInput: { // input type
     create: NexusGenInputs['JobRunCreateWithoutJobInput']; // JobRunCreateWithoutJobInput!
@@ -530,22 +516,20 @@ export interface NexusGenInputs {
     notIn?: NexusGenEnums['JobStatus'][] | null; // [JobStatus!]
   }
   JobUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name?: string | null; // String
     runs?: NexusGenInputs['JobRunUpdateManyWithoutJobInput'] | null; // JobRunUpdateManyWithoutJobInput
     Step?: NexusGenInputs['StepUpdateManyWithoutJobInput'] | null; // StepUpdateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobUpdateOneRequiredWithoutRunsInput: { // input type
     connect?: NexusGenInputs['JobWhereUniqueInput'] | null; // JobWhereUniqueInput
@@ -560,22 +544,20 @@ export interface NexusGenInputs {
     upsert?: NexusGenInputs['JobUpsertWithoutStepInput'] | null; // JobUpsertWithoutStepInput
   }
   JobUpdateWithoutRunsDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name?: string | null; // String
     Step?: NexusGenInputs['StepUpdateManyWithoutJobInput'] | null; // StepUpdateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobUpdateWithoutStepDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name?: string | null; // String
     runs?: NexusGenInputs['JobRunUpdateManyWithoutJobInput'] | null; // JobRunUpdateManyWithoutJobInput
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   JobUpsertWithoutRunsInput: { // input type
     create: NexusGenInputs['JobCreateWithoutRunsInput']; // JobCreateWithoutRunsInput!
@@ -604,15 +586,28 @@ export interface NexusGenInputs {
     name?: string | null; // String
   }
   JournalEntryCreateInput: { // input type
-    entry?: string | null; // String
+    author: NexusGenInputs['UserCreateOneWithoutJournalEntriesInput']; // UserCreateOneWithoutJournalEntriesInput!
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    entry: string; // String!
     step: NexusGenInputs['StepCreateOneWithoutJournalEntriesInput']; // StepCreateOneWithoutJournalEntriesInput!
+  }
+  JournalEntryCreateManyWithoutAuthorInput: { // input type
+    connect?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
+    create?: NexusGenInputs['JournalEntryCreateWithoutAuthorInput'][] | null; // [JournalEntryCreateWithoutAuthorInput!]
   }
   JournalEntryCreateManyWithoutStepInput: { // input type
     connect?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
     create?: NexusGenInputs['JournalEntryCreateWithoutStepInput'][] | null; // [JournalEntryCreateWithoutStepInput!]
   }
+  JournalEntryCreateWithoutAuthorInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    entry: string; // String!
+    step: NexusGenInputs['StepCreateOneWithoutJournalEntriesInput']; // StepCreateOneWithoutJournalEntriesInput!
+  }
   JournalEntryCreateWithoutStepInput: { // input type
-    entry?: string | null; // String
+    author: NexusGenInputs['UserCreateOneWithoutJournalEntriesInput']; // UserCreateOneWithoutJournalEntriesInput!
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    entry: string; // String!
   }
   JournalEntryFilter: { // input type
     every?: NexusGenInputs['JournalEntryWhereInput'] | null; // JournalEntryWhereInput
@@ -620,34 +615,50 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['JournalEntryWhereInput'] | null; // JournalEntryWhereInput
   }
   JournalEntryOrderByInput: { // input type
-    entry?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    stepId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    authorId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    entry?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    stepId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   JournalEntryScalarWhereInput: { // input type
     AND?: NexusGenInputs['JournalEntryScalarWhereInput'][] | null; // [JournalEntryScalarWhereInput!]
-    entry?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    authorId?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    entry?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     NOT?: NexusGenInputs['JournalEntryScalarWhereInput'][] | null; // [JournalEntryScalarWhereInput!]
     OR?: NexusGenInputs['JournalEntryScalarWhereInput'][] | null; // [JournalEntryScalarWhereInput!]
     stepId?: NexusGenInputs['IntFilter'] | null; // IntFilter
   }
   JournalEntryUpdateInput: { // input type
+    author?: NexusGenInputs['UserUpdateOneRequiredWithoutJournalEntriesInput'] | null; // UserUpdateOneRequiredWithoutJournalEntriesInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     entry?: string | null; // String
-    id?: number | null; // Int
     step?: NexusGenInputs['StepUpdateOneRequiredWithoutJournalEntriesInput'] | null; // StepUpdateOneRequiredWithoutJournalEntriesInput
   }
   JournalEntryUpdateManyDataInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     entry?: string | null; // String
-    id?: number | null; // Int
   }
   JournalEntryUpdateManyMutationInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     entry?: string | null; // String
-    id?: number | null; // Int
   }
   JournalEntryUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['JournalEntryUpdateManyDataInput']; // JournalEntryUpdateManyDataInput!
     where: NexusGenInputs['JournalEntryScalarWhereInput']; // JournalEntryScalarWhereInput!
+  }
+  JournalEntryUpdateManyWithoutAuthorInput: { // input type
+    connect?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
+    create?: NexusGenInputs['JournalEntryCreateWithoutAuthorInput'][] | null; // [JournalEntryCreateWithoutAuthorInput!]
+    delete?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['JournalEntryScalarWhereInput'][] | null; // [JournalEntryScalarWhereInput!]
+    disconnect?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
+    set?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
+    update?: NexusGenInputs['JournalEntryUpdateWithWhereUniqueWithoutAuthorInput'][] | null; // [JournalEntryUpdateWithWhereUniqueWithoutAuthorInput!]
+    updateMany?: NexusGenInputs['JournalEntryUpdateManyWithWhereNestedInput'][] | null; // [JournalEntryUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['JournalEntryUpsertWithWhereUniqueWithoutAuthorInput'][] | null; // [JournalEntryUpsertWithWhereUniqueWithoutAuthorInput!]
   }
   JournalEntryUpdateManyWithoutStepInput: { // input type
     connect?: NexusGenInputs['JournalEntryWhereUniqueInput'][] | null; // [JournalEntryWhereUniqueInput!]
@@ -660,13 +671,28 @@ export interface NexusGenInputs {
     updateMany?: NexusGenInputs['JournalEntryUpdateManyWithWhereNestedInput'][] | null; // [JournalEntryUpdateManyWithWhereNestedInput!]
     upsert?: NexusGenInputs['JournalEntryUpsertWithWhereUniqueWithoutStepInput'][] | null; // [JournalEntryUpsertWithWhereUniqueWithoutStepInput!]
   }
+  JournalEntryUpdateWithWhereUniqueWithoutAuthorInput: { // input type
+    data: NexusGenInputs['JournalEntryUpdateWithoutAuthorDataInput']; // JournalEntryUpdateWithoutAuthorDataInput!
+    where: NexusGenInputs['JournalEntryWhereUniqueInput']; // JournalEntryWhereUniqueInput!
+  }
   JournalEntryUpdateWithWhereUniqueWithoutStepInput: { // input type
     data: NexusGenInputs['JournalEntryUpdateWithoutStepDataInput']; // JournalEntryUpdateWithoutStepDataInput!
     where: NexusGenInputs['JournalEntryWhereUniqueInput']; // JournalEntryWhereUniqueInput!
   }
-  JournalEntryUpdateWithoutStepDataInput: { // input type
+  JournalEntryUpdateWithoutAuthorDataInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     entry?: string | null; // String
-    id?: number | null; // Int
+    step?: NexusGenInputs['StepUpdateOneRequiredWithoutJournalEntriesInput'] | null; // StepUpdateOneRequiredWithoutJournalEntriesInput
+  }
+  JournalEntryUpdateWithoutStepDataInput: { // input type
+    author?: NexusGenInputs['UserUpdateOneRequiredWithoutJournalEntriesInput'] | null; // UserUpdateOneRequiredWithoutJournalEntriesInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    entry?: string | null; // String
+  }
+  JournalEntryUpsertWithWhereUniqueWithoutAuthorInput: { // input type
+    create: NexusGenInputs['JournalEntryCreateWithoutAuthorInput']; // JournalEntryCreateWithoutAuthorInput!
+    update: NexusGenInputs['JournalEntryUpdateWithoutAuthorDataInput']; // JournalEntryUpdateWithoutAuthorDataInput!
+    where: NexusGenInputs['JournalEntryWhereUniqueInput']; // JournalEntryWhereUniqueInput!
   }
   JournalEntryUpsertWithWhereUniqueWithoutStepInput: { // input type
     create: NexusGenInputs['JournalEntryCreateWithoutStepInput']; // JournalEntryCreateWithoutStepInput!
@@ -675,7 +701,10 @@ export interface NexusGenInputs {
   }
   JournalEntryWhereInput: { // input type
     AND?: NexusGenInputs['JournalEntryWhereInput'][] | null; // [JournalEntryWhereInput!]
-    entry?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    authorId?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    entry?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     NOT?: NexusGenInputs['JournalEntryWhereInput'][] | null; // [JournalEntryWhereInput!]
     OR?: NexusGenInputs['JournalEntryWhereInput'][] | null; // [JournalEntryWhereInput!]
@@ -686,14 +715,14 @@ export interface NexusGenInputs {
     id?: number | null; // Int
   }
   NullableDateTimeFilter: { // input type
-    equals?: any | null; // DateTime
-    gt?: any | null; // DateTime
-    gte?: any | null; // DateTime
-    in?: any[] | null; // [DateTime!]
-    lt?: any | null; // DateTime
-    lte?: any | null; // DateTime
-    not?: any | null; // DateTime
-    notIn?: any[] | null; // [DateTime!]
+    equals?: NexusGenScalars['DateTime'] | null; // DateTime
+    gt?: NexusGenScalars['DateTime'] | null; // DateTime
+    gte?: NexusGenScalars['DateTime'] | null; // DateTime
+    in?: NexusGenScalars['DateTime'][] | null; // [DateTime!]
+    lt?: NexusGenScalars['DateTime'] | null; // DateTime
+    lte?: NexusGenScalars['DateTime'] | null; // DateTime
+    not?: NexusGenScalars['DateTime'] | null; // DateTime
+    notIn?: NexusGenScalars['DateTime'][] | null; // [DateTime!]
   }
   NullableIntFilter: { // input type
     equals?: number | null; // Int
@@ -725,14 +754,14 @@ export interface NexusGenInputs {
     startsWith?: string | null; // String
   }
   SectionCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionCreateManyWithoutDashboardInput: { // input type
     connect?: NexusGenInputs['SectionWhereUniqueInput'][] | null; // [SectionWhereUniqueInput!]
@@ -743,22 +772,22 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['SectionCreateWithoutStepsInput'] | null; // SectionCreateWithoutStepsInput
   }
   SectionCreateWithoutDashboardInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepCreateManyWithoutSectionInput'] | null; // StepCreateManyWithoutSectionInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionCreateWithoutStepsInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboard?: NexusGenInputs['DashboardCreateOneWithoutSectionsInput'] | null; // DashboardCreateOneWithoutSectionsInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionFilter: { // input type
     every?: NexusGenInputs['SectionWhereInput'] | null; // SectionWhereInput
@@ -766,14 +795,14 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['SectionWhereInput'] | null; // SectionWhereInput
   }
   SectionOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    dashboardId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    order?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    published?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    successCriteria?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    dashboardId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    order?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    published?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    successCriteria?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   SectionScalarWhereInput: { // input type
     AND?: NexusGenInputs['SectionScalarWhereInput'][] | null; // [SectionScalarWhereInput!]
@@ -790,33 +819,30 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   SectionUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboard?: NexusGenInputs['DashboardUpdateOneWithoutSectionsInput'] | null; // DashboardUpdateOneWithoutSectionsInput
-    id?: number | null; // Int
     name?: string | null; // String
     order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepUpdateManyWithoutSectionInput'] | null; // StepUpdateManyWithoutSectionInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
     order?: number | null; // Int
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
     order?: number | null; // Int
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['SectionUpdateManyDataInput']; // SectionUpdateManyDataInput!
@@ -844,24 +870,22 @@ export interface NexusGenInputs {
     where: NexusGenInputs['SectionWhereUniqueInput']; // SectionWhereUniqueInput!
   }
   SectionUpdateWithoutDashboardDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
     order?: number | null; // Int
     published?: boolean | null; // Boolean
     steps?: NexusGenInputs['StepUpdateManyWithoutSectionInput'] | null; // StepUpdateManyWithoutSectionInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionUpdateWithoutStepsDataInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dashboard?: NexusGenInputs['DashboardUpdateOneWithoutSectionsInput'] | null; // DashboardUpdateOneWithoutSectionsInput
-    id?: number | null; // Int
     name?: string | null; // String
     order?: number | null; // Int
     published?: boolean | null; // Boolean
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   SectionUpsertWithWhereUniqueWithoutDashboardInput: { // input type
     create: NexusGenInputs['SectionCreateWithoutDashboardInput']; // SectionCreateWithoutDashboardInput!
@@ -892,14 +916,14 @@ export interface NexusGenInputs {
     name?: string | null; // String
   }
   StepCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepCreateManyWithoutJobInput: { // input type
     connect?: NexusGenInputs['StepWhereUniqueInput'][] | null; // [StepWhereUniqueInput!]
@@ -914,31 +938,31 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['StepCreateWithoutJournalEntriesInput'] | null; // StepCreateWithoutJournalEntriesInput
   }
   StepCreateWithoutJobInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepCreateWithoutJournalEntriesInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     section: NexusGenInputs['SectionCreateOneWithoutStepsInput']; // SectionCreateOneWithoutStepsInput!
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepCreateWithoutSectionInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job: NexusGenInputs['JobCreateOneWithoutStepInput']; // JobCreateOneWithoutStepInput!
     journalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'] | null; // JournalEntryCreateManyWithoutStepInput
     name: string; // String!
-    order: number; // Int!
+    order?: number | null; // Int
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepFilter: { // input type
     every?: NexusGenInputs['StepWhereInput'] | null; // StepWhereInput
@@ -946,14 +970,14 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['StepWhereInput'] | null; // StepWhereInput
   }
   StepOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    jobId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    order?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    sectionId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    successCriteria?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    order?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sectionId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    successCriteria?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   StepScalarWhereInput: { // input type
     AND?: NexusGenInputs['StepScalarWhereInput'][] | null; // [StepScalarWhereInput!]
@@ -970,31 +994,28 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
   StepUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job?: NexusGenInputs['JobUpdateOneRequiredWithoutStepInput'] | null; // JobUpdateOneRequiredWithoutStepInput
     journalEntries?: NexusGenInputs['JournalEntryUpdateManyWithoutStepInput'] | null; // JournalEntryUpdateManyWithoutStepInput
     name?: string | null; // String
     order?: number | null; // Int
     section?: NexusGenInputs['SectionUpdateOneRequiredWithoutStepsInput'] | null; // SectionUpdateOneRequiredWithoutStepsInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
     order?: number | null; // Int
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name?: string | null; // String
     order?: number | null; // Int
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['StepUpdateManyDataInput']; // StepUpdateManyDataInput!
@@ -1037,34 +1058,31 @@ export interface NexusGenInputs {
     where: NexusGenInputs['StepWhereUniqueInput']; // StepWhereUniqueInput!
   }
   StepUpdateWithoutJobDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     journalEntries?: NexusGenInputs['JournalEntryUpdateManyWithoutStepInput'] | null; // JournalEntryUpdateManyWithoutStepInput
     name?: string | null; // String
     order?: number | null; // Int
     section?: NexusGenInputs['SectionUpdateOneRequiredWithoutStepsInput'] | null; // SectionUpdateOneRequiredWithoutStepsInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpdateWithoutJournalEntriesDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job?: NexusGenInputs['JobUpdateOneRequiredWithoutStepInput'] | null; // JobUpdateOneRequiredWithoutStepInput
     name?: string | null; // String
     order?: number | null; // Int
     section?: NexusGenInputs['SectionUpdateOneRequiredWithoutStepsInput'] | null; // SectionUpdateOneRequiredWithoutStepsInput
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpdateWithoutSectionDataInput: { // input type
-    createdAt?: any | null; // DateTime
-    id?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     job?: NexusGenInputs['JobUpdateOneRequiredWithoutStepInput'] | null; // JobUpdateOneRequiredWithoutStepInput
     journalEntries?: NexusGenInputs['JournalEntryUpdateManyWithoutStepInput'] | null; // JournalEntryUpdateManyWithoutStepInput
     name?: string | null; // String
     order?: number | null; // Int
     successCriteria?: string | null; // String
-    updatedAt?: any | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   StepUpsertWithWhereUniqueWithoutJobInput: { // input type
     create: NexusGenInputs['StepCreateWithoutJobInput']; // StepCreateWithoutJobInput!
@@ -1143,9 +1161,11 @@ export interface NexusGenInputs {
     update?: boolean | null; // Boolean
   }
   UserCreateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email: string; // String!
     group?: NexusGenInputs['GroupCreateOneWithoutUsersInput'] | null; // GroupCreateOneWithoutUsersInput
+    isAdmin?: boolean | null; // Boolean
+    JournalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutAuthorInput'] | null; // JournalEntryCreateManyWithoutAuthorInput
     name?: string | null; // String
     password: string; // String!
   }
@@ -1153,9 +1173,23 @@ export interface NexusGenInputs {
     connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
     create?: NexusGenInputs['UserCreateWithoutGroupInput'][] | null; // [UserCreateWithoutGroupInput!]
   }
+  UserCreateOneWithoutJournalEntriesInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutJournalEntriesInput'] | null; // UserCreateWithoutJournalEntriesInput
+  }
   UserCreateWithoutGroupInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email: string; // String!
+    isAdmin?: boolean | null; // Boolean
+    JournalEntries?: NexusGenInputs['JournalEntryCreateManyWithoutAuthorInput'] | null; // JournalEntryCreateManyWithoutAuthorInput
+    name?: string | null; // String
+    password: string; // String!
+  }
+  UserCreateWithoutJournalEntriesInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    email: string; // String!
+    group?: NexusGenInputs['GroupCreateOneWithoutUsersInput'] | null; // GroupCreateOneWithoutUsersInput
+    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password: string; // String!
   }
@@ -1165,12 +1199,13 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   UserOrderByInput: { // input type
-    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    email?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    groupId?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    password?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    groupId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    isAdmin?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    password?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserScalarWhereInput: { // input type
     AND?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
@@ -1178,30 +1213,33 @@ export interface NexusGenInputs {
     email?: NexusGenInputs['StringFilter'] | null; // StringFilter
     groupId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    isAdmin?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
+    JournalEntries?: NexusGenInputs['JournalEntryFilter'] | null; // JournalEntryFilter
     name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     NOT?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
     OR?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserUpdateInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email?: string | null; // String
     group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
-    id?: number | null; // Int
+    isAdmin?: boolean | null; // Boolean
+    JournalEntries?: NexusGenInputs['JournalEntryUpdateManyWithoutAuthorInput'] | null; // JournalEntryUpdateManyWithoutAuthorInput
     name?: string | null; // String
     password?: string | null; // String
   }
   UserUpdateManyDataInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email?: string | null; // String
-    id?: number | null; // Int
+    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
   UserUpdateManyMutationInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email?: string | null; // String
-    id?: number | null; // Int
+    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1220,14 +1258,29 @@ export interface NexusGenInputs {
     updateMany?: NexusGenInputs['UserUpdateManyWithWhereNestedInput'][] | null; // [UserUpdateManyWithWhereNestedInput!]
     upsert?: NexusGenInputs['UserUpsertWithWhereUniqueWithoutGroupInput'][] | null; // [UserUpsertWithWhereUniqueWithoutGroupInput!]
   }
+  UserUpdateOneRequiredWithoutJournalEntriesInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutJournalEntriesInput'] | null; // UserCreateWithoutJournalEntriesInput
+    update?: NexusGenInputs['UserUpdateWithoutJournalEntriesDataInput'] | null; // UserUpdateWithoutJournalEntriesDataInput
+    upsert?: NexusGenInputs['UserUpsertWithoutJournalEntriesInput'] | null; // UserUpsertWithoutJournalEntriesInput
+  }
   UserUpdateWithWhereUniqueWithoutGroupInput: { // input type
     data: NexusGenInputs['UserUpdateWithoutGroupDataInput']; // UserUpdateWithoutGroupDataInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
   UserUpdateWithoutGroupDataInput: { // input type
-    createdAt?: any | null; // DateTime
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     email?: string | null; // String
-    id?: number | null; // Int
+    isAdmin?: boolean | null; // Boolean
+    JournalEntries?: NexusGenInputs['JournalEntryUpdateManyWithoutAuthorInput'] | null; // JournalEntryUpdateManyWithoutAuthorInput
+    name?: string | null; // String
+    password?: string | null; // String
+  }
+  UserUpdateWithoutJournalEntriesDataInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    email?: string | null; // String
+    group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
+    isAdmin?: boolean | null; // Boolean
     name?: string | null; // String
     password?: string | null; // String
   }
@@ -1236,6 +1289,10 @@ export interface NexusGenInputs {
     update: NexusGenInputs['UserUpdateWithoutGroupDataInput']; // UserUpdateWithoutGroupDataInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
+  UserUpsertWithoutJournalEntriesInput: { // input type
+    create: NexusGenInputs['UserCreateWithoutJournalEntriesInput']; // UserCreateWithoutJournalEntriesInput!
+    update: NexusGenInputs['UserUpdateWithoutJournalEntriesDataInput']; // UserUpdateWithoutJournalEntriesDataInput!
+  }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
@@ -1243,6 +1300,8 @@ export interface NexusGenInputs {
     group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
     groupId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    isAdmin?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
+    JournalEntries?: NexusGenInputs['JournalEntryFilter'] | null; // JournalEntryFilter
     name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
@@ -1258,7 +1317,16 @@ export interface NexusGenEnums {
   JobStatus: "ACTIVATED" | "FAILURE" | "INACTIVE" | "ON_HOLD" | "ON_ICE" | "ON_NOEXEC" | "PEND_MACH" | "QUE_WAIT" | "RESTART" | "RESWAIT" | "RUNNING" | "STARTING" | "SUCCESS" | "TERMINATED" | "WAIT_REPLY"
   JobType: "AUTOSYS" | "DATABASE" | "FMC" | "INSTRUMENTED"
   KindEnum: "enum" | "object" | "scalar"
-  OrderByArg: "asc" | "desc"
+  SortOrder: "asc" | "desc"
+}
+
+export interface NexusGenScalars {
+  String: string
+  Int: number
+  Float: number
+  Boolean: boolean
+  ID: string
+  DateTime: any
 }
 
 export interface NexusGenRootTypes {
@@ -1322,12 +1390,12 @@ export interface NexusGenRootTypes {
     count: number; // Int!
   }
   Dashboard: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     minuteOffset: number; // Int!
     name: string; // String!
     published: boolean; // Boolean!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   DashboardAvgAggregateOutputType: { // root type
     id: number; // Float!
@@ -1370,10 +1438,10 @@ export interface NexusGenRootTypes {
     upload: boolean; // Boolean!
   }
   Group: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     name: string; // String!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   GroupAvgAggregateOutputType: { // root type
     id: number; // Float!
@@ -1388,12 +1456,12 @@ export interface NexusGenRootTypes {
     id: number; // Int!
   }
   Job: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     jobType?: NexusGenEnums['JobType'] | null; // JobType
     joid?: number | null; // Int
     name: string; // String!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   JobAvgAggregateOutputType: { // root type
     id: number; // Float!
@@ -1408,17 +1476,17 @@ export interface NexusGenRootTypes {
     joid: number; // Int!
   }
   JobRun: { // root type
-    createdAt: any; // DateTime!
-    endTime?: any | null; // DateTime
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    endTime?: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode?: number | null; // Int
     id: number; // Int!
     jobId: number; // Int!
     jobRunId?: number | null; // Int
     joid?: number | null; // Int
     moreInfo?: string | null; // String
-    startTime: any; // DateTime!
+    startTime: NexusGenScalars['DateTime']; // DateTime!
     status: NexusGenEnums['JobStatus']; // JobStatus!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   JobRunAvgAggregateOutputType: { // root type
     exitCode: number; // Float!
@@ -1453,23 +1521,29 @@ export interface NexusGenRootTypes {
     joid: number; // Int!
   }
   JournalEntry: { // root type
-    entry?: string | null; // String
+    authorId: number; // Int!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    entry: string; // String!
     id: number; // Int!
     stepId: number; // Int!
   }
   JournalEntryAvgAggregateOutputType: { // root type
+    authorId: number; // Float!
     id: number; // Float!
     stepId: number; // Float!
   }
   JournalEntryMaxAggregateOutputType: { // root type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
   JournalEntryMinAggregateOutputType: { // root type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
   JournalEntrySumAggregateOutputType: { // root type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
@@ -1490,14 +1564,14 @@ export interface NexusGenRootTypes {
     models: NexusGenRootTypes['Model'][]; // [Model!]!
   }
   Section: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     dashboardId?: number | null; // Int
     id: number; // Int!
     name: string; // String!
     order: number; // Int!
     published: boolean; // Boolean!
     successCriteria?: string | null; // String
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   SectionAvgAggregateOutputType: { // root type
     dashboardId: number; // Float!
@@ -1520,14 +1594,14 @@ export interface NexusGenRootTypes {
     order: number; // Int!
   }
   Step: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     jobId: number; // Int!
     name: string; // String!
     order: number; // Int!
     sectionId: number; // Int!
     successCriteria?: string | null; // String
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   StepAvgAggregateOutputType: { // root type
     id: number; // Float!
@@ -1554,7 +1628,7 @@ export interface NexusGenRootTypes {
     sectionId: number; // Int!
   }
   User: { // root type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     email: string; // String!
     groupId?: number | null; // Int
     id: number; // Int!
@@ -1578,12 +1652,6 @@ export interface NexusGenRootTypes {
     groupId: number; // Int!
     id: number; // Int!
   }
-  String: string;
-  Int: number;
-  Float: number;
-  Boolean: boolean;
-  ID: string;
-  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -1666,7 +1734,9 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   JobWhereInput: NexusGenInputs['JobWhereInput'];
   JobWhereUniqueInput: NexusGenInputs['JobWhereUniqueInput'];
   JournalEntryCreateInput: NexusGenInputs['JournalEntryCreateInput'];
+  JournalEntryCreateManyWithoutAuthorInput: NexusGenInputs['JournalEntryCreateManyWithoutAuthorInput'];
   JournalEntryCreateManyWithoutStepInput: NexusGenInputs['JournalEntryCreateManyWithoutStepInput'];
+  JournalEntryCreateWithoutAuthorInput: NexusGenInputs['JournalEntryCreateWithoutAuthorInput'];
   JournalEntryCreateWithoutStepInput: NexusGenInputs['JournalEntryCreateWithoutStepInput'];
   JournalEntryFilter: NexusGenInputs['JournalEntryFilter'];
   JournalEntryOrderByInput: NexusGenInputs['JournalEntryOrderByInput'];
@@ -1675,9 +1745,13 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   JournalEntryUpdateManyDataInput: NexusGenInputs['JournalEntryUpdateManyDataInput'];
   JournalEntryUpdateManyMutationInput: NexusGenInputs['JournalEntryUpdateManyMutationInput'];
   JournalEntryUpdateManyWithWhereNestedInput: NexusGenInputs['JournalEntryUpdateManyWithWhereNestedInput'];
+  JournalEntryUpdateManyWithoutAuthorInput: NexusGenInputs['JournalEntryUpdateManyWithoutAuthorInput'];
   JournalEntryUpdateManyWithoutStepInput: NexusGenInputs['JournalEntryUpdateManyWithoutStepInput'];
+  JournalEntryUpdateWithWhereUniqueWithoutAuthorInput: NexusGenInputs['JournalEntryUpdateWithWhereUniqueWithoutAuthorInput'];
   JournalEntryUpdateWithWhereUniqueWithoutStepInput: NexusGenInputs['JournalEntryUpdateWithWhereUniqueWithoutStepInput'];
+  JournalEntryUpdateWithoutAuthorDataInput: NexusGenInputs['JournalEntryUpdateWithoutAuthorDataInput'];
   JournalEntryUpdateWithoutStepDataInput: NexusGenInputs['JournalEntryUpdateWithoutStepDataInput'];
+  JournalEntryUpsertWithWhereUniqueWithoutAuthorInput: NexusGenInputs['JournalEntryUpsertWithWhereUniqueWithoutAuthorInput'];
   JournalEntryUpsertWithWhereUniqueWithoutStepInput: NexusGenInputs['JournalEntryUpsertWithWhereUniqueWithoutStepInput'];
   JournalEntryWhereInput: NexusGenInputs['JournalEntryWhereInput'];
   JournalEntryWhereUniqueInput: NexusGenInputs['JournalEntryWhereUniqueInput'];
@@ -1738,7 +1812,9 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   UpdateModelInput: NexusGenInputs['UpdateModelInput'];
   UserCreateInput: NexusGenInputs['UserCreateInput'];
   UserCreateManyWithoutGroupInput: NexusGenInputs['UserCreateManyWithoutGroupInput'];
+  UserCreateOneWithoutJournalEntriesInput: NexusGenInputs['UserCreateOneWithoutJournalEntriesInput'];
   UserCreateWithoutGroupInput: NexusGenInputs['UserCreateWithoutGroupInput'];
+  UserCreateWithoutJournalEntriesInput: NexusGenInputs['UserCreateWithoutJournalEntriesInput'];
   UserFilter: NexusGenInputs['UserFilter'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
   UserScalarWhereInput: NexusGenInputs['UserScalarWhereInput'];
@@ -1747,15 +1823,24 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   UserUpdateManyMutationInput: NexusGenInputs['UserUpdateManyMutationInput'];
   UserUpdateManyWithWhereNestedInput: NexusGenInputs['UserUpdateManyWithWhereNestedInput'];
   UserUpdateManyWithoutGroupInput: NexusGenInputs['UserUpdateManyWithoutGroupInput'];
+  UserUpdateOneRequiredWithoutJournalEntriesInput: NexusGenInputs['UserUpdateOneRequiredWithoutJournalEntriesInput'];
   UserUpdateWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpdateWithWhereUniqueWithoutGroupInput'];
   UserUpdateWithoutGroupDataInput: NexusGenInputs['UserUpdateWithoutGroupDataInput'];
+  UserUpdateWithoutJournalEntriesDataInput: NexusGenInputs['UserUpdateWithoutJournalEntriesDataInput'];
   UserUpsertWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpsertWithWhereUniqueWithoutGroupInput'];
+  UserUpsertWithoutJournalEntriesInput: NexusGenInputs['UserUpsertWithoutJournalEntriesInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
   JobStatus: NexusGenEnums['JobStatus'];
   JobType: NexusGenEnums['JobType'];
   KindEnum: NexusGenEnums['KindEnum'];
-  OrderByArg: NexusGenEnums['OrderByArg'];
+  SortOrder: NexusGenEnums['SortOrder'];
+  String: NexusGenScalars['String'];
+  Int: NexusGenScalars['Int'];
+  Float: NexusGenScalars['Float'];
+  Boolean: NexusGenScalars['Boolean'];
+  ID: NexusGenScalars['ID'];
+  DateTime: NexusGenScalars['DateTime'];
 }
 
 export interface NexusGenFieldTypes {
@@ -1819,14 +1904,14 @@ export interface NexusGenFieldTypes {
     count: number; // Int!
   }
   Dashboard: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     groups: NexusGenRootTypes['Group'][]; // [Group!]!
     id: number; // Int!
     minuteOffset: number; // Int!
     name: string; // String!
     published: boolean; // Boolean!
     sections: NexusGenRootTypes['Section'][]; // [Section!]!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   DashboardAvgAggregateOutputType: { // field return type
     id: number; // Float!
@@ -1869,11 +1954,11 @@ export interface NexusGenFieldTypes {
     upload: boolean; // Boolean!
   }
   Group: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     dashboards: NexusGenRootTypes['Dashboard'][]; // [Dashboard!]!
     id: number; // Int!
     name: string; // String!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
     users: NexusGenRootTypes['User'][]; // [User!]!
   }
   GroupAvgAggregateOutputType: { // field return type
@@ -1889,14 +1974,14 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
   }
   Job: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     jobType: NexusGenEnums['JobType'] | null; // JobType
     joid: number | null; // Int
     name: string; // String!
     runs: NexusGenRootTypes['JobRun'][]; // [JobRun!]!
     Step: NexusGenRootTypes['Step'][]; // [Step!]!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   JobAvgAggregateOutputType: { // field return type
     id: number; // Float!
@@ -1911,8 +1996,8 @@ export interface NexusGenFieldTypes {
     joid: number; // Int!
   }
   JobRun: { // field return type
-    createdAt: any; // DateTime!
-    endTime: any | null; // DateTime
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    endTime: NexusGenScalars['DateTime'] | null; // DateTime
     exitCode: number | null; // Int
     id: number; // Int!
     job: NexusGenRootTypes['Job']; // Job!
@@ -1920,9 +2005,9 @@ export interface NexusGenFieldTypes {
     jobRunId: number | null; // Int
     joid: number | null; // Int
     moreInfo: string | null; // String
-    startTime: any; // DateTime!
+    startTime: NexusGenScalars['DateTime']; // DateTime!
     status: NexusGenEnums['JobStatus']; // JobStatus!
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   JobRunAvgAggregateOutputType: { // field return type
     exitCode: number; // Float!
@@ -1957,24 +2042,31 @@ export interface NexusGenFieldTypes {
     joid: number; // Int!
   }
   JournalEntry: { // field return type
-    entry: string | null; // String
+    author: NexusGenRootTypes['User']; // User!
+    authorId: number; // Int!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    entry: string; // String!
     id: number; // Int!
     step: NexusGenRootTypes['Step']; // Step!
     stepId: number; // Int!
   }
   JournalEntryAvgAggregateOutputType: { // field return type
+    authorId: number; // Float!
     id: number; // Float!
     stepId: number; // Float!
   }
   JournalEntryMaxAggregateOutputType: { // field return type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
   JournalEntryMinAggregateOutputType: { // field return type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
   JournalEntrySumAggregateOutputType: { // field return type
+    authorId: number; // Int!
     id: number; // Int!
     stepId: number; // Int!
   }
@@ -2061,7 +2153,7 @@ export interface NexusGenFieldTypes {
     models: NexusGenRootTypes['Model'][]; // [Model!]!
   }
   Section: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     dashboard: NexusGenRootTypes['Dashboard'] | null; // Dashboard
     dashboardId: number | null; // Int
     id: number; // Int!
@@ -2070,7 +2162,7 @@ export interface NexusGenFieldTypes {
     published: boolean; // Boolean!
     steps: NexusGenRootTypes['Step'][]; // [Step!]!
     successCriteria: string | null; // String
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   SectionAvgAggregateOutputType: { // field return type
     dashboardId: number; // Float!
@@ -2093,7 +2185,7 @@ export interface NexusGenFieldTypes {
     order: number; // Int!
   }
   Step: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     job: NexusGenRootTypes['Job']; // Job!
     jobId: number; // Int!
@@ -2103,7 +2195,7 @@ export interface NexusGenFieldTypes {
     section: NexusGenRootTypes['Section']; // Section!
     sectionId: number; // Int!
     successCriteria: string | null; // String
-    updatedAt: any; // DateTime!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   StepAvgAggregateOutputType: { // field return type
     id: number; // Float!
@@ -2130,12 +2222,13 @@ export interface NexusGenFieldTypes {
     sectionId: number; // Int!
   }
   User: { // field return type
-    createdAt: any; // DateTime!
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
     email: string; // String!
     group: NexusGenRootTypes['Group'] | null; // Group
     groupId: number | null; // Int
     id: number; // Int!
     isAdmin: boolean; // Boolean!
+    JournalEntries: NexusGenRootTypes['JournalEntry'][]; // [JournalEntry!]!
     name: string | null; // String
     password: string; // String!
   }
@@ -2506,6 +2599,15 @@ export interface NexusGenArgTypes {
       where?: NexusGenInputs['JournalEntryWhereInput'] | null; // JournalEntryWhereInput
     }
   }
+  User: {
+    JournalEntries: { // args
+      cursor?: NexusGenInputs['JournalEntryWhereUniqueInput'] | null; // JournalEntryWhereUniqueInput
+      orderBy?: NexusGenInputs['JournalEntryOrderByInput'] | null; // JournalEntryOrderByInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['JournalEntryWhereInput'] | null; // JournalEntryWhereInput
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -2515,9 +2617,9 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AggregateDashboard" | "AggregateGroup" | "AggregateJob" | "AggregateJobRun" | "AggregateJournalEntry" | "AggregateSection" | "AggregateStep" | "AggregateUser" | "BatchPayload" | "Dashboard" | "DashboardAvgAggregateOutputType" | "DashboardMaxAggregateOutputType" | "DashboardMinAggregateOutputType" | "DashboardSumAggregateOutputType" | "Enum" | "Field" | "Group" | "GroupAvgAggregateOutputType" | "GroupMaxAggregateOutputType" | "GroupMinAggregateOutputType" | "GroupSumAggregateOutputType" | "Job" | "JobAvgAggregateOutputType" | "JobMaxAggregateOutputType" | "JobMinAggregateOutputType" | "JobRun" | "JobRunAvgAggregateOutputType" | "JobRunMaxAggregateOutputType" | "JobRunMinAggregateOutputType" | "JobRunSumAggregateOutputType" | "JobSumAggregateOutputType" | "JournalEntry" | "JournalEntryAvgAggregateOutputType" | "JournalEntryMaxAggregateOutputType" | "JournalEntryMinAggregateOutputType" | "JournalEntrySumAggregateOutputType" | "Model" | "Mutation" | "Query" | "Schema" | "Section" | "SectionAvgAggregateOutputType" | "SectionMaxAggregateOutputType" | "SectionMinAggregateOutputType" | "SectionSumAggregateOutputType" | "Step" | "StepAvgAggregateOutputType" | "StepMaxAggregateOutputType" | "StepMinAggregateOutputType" | "StepSumAggregateOutputType" | "User" | "UserAvgAggregateOutputType" | "UserMaxAggregateOutputType" | "UserMinAggregateOutputType" | "UserSumAggregateOutputType";
 
-export type NexusGenInputNames = "BooleanFilter" | "DashboardCreateInput" | "DashboardCreateManyWithoutGroupsInput" | "DashboardCreateOneWithoutSectionsInput" | "DashboardCreateWithoutGroupsInput" | "DashboardCreateWithoutSectionsInput" | "DashboardFilter" | "DashboardOrderByInput" | "DashboardScalarWhereInput" | "DashboardUpdateInput" | "DashboardUpdateManyDataInput" | "DashboardUpdateManyMutationInput" | "DashboardUpdateManyWithWhereNestedInput" | "DashboardUpdateManyWithoutGroupsInput" | "DashboardUpdateOneWithoutSectionsInput" | "DashboardUpdateWithWhereUniqueWithoutGroupsInput" | "DashboardUpdateWithoutGroupsDataInput" | "DashboardUpdateWithoutSectionsDataInput" | "DashboardUpsertWithWhereUniqueWithoutGroupsInput" | "DashboardUpsertWithoutSectionsInput" | "DashboardWhereInput" | "DashboardWhereUniqueInput" | "DateTimeFilter" | "GroupCreateInput" | "GroupCreateManyWithoutDashboardsInput" | "GroupCreateOneWithoutUsersInput" | "GroupCreateWithoutDashboardsInput" | "GroupCreateWithoutUsersInput" | "GroupFilter" | "GroupOrderByInput" | "GroupScalarWhereInput" | "GroupUpdateInput" | "GroupUpdateManyDataInput" | "GroupUpdateManyMutationInput" | "GroupUpdateManyWithWhereNestedInput" | "GroupUpdateManyWithoutDashboardsInput" | "GroupUpdateOneWithoutUsersInput" | "GroupUpdateWithWhereUniqueWithoutDashboardsInput" | "GroupUpdateWithoutDashboardsDataInput" | "GroupUpdateWithoutUsersDataInput" | "GroupUpsertWithWhereUniqueWithoutDashboardsInput" | "GroupUpsertWithoutUsersInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "IntFilter" | "JobCreateInput" | "JobCreateOneWithoutRunsInput" | "JobCreateOneWithoutStepInput" | "JobCreateWithoutRunsInput" | "JobCreateWithoutStepInput" | "JobOrderByInput" | "JobRunCreateInput" | "JobRunCreateManyWithoutJobInput" | "JobRunCreateWithoutJobInput" | "JobRunFilter" | "JobRunOrderByInput" | "JobRunScalarWhereInput" | "JobRunUpdateInput" | "JobRunUpdateManyDataInput" | "JobRunUpdateManyMutationInput" | "JobRunUpdateManyWithWhereNestedInput" | "JobRunUpdateManyWithoutJobInput" | "JobRunUpdateWithWhereUniqueWithoutJobInput" | "JobRunUpdateWithoutJobDataInput" | "JobRunUpsertWithWhereUniqueWithoutJobInput" | "JobRunWhereInput" | "JobRunWhereUniqueInput" | "JobStatusFilter" | "JobUpdateInput" | "JobUpdateManyMutationInput" | "JobUpdateOneRequiredWithoutRunsInput" | "JobUpdateOneRequiredWithoutStepInput" | "JobUpdateWithoutRunsDataInput" | "JobUpdateWithoutStepDataInput" | "JobUpsertWithoutRunsInput" | "JobUpsertWithoutStepInput" | "JobWhereInput" | "JobWhereUniqueInput" | "JournalEntryCreateInput" | "JournalEntryCreateManyWithoutStepInput" | "JournalEntryCreateWithoutStepInput" | "JournalEntryFilter" | "JournalEntryOrderByInput" | "JournalEntryScalarWhereInput" | "JournalEntryUpdateInput" | "JournalEntryUpdateManyDataInput" | "JournalEntryUpdateManyMutationInput" | "JournalEntryUpdateManyWithWhereNestedInput" | "JournalEntryUpdateManyWithoutStepInput" | "JournalEntryUpdateWithWhereUniqueWithoutStepInput" | "JournalEntryUpdateWithoutStepDataInput" | "JournalEntryUpsertWithWhereUniqueWithoutStepInput" | "JournalEntryWhereInput" | "JournalEntryWhereUniqueInput" | "NullableDateTimeFilter" | "NullableIntFilter" | "NullableJobTypeFilter" | "NullableStringFilter" | "SectionCreateInput" | "SectionCreateManyWithoutDashboardInput" | "SectionCreateOneWithoutStepsInput" | "SectionCreateWithoutDashboardInput" | "SectionCreateWithoutStepsInput" | "SectionFilter" | "SectionOrderByInput" | "SectionScalarWhereInput" | "SectionUpdateInput" | "SectionUpdateManyDataInput" | "SectionUpdateManyMutationInput" | "SectionUpdateManyWithWhereNestedInput" | "SectionUpdateManyWithoutDashboardInput" | "SectionUpdateOneRequiredWithoutStepsInput" | "SectionUpdateWithWhereUniqueWithoutDashboardInput" | "SectionUpdateWithoutDashboardDataInput" | "SectionUpdateWithoutStepsDataInput" | "SectionUpsertWithWhereUniqueWithoutDashboardInput" | "SectionUpsertWithoutStepsInput" | "SectionWhereInput" | "SectionWhereUniqueInput" | "StepCreateInput" | "StepCreateManyWithoutJobInput" | "StepCreateManyWithoutSectionInput" | "StepCreateOneWithoutJournalEntriesInput" | "StepCreateWithoutJobInput" | "StepCreateWithoutJournalEntriesInput" | "StepCreateWithoutSectionInput" | "StepFilter" | "StepOrderByInput" | "StepScalarWhereInput" | "StepUpdateInput" | "StepUpdateManyDataInput" | "StepUpdateManyMutationInput" | "StepUpdateManyWithWhereNestedInput" | "StepUpdateManyWithoutJobInput" | "StepUpdateManyWithoutSectionInput" | "StepUpdateOneRequiredWithoutJournalEntriesInput" | "StepUpdateWithWhereUniqueWithoutJobInput" | "StepUpdateWithWhereUniqueWithoutSectionInput" | "StepUpdateWithoutJobDataInput" | "StepUpdateWithoutJournalEntriesDataInput" | "StepUpdateWithoutSectionDataInput" | "StepUpsertWithWhereUniqueWithoutJobInput" | "StepUpsertWithWhereUniqueWithoutSectionInput" | "StepUpsertWithoutJournalEntriesInput" | "StepWhereInput" | "StepWhereUniqueInput" | "StringFilter" | "UpdateFieldInput" | "UpdateModelInput" | "UserCreateInput" | "UserCreateManyWithoutGroupInput" | "UserCreateWithoutGroupInput" | "UserFilter" | "UserOrderByInput" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyDataInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereNestedInput" | "UserUpdateManyWithoutGroupInput" | "UserUpdateWithWhereUniqueWithoutGroupInput" | "UserUpdateWithoutGroupDataInput" | "UserUpsertWithWhereUniqueWithoutGroupInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "BooleanFilter" | "DashboardCreateInput" | "DashboardCreateManyWithoutGroupsInput" | "DashboardCreateOneWithoutSectionsInput" | "DashboardCreateWithoutGroupsInput" | "DashboardCreateWithoutSectionsInput" | "DashboardFilter" | "DashboardOrderByInput" | "DashboardScalarWhereInput" | "DashboardUpdateInput" | "DashboardUpdateManyDataInput" | "DashboardUpdateManyMutationInput" | "DashboardUpdateManyWithWhereNestedInput" | "DashboardUpdateManyWithoutGroupsInput" | "DashboardUpdateOneWithoutSectionsInput" | "DashboardUpdateWithWhereUniqueWithoutGroupsInput" | "DashboardUpdateWithoutGroupsDataInput" | "DashboardUpdateWithoutSectionsDataInput" | "DashboardUpsertWithWhereUniqueWithoutGroupsInput" | "DashboardUpsertWithoutSectionsInput" | "DashboardWhereInput" | "DashboardWhereUniqueInput" | "DateTimeFilter" | "GroupCreateInput" | "GroupCreateManyWithoutDashboardsInput" | "GroupCreateOneWithoutUsersInput" | "GroupCreateWithoutDashboardsInput" | "GroupCreateWithoutUsersInput" | "GroupFilter" | "GroupOrderByInput" | "GroupScalarWhereInput" | "GroupUpdateInput" | "GroupUpdateManyDataInput" | "GroupUpdateManyMutationInput" | "GroupUpdateManyWithWhereNestedInput" | "GroupUpdateManyWithoutDashboardsInput" | "GroupUpdateOneWithoutUsersInput" | "GroupUpdateWithWhereUniqueWithoutDashboardsInput" | "GroupUpdateWithoutDashboardsDataInput" | "GroupUpdateWithoutUsersDataInput" | "GroupUpsertWithWhereUniqueWithoutDashboardsInput" | "GroupUpsertWithoutUsersInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "IntFilter" | "JobCreateInput" | "JobCreateOneWithoutRunsInput" | "JobCreateOneWithoutStepInput" | "JobCreateWithoutRunsInput" | "JobCreateWithoutStepInput" | "JobOrderByInput" | "JobRunCreateInput" | "JobRunCreateManyWithoutJobInput" | "JobRunCreateWithoutJobInput" | "JobRunFilter" | "JobRunOrderByInput" | "JobRunScalarWhereInput" | "JobRunUpdateInput" | "JobRunUpdateManyDataInput" | "JobRunUpdateManyMutationInput" | "JobRunUpdateManyWithWhereNestedInput" | "JobRunUpdateManyWithoutJobInput" | "JobRunUpdateWithWhereUniqueWithoutJobInput" | "JobRunUpdateWithoutJobDataInput" | "JobRunUpsertWithWhereUniqueWithoutJobInput" | "JobRunWhereInput" | "JobRunWhereUniqueInput" | "JobStatusFilter" | "JobUpdateInput" | "JobUpdateManyMutationInput" | "JobUpdateOneRequiredWithoutRunsInput" | "JobUpdateOneRequiredWithoutStepInput" | "JobUpdateWithoutRunsDataInput" | "JobUpdateWithoutStepDataInput" | "JobUpsertWithoutRunsInput" | "JobUpsertWithoutStepInput" | "JobWhereInput" | "JobWhereUniqueInput" | "JournalEntryCreateInput" | "JournalEntryCreateManyWithoutAuthorInput" | "JournalEntryCreateManyWithoutStepInput" | "JournalEntryCreateWithoutAuthorInput" | "JournalEntryCreateWithoutStepInput" | "JournalEntryFilter" | "JournalEntryOrderByInput" | "JournalEntryScalarWhereInput" | "JournalEntryUpdateInput" | "JournalEntryUpdateManyDataInput" | "JournalEntryUpdateManyMutationInput" | "JournalEntryUpdateManyWithWhereNestedInput" | "JournalEntryUpdateManyWithoutAuthorInput" | "JournalEntryUpdateManyWithoutStepInput" | "JournalEntryUpdateWithWhereUniqueWithoutAuthorInput" | "JournalEntryUpdateWithWhereUniqueWithoutStepInput" | "JournalEntryUpdateWithoutAuthorDataInput" | "JournalEntryUpdateWithoutStepDataInput" | "JournalEntryUpsertWithWhereUniqueWithoutAuthorInput" | "JournalEntryUpsertWithWhereUniqueWithoutStepInput" | "JournalEntryWhereInput" | "JournalEntryWhereUniqueInput" | "NullableDateTimeFilter" | "NullableIntFilter" | "NullableJobTypeFilter" | "NullableStringFilter" | "SectionCreateInput" | "SectionCreateManyWithoutDashboardInput" | "SectionCreateOneWithoutStepsInput" | "SectionCreateWithoutDashboardInput" | "SectionCreateWithoutStepsInput" | "SectionFilter" | "SectionOrderByInput" | "SectionScalarWhereInput" | "SectionUpdateInput" | "SectionUpdateManyDataInput" | "SectionUpdateManyMutationInput" | "SectionUpdateManyWithWhereNestedInput" | "SectionUpdateManyWithoutDashboardInput" | "SectionUpdateOneRequiredWithoutStepsInput" | "SectionUpdateWithWhereUniqueWithoutDashboardInput" | "SectionUpdateWithoutDashboardDataInput" | "SectionUpdateWithoutStepsDataInput" | "SectionUpsertWithWhereUniqueWithoutDashboardInput" | "SectionUpsertWithoutStepsInput" | "SectionWhereInput" | "SectionWhereUniqueInput" | "StepCreateInput" | "StepCreateManyWithoutJobInput" | "StepCreateManyWithoutSectionInput" | "StepCreateOneWithoutJournalEntriesInput" | "StepCreateWithoutJobInput" | "StepCreateWithoutJournalEntriesInput" | "StepCreateWithoutSectionInput" | "StepFilter" | "StepOrderByInput" | "StepScalarWhereInput" | "StepUpdateInput" | "StepUpdateManyDataInput" | "StepUpdateManyMutationInput" | "StepUpdateManyWithWhereNestedInput" | "StepUpdateManyWithoutJobInput" | "StepUpdateManyWithoutSectionInput" | "StepUpdateOneRequiredWithoutJournalEntriesInput" | "StepUpdateWithWhereUniqueWithoutJobInput" | "StepUpdateWithWhereUniqueWithoutSectionInput" | "StepUpdateWithoutJobDataInput" | "StepUpdateWithoutJournalEntriesDataInput" | "StepUpdateWithoutSectionDataInput" | "StepUpsertWithWhereUniqueWithoutJobInput" | "StepUpsertWithWhereUniqueWithoutSectionInput" | "StepUpsertWithoutJournalEntriesInput" | "StepWhereInput" | "StepWhereUniqueInput" | "StringFilter" | "UpdateFieldInput" | "UpdateModelInput" | "UserCreateInput" | "UserCreateManyWithoutGroupInput" | "UserCreateOneWithoutJournalEntriesInput" | "UserCreateWithoutGroupInput" | "UserCreateWithoutJournalEntriesInput" | "UserFilter" | "UserOrderByInput" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyDataInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereNestedInput" | "UserUpdateManyWithoutGroupInput" | "UserUpdateOneRequiredWithoutJournalEntriesInput" | "UserUpdateWithWhereUniqueWithoutGroupInput" | "UserUpdateWithoutGroupDataInput" | "UserUpdateWithoutJournalEntriesDataInput" | "UserUpsertWithWhereUniqueWithoutGroupInput" | "UserUpsertWithoutJournalEntriesInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "JobStatus" | "JobType" | "KindEnum" | "OrderByArg";
+export type NexusGenEnumNames = "JobStatus" | "JobType" | "KindEnum" | "SortOrder";
 
 export type NexusGenInterfaceNames = never;
 

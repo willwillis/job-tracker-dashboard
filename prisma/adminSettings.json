@@ -4,9 +4,7 @@
       "id": "Group",
       "name": "Group",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -137,9 +135,7 @@
       "id": "Dashboard",
       "name": "Dashboard",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -308,24 +304,21 @@
       "id": "User",
       "name": "User",
       "idField": "id",
-      "displayFields": [
-        "group.name"
-      ],
+      "displayFields": ["group.name"],
       "create": true,
       "update": true,
       "delete": true,
       "fields": [
         {
-          "id": "User.isAdmin",
-          "name": "isAdmin",
-          "type": "Boolean",
+          "id": "User.JournalEntries",
+          "name": "JournalEntries",
+          "type": "JournalEntry",
           "isId": false,
           "unique": false,
-          "list": false,
-          "required": true,
-          "kind": "scalar",
-          "relationField": false,
-          "title": "Is Admin",
+          "list": true,
+          "required": false,
+          "kind": "object",
+          "title": "Journal Entries",
           "create": true,
           "update": true,
           "editor": false,
@@ -416,6 +409,26 @@
           "kind": "scalar"
         },
         {
+          "id": "User.isAdmin",
+          "name": "isAdmin",
+          "title": "Is Admin",
+          "type": "Boolean",
+          "list": false,
+          "required": true,
+          "isId": false,
+          "unique": false,
+          "create": true,
+          "update": true,
+          "read": true,
+          "filter": true,
+          "sort": true,
+          "editor": false,
+          "upload": false,
+          "relationField": false,
+          "order": 5,
+          "kind": "scalar"
+        },
+        {
           "id": "User.createdAt",
           "name": "createdAt",
           "title": "Created At",
@@ -432,7 +445,7 @@
           "editor": false,
           "upload": false,
           "relationField": false,
-          "order": 5,
+          "order": 6,
           "kind": "scalar"
         },
         {
@@ -452,7 +465,7 @@
           "editor": false,
           "upload": false,
           "relationField": null,
-          "order": 6,
+          "order": 7,
           "kind": "object"
         },
         {
@@ -472,7 +485,7 @@
           "editor": false,
           "upload": false,
           "relationField": true,
-          "order": 7,
+          "order": 8,
           "kind": "scalar"
         }
       ]
@@ -481,9 +494,7 @@
       "id": "Section",
       "name": "Section",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -692,9 +703,7 @@
       "id": "Step",
       "name": "Step",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -925,9 +934,7 @@
       "id": "JournalEntry",
       "name": "Journal Entry",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -959,13 +966,13 @@
           "isId": false,
           "unique": false,
           "list": false,
-          "required": false,
+          "required": true,
           "kind": "scalar",
           "relationField": false,
           "title": "Entry",
           "create": true,
           "update": true,
-          "editor": false,
+          "editor": true,
           "upload": false,
           "read": true,
           "filter": true,
@@ -1010,6 +1017,65 @@
           "filter": true,
           "sort": true,
           "order": -1
+        },
+        {
+          "id": "Journal Entry.author",
+          "name": "author",
+          "type": "User",
+          "isId": false,
+          "unique": false,
+          "list": false,
+          "required": true,
+          "kind": "object",
+          "title": "Author",
+          "create": true,
+          "update": true,
+          "editor": false,
+          "upload": false,
+          "read": true,
+          "filter": true,
+          "sort": true,
+          "order": -1
+        },
+        {
+          "id": "Journal Entry.authorId",
+          "name": "authorId",
+          "type": "Int",
+          "isId": false,
+          "unique": false,
+          "list": false,
+          "required": true,
+          "kind": "scalar",
+          "relationField": true,
+          "title": "Author Id",
+          "create": false,
+          "update": false,
+          "editor": false,
+          "upload": false,
+          "read": true,
+          "filter": true,
+          "sort": true,
+          "order": -1
+        },
+        {
+          "id": "Journal Entry.createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "isId": false,
+          "unique": false,
+          "list": false,
+          "required": true,
+          "kind": "scalar",
+          "relationField": false,
+          "title": "Created At",
+          "create": false,
+          "update": false,
+          "editor": false,
+          "upload": false,
+          "read": true,
+          "filter": true,
+          "sort": true,
+          "order": -1
         }
       ]
     },
@@ -1017,9 +1083,7 @@
       "id": "Job",
       "name": "Job",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1188,9 +1252,7 @@
       "id": "JobRun",
       "name": "Job Run",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -1461,12 +1523,7 @@
     },
     {
       "name": "JobType",
-      "fields": [
-        "AUTOSYS",
-        "FMC",
-        "DATABASE",
-        "INSTRUMENTED"
-      ]
+      "fields": ["AUTOSYS", "FMC", "DATABASE", "INSTRUMENTED"]
     }
   ]
 }

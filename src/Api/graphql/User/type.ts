@@ -17,5 +17,20 @@ export const User = objectType({
     })
     t.int('groupId', { nullable: true })
     t.boolean('isAdmin', { nullable: false })
+    t.field('JournalEntries', {
+      nullable: false,
+      list: [true],
+      type: 'JournalEntry',
+      args: {
+        where: 'JournalEntryWhereInput',
+        orderBy: 'JournalEntryOrderByInput',
+        cursor: 'JournalEntryWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+      },
+      resolve(parent: any) {
+        return parent['JournalEntries']
+      },
+    })
   },
 })

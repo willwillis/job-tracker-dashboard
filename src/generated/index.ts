@@ -1,8 +1,7 @@
-import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/client';
-import * as ApolloReactHooks from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | undefined;
-export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+const gql = Apollo.gql;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1022,7 +1021,10 @@ export type JobWhereUniqueInput = {
 
 export type JournalEntry = {
   __typename?: 'JournalEntry';
-  entry?: Maybe<Scalars['String']>;
+  author: User;
+  authorId: Scalars['Int'];
+  createdAt: Scalars['DateTime'];
+  entry: Scalars['String'];
   id: Scalars['Int'];
   step: Step;
   stepId: Scalars['Int'];
@@ -1728,7 +1730,7 @@ export type SectionCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1748,7 +1750,7 @@ export type SectionCreateOneWithoutStepsInput = {
 export type SectionCreateWithoutDashboardInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   published?: Maybe<Scalars['Boolean']>;
   steps?: Maybe<StepCreateManyWithoutSectionInput>;
   successCriteria?: Maybe<Scalars['String']>;
@@ -1759,7 +1761,7 @@ export type SectionCreateWithoutStepsInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dashboard?: Maybe<DashboardCreateOneWithoutSectionsInput>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   published?: Maybe<Scalars['Boolean']>;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1970,7 +1972,7 @@ export type StepCreateInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1995,7 +1997,7 @@ export type StepCreateWithoutJobInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2005,7 +2007,7 @@ export type StepCreateWithoutJournalEntriesInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   job: JobCreateOneWithoutStepInput;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   section: SectionCreateOneWithoutStepsInput;
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -2016,7 +2018,7 @@ export type StepCreateWithoutSectionInput = {
   job: JobCreateOneWithoutStepInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
-  order?: Maybe<Scalars['Int']>;
+  order: Scalars['Int'];
   successCriteria?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -2278,8 +2280,18 @@ export type User = {
   groupId?: Maybe<Scalars['Int']>;
   id: Scalars['Int'];
   isAdmin: Scalars['Boolean'];
+  JournalEntries: Array<JournalEntry>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
+};
+
+
+export type UserJournalEntriesArgs = {
+  cursor?: Maybe<JournalEntryWhereUniqueInput>;
+  orderBy?: Maybe<JournalEntryOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<JournalEntryWhereInput>;
 };
 
 export type UserAvgAggregateOutputType = {
@@ -2292,7 +2304,6 @@ export type UserCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
   group?: Maybe<GroupCreateOneWithoutUsersInput>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
 };
@@ -2305,7 +2316,6 @@ export type UserCreateManyWithoutGroupInput = {
 export type UserCreateWithoutGroupInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
 };
@@ -2333,7 +2343,6 @@ export type UserOrderByInput = {
   email?: Maybe<OrderByArg>;
   groupId?: Maybe<OrderByArg>;
   id?: Maybe<OrderByArg>;
-  isAdmin?: Maybe<OrderByArg>;
   name?: Maybe<OrderByArg>;
   password?: Maybe<OrderByArg>;
 };
@@ -2344,7 +2353,6 @@ export type UserScalarWhereInput = {
   email?: Maybe<StringFilter>;
   groupId?: Maybe<NullableIntFilter>;
   id?: Maybe<IntFilter>;
-  isAdmin?: Maybe<BooleanFilter>;
   name?: Maybe<NullableStringFilter>;
   NOT?: Maybe<Array<UserScalarWhereInput>>;
   OR?: Maybe<Array<UserScalarWhereInput>>;
@@ -2362,7 +2370,6 @@ export type UserUpdateInput = {
   email?: Maybe<Scalars['String']>;
   group?: Maybe<GroupUpdateOneWithoutUsersInput>;
   id?: Maybe<Scalars['Int']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2371,7 +2378,6 @@ export type UserUpdateManyDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2380,7 +2386,6 @@ export type UserUpdateManyMutationInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2406,7 +2411,6 @@ export type UserUpdateWithoutGroupDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 };
@@ -2429,7 +2433,6 @@ export type UserWhereInput = {
   group?: Maybe<GroupWhereInput>;
   groupId?: Maybe<NullableIntFilter>;
   id?: Maybe<IntFilter>;
-  isAdmin?: Maybe<BooleanFilter>;
   name?: Maybe<NullableStringFilter>;
   NOT?: Maybe<Array<UserWhereInput>>;
   OR?: Maybe<Array<UserWhereInput>>;
@@ -2448,7 +2451,7 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'name' | 'email'>
+    & Pick<User, 'id' | 'name' | 'email' | 'isAdmin'>
   )> }
 );
 
@@ -2563,6 +2566,7 @@ export const MeDocument = gql`
     id
     name
     email
+    isAdmin
   }
 }
     `;
@@ -2582,15 +2586,15 @@ export const MeDocument = gql`
  *   },
  * });
  */
-export function useMeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>) {
-        return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
+        return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
       }
-export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+          return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
         }
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const LoginDocument = gql`
     mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
@@ -2617,12 +2621,12 @@ export const LoginDocument = gql`
  *   },
  * });
  */
-export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
       }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
-export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
-export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const SignupDocument = gql`
     mutation signup($email: String!, $password: String!, $name: String) {
   signup(email: $email, password: $password, name: $name) {
@@ -2650,12 +2654,12 @@ export const SignupDocument = gql`
  *   },
  * });
  */
-export function useSignupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
-        return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
+export function useSignupMutation(baseOptions?: Apollo.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
+        return Apollo.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
       }
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
-export type SignupMutationResult = ApolloReactCommon.MutationResult<SignupMutation>;
-export type SignupMutationOptions = ApolloReactCommon.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
+export type SignupMutationResult = Apollo.MutationResult<SignupMutation>;
+export type SignupMutationOptions = Apollo.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
 export const LogoutDocument = gql`
     mutation logout {
   logout
@@ -2678,12 +2682,12 @@ export const LogoutDocument = gql`
  *   },
  * });
  */
-export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-        return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
+export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
       }
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
-export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const FindOneDashboardDocument = gql`
     query findOneDashboard($where: DashboardWhereUniqueInput!) {
   findOneDashboard(where: $where) {
@@ -2729,15 +2733,15 @@ export const FindOneDashboardDocument = gql`
  *   },
  * });
  */
-export function useFindOneDashboardQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneDashboardQuery, FindOneDashboardQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindOneDashboardQuery, FindOneDashboardQueryVariables>(FindOneDashboardDocument, baseOptions);
+export function useFindOneDashboardQuery(baseOptions?: Apollo.QueryHookOptions<FindOneDashboardQuery, FindOneDashboardQueryVariables>) {
+        return Apollo.useQuery<FindOneDashboardQuery, FindOneDashboardQueryVariables>(FindOneDashboardDocument, baseOptions);
       }
-export function useFindOneDashboardLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneDashboardQuery, FindOneDashboardQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindOneDashboardQuery, FindOneDashboardQueryVariables>(FindOneDashboardDocument, baseOptions);
+export function useFindOneDashboardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindOneDashboardQuery, FindOneDashboardQueryVariables>) {
+          return Apollo.useLazyQuery<FindOneDashboardQuery, FindOneDashboardQueryVariables>(FindOneDashboardDocument, baseOptions);
         }
 export type FindOneDashboardQueryHookResult = ReturnType<typeof useFindOneDashboardQuery>;
 export type FindOneDashboardLazyQueryHookResult = ReturnType<typeof useFindOneDashboardLazyQuery>;
-export type FindOneDashboardQueryResult = ApolloReactCommon.QueryResult<FindOneDashboardQuery, FindOneDashboardQueryVariables>;
+export type FindOneDashboardQueryResult = Apollo.QueryResult<FindOneDashboardQuery, FindOneDashboardQueryVariables>;
 export const FindManyDashboardDocument = gql`
     query findManyDashboard($where: DashboardWhereInput, $orderBy: DashboardOrderByInput, $cursor: DashboardWhereUniqueInput, $skip: Int, $take: Int) {
   findManyDashboard(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
@@ -2770,15 +2774,15 @@ export const FindManyDashboardDocument = gql`
  *   },
  * });
  */
-export function useFindManyDashboardQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
+export function useFindManyDashboardQuery(baseOptions?: Apollo.QueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
+        return Apollo.useQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
       }
-export function useFindManyDashboardLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
+export function useFindManyDashboardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindManyDashboardQuery, FindManyDashboardQueryVariables>) {
+          return Apollo.useLazyQuery<FindManyDashboardQuery, FindManyDashboardQueryVariables>(FindManyDashboardDocument, baseOptions);
         }
 export type FindManyDashboardQueryHookResult = ReturnType<typeof useFindManyDashboardQuery>;
 export type FindManyDashboardLazyQueryHookResult = ReturnType<typeof useFindManyDashboardLazyQuery>;
-export type FindManyDashboardQueryResult = ApolloReactCommon.QueryResult<FindManyDashboardQuery, FindManyDashboardQueryVariables>;
+export type FindManyDashboardQueryResult = Apollo.QueryResult<FindManyDashboardQuery, FindManyDashboardQueryVariables>;
 export const FindManyGroupDocument = gql`
     query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $cursor: GroupWhereUniqueInput, $skip: Int, $take: Int) {
   findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
@@ -2808,12 +2812,12 @@ export const FindManyGroupDocument = gql`
  *   },
  * });
  */
-export function useFindManyGroupQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+export function useFindManyGroupQuery(baseOptions?: Apollo.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+        return Apollo.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
       }
-export function useFindManyGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+export function useFindManyGroupLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+          return Apollo.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
         }
 export type FindManyGroupQueryHookResult = ReturnType<typeof useFindManyGroupQuery>;
 export type FindManyGroupLazyQueryHookResult = ReturnType<typeof useFindManyGroupLazyQuery>;
-export type FindManyGroupQueryResult = ApolloReactCommon.QueryResult<FindManyGroupQuery, FindManyGroupQueryVariables>;
+export type FindManyGroupQueryResult = Apollo.QueryResult<FindManyGroupQuery, FindManyGroupQueryVariables>;

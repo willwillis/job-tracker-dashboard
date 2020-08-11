@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styled, { DefaultTheme } from 'styled-components';
 import Select from '@paljs/ui/Select';
 import { LayoutHeader } from '@paljs/ui/Layout';
-import { EvaIcon } from '@paljs/ui/Icon';
+//import { EvaIcon } from '@paljs/ui/Icon';
 import { breakpointDown } from '@paljs/ui/breakpoints';
 import { Actions } from '@paljs/ui/Actions';
 import User from '@paljs/ui/User';
@@ -133,18 +133,37 @@ const Header: React.FC<HeaderProps> = (props) => {
         <Actions
           size="Small"
           className="right"
-          actions={[
-            {
-              content: me && <User name={me.name!} title="Manager" size="Medium" />,
-            },
-            {
-              icon: { name: 'log-out-outline', options: { animation: { type: 'zoom' } } },
-              url: {
-                onClick: logout,
-                title: 'Log out',
-              },
-            },
-          ]}
+          actions={
+            !me
+              ? [
+                  {
+                    content: (
+                      <Link href="/auth/login">
+                        <a className="logo">Login</a>
+                      </Link>
+                    ),
+                  },
+                  {
+                    content: (
+                      <Link href="/auth/register">
+                        <a className="logo">Signup</a>
+                      </Link>
+                    ),
+                  },
+                ]
+              : [
+                  {
+                    content: me && <User name={me.name!} title="Manager" size="Medium" />,
+                  },
+                  {
+                    icon: { name: 'log-out-outline', options: { animation: { type: 'zoom' } } },
+                    url: {
+                      onClick: logout,
+                      title: 'Log out',
+                    },
+                  },
+                ]
+          }
         />
       </HeaderStyle>
     </LayoutHeader>

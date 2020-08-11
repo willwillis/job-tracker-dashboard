@@ -146,12 +146,12 @@ type DashboardMinAggregateOutputType {
 }
 
 input DashboardOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  minuteOffset: OrderByArg
-  name: OrderByArg
-  published: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  minuteOffset: SortOrder
+  name: SortOrder
+  published: SortOrder
+  updatedAt: SortOrder
 }
 
 input DashboardScalarWhereInput {
@@ -176,7 +176,6 @@ type DashboardSumAggregateOutputType {
 input DashboardUpdateInput {
   createdAt: DateTime
   groups: GroupUpdateManyWithoutDashboardsInput
-  id: Int
   minuteOffset: Int
   name: String
   published: Boolean
@@ -186,7 +185,6 @@ input DashboardUpdateInput {
 
 input DashboardUpdateManyDataInput {
   createdAt: DateTime
-  id: Int
   minuteOffset: Int
   name: String
   published: Boolean
@@ -195,7 +193,6 @@ input DashboardUpdateManyDataInput {
 
 input DashboardUpdateManyMutationInput {
   createdAt: DateTime
-  id: Int
   minuteOffset: Int
   name: String
   published: Boolean
@@ -230,7 +227,6 @@ input DashboardUpdateOneWithoutSectionsInput {
 
 input DashboardUpdateWithoutGroupsDataInput {
   createdAt: DateTime
-  id: Int
   minuteOffset: Int
   name: String
   published: Boolean
@@ -241,7 +237,6 @@ input DashboardUpdateWithoutGroupsDataInput {
 input DashboardUpdateWithoutSectionsDataInput {
   createdAt: DateTime
   groups: GroupUpdateManyWithoutDashboardsInput
-  id: Int
   minuteOffset: Int
   name: String
   published: Boolean
@@ -383,10 +378,10 @@ type GroupMinAggregateOutputType {
 }
 
 input GroupOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
 }
 
 input GroupScalarWhereInput {
@@ -408,7 +403,6 @@ type GroupSumAggregateOutputType {
 input GroupUpdateInput {
   createdAt: DateTime
   dashboards: DashboardUpdateManyWithoutGroupsInput
-  id: Int
   name: String
   updatedAt: DateTime
   users: UserUpdateManyWithoutGroupInput
@@ -416,14 +410,12 @@ input GroupUpdateInput {
 
 input GroupUpdateManyDataInput {
   createdAt: DateTime
-  id: Int
   name: String
   updatedAt: DateTime
 }
 
 input GroupUpdateManyMutationInput {
   createdAt: DateTime
-  id: Int
   name: String
   updatedAt: DateTime
 }
@@ -456,7 +448,6 @@ input GroupUpdateOneWithoutUsersInput {
 
 input GroupUpdateWithoutDashboardsDataInput {
   createdAt: DateTime
-  id: Int
   name: String
   updatedAt: DateTime
   users: UserUpdateManyWithoutGroupInput
@@ -465,7 +456,6 @@ input GroupUpdateWithoutDashboardsDataInput {
 input GroupUpdateWithoutUsersDataInput {
   createdAt: DateTime
   dashboards: DashboardUpdateManyWithoutGroupsInput
-  id: Int
   name: String
   updatedAt: DateTime
 }
@@ -579,12 +569,12 @@ type JobMinAggregateOutputType {
 }
 
 input JobOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  jobType: OrderByArg
-  joid: OrderByArg
-  name: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  jobType: SortOrder
+  joid: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
 }
 
 type JobRun {
@@ -663,17 +653,17 @@ type JobRunMinAggregateOutputType {
 }
 
 input JobRunOrderByInput {
-  createdAt: OrderByArg
-  endTime: OrderByArg
-  exitCode: OrderByArg
-  id: OrderByArg
-  jobId: OrderByArg
-  jobRunId: OrderByArg
-  joid: OrderByArg
-  moreInfo: OrderByArg
-  startTime: OrderByArg
-  status: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  endTime: SortOrder
+  exitCode: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  jobRunId: SortOrder
+  joid: SortOrder
+  moreInfo: SortOrder
+  startTime: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
 }
 
 input JobRunScalarWhereInput {
@@ -705,7 +695,6 @@ input JobRunUpdateInput {
   createdAt: DateTime
   endTime: DateTime
   exitCode: Int
-  id: Int
   job: JobUpdateOneRequiredWithoutRunsInput
   jobRunId: Int
   joid: Int
@@ -719,7 +708,6 @@ input JobRunUpdateManyDataInput {
   createdAt: DateTime
   endTime: DateTime
   exitCode: Int
-  id: Int
   jobRunId: Int
   joid: Int
   moreInfo: String
@@ -732,7 +720,6 @@ input JobRunUpdateManyMutationInput {
   createdAt: DateTime
   endTime: DateTime
   exitCode: Int
-  id: Int
   jobRunId: Int
   joid: Int
   moreInfo: String
@@ -762,7 +749,6 @@ input JobRunUpdateWithoutJobDataInput {
   createdAt: DateTime
   endTime: DateTime
   exitCode: Int
-  id: Int
   jobRunId: Int
   joid: Int
   moreInfo: String
@@ -843,7 +829,6 @@ enum JobType {
 
 input JobUpdateInput {
   createdAt: DateTime
-  id: Int
   jobType: JobType
   joid: Int
   name: String
@@ -854,7 +839,6 @@ input JobUpdateInput {
 
 input JobUpdateManyMutationInput {
   createdAt: DateTime
-  id: Int
   jobType: JobType
   joid: Int
   name: String
@@ -877,7 +861,6 @@ input JobUpdateOneRequiredWithoutStepInput {
 
 input JobUpdateWithoutRunsDataInput {
   createdAt: DateTime
-  id: Int
   jobType: JobType
   joid: Int
   name: String
@@ -887,7 +870,6 @@ input JobUpdateWithoutRunsDataInput {
 
 input JobUpdateWithoutStepDataInput {
   createdAt: DateTime
-  id: Int
   jobType: JobType
   joid: Int
   name: String
@@ -926,20 +908,31 @@ input JobWhereUniqueInput {
 }
 
 type JournalEntry {
-  entry: String
+  author: User!
+  authorId: Int!
+  createdAt: DateTime!
+  entry: String!
   id: Int!
   step: Step!
   stepId: Int!
 }
 
 type JournalEntryAvgAggregateOutputType {
+  authorId: Float!
   id: Float!
   stepId: Float!
 }
 
 input JournalEntryCreateInput {
-  entry: String
+  author: UserCreateOneWithoutJournalEntriesInput!
+  createdAt: DateTime
+  entry: String!
   step: StepCreateOneWithoutJournalEntriesInput!
+}
+
+input JournalEntryCreateManyWithoutAuthorInput {
+  connect: [JournalEntryWhereUniqueInput!]
+  create: [JournalEntryCreateWithoutAuthorInput!]
 }
 
 input JournalEntryCreateManyWithoutStepInput {
@@ -947,8 +940,16 @@ input JournalEntryCreateManyWithoutStepInput {
   create: [JournalEntryCreateWithoutStepInput!]
 }
 
+input JournalEntryCreateWithoutAuthorInput {
+  createdAt: DateTime
+  entry: String!
+  step: StepCreateOneWithoutJournalEntriesInput!
+}
+
 input JournalEntryCreateWithoutStepInput {
-  entry: String
+  author: UserCreateOneWithoutJournalEntriesInput!
+  createdAt: DateTime
+  entry: String!
 }
 
 input JournalEntryFilter {
@@ -958,24 +959,30 @@ input JournalEntryFilter {
 }
 
 type JournalEntryMaxAggregateOutputType {
+  authorId: Int!
   id: Int!
   stepId: Int!
 }
 
 type JournalEntryMinAggregateOutputType {
+  authorId: Int!
   id: Int!
   stepId: Int!
 }
 
 input JournalEntryOrderByInput {
-  entry: OrderByArg
-  id: OrderByArg
-  stepId: OrderByArg
+  authorId: SortOrder
+  createdAt: SortOrder
+  entry: SortOrder
+  id: SortOrder
+  stepId: SortOrder
 }
 
 input JournalEntryScalarWhereInput {
   AND: [JournalEntryScalarWhereInput!]
-  entry: NullableStringFilter
+  authorId: IntFilter
+  createdAt: DateTimeFilter
+  entry: StringFilter
   id: IntFilter
   NOT: [JournalEntryScalarWhereInput!]
   OR: [JournalEntryScalarWhereInput!]
@@ -983,24 +990,38 @@ input JournalEntryScalarWhereInput {
 }
 
 type JournalEntrySumAggregateOutputType {
+  authorId: Int!
   id: Int!
   stepId: Int!
 }
 
 input JournalEntryUpdateInput {
+  author: UserUpdateOneRequiredWithoutJournalEntriesInput
+  createdAt: DateTime
   entry: String
-  id: Int
   step: StepUpdateOneRequiredWithoutJournalEntriesInput
 }
 
 input JournalEntryUpdateManyDataInput {
+  createdAt: DateTime
   entry: String
-  id: Int
 }
 
 input JournalEntryUpdateManyMutationInput {
+  createdAt: DateTime
   entry: String
-  id: Int
+}
+
+input JournalEntryUpdateManyWithoutAuthorInput {
+  connect: [JournalEntryWhereUniqueInput!]
+  create: [JournalEntryCreateWithoutAuthorInput!]
+  delete: [JournalEntryWhereUniqueInput!]
+  deleteMany: [JournalEntryScalarWhereInput!]
+  disconnect: [JournalEntryWhereUniqueInput!]
+  set: [JournalEntryWhereUniqueInput!]
+  update: [JournalEntryUpdateWithWhereUniqueWithoutAuthorInput!]
+  updateMany: [JournalEntryUpdateManyWithWhereNestedInput!]
+  upsert: [JournalEntryUpsertWithWhereUniqueWithoutAuthorInput!]
 }
 
 input JournalEntryUpdateManyWithoutStepInput {
@@ -1020,13 +1041,31 @@ input JournalEntryUpdateManyWithWhereNestedInput {
   where: JournalEntryScalarWhereInput!
 }
 
-input JournalEntryUpdateWithoutStepDataInput {
+input JournalEntryUpdateWithoutAuthorDataInput {
+  createdAt: DateTime
   entry: String
-  id: Int
+  step: StepUpdateOneRequiredWithoutJournalEntriesInput
+}
+
+input JournalEntryUpdateWithoutStepDataInput {
+  author: UserUpdateOneRequiredWithoutJournalEntriesInput
+  createdAt: DateTime
+  entry: String
+}
+
+input JournalEntryUpdateWithWhereUniqueWithoutAuthorInput {
+  data: JournalEntryUpdateWithoutAuthorDataInput!
+  where: JournalEntryWhereUniqueInput!
 }
 
 input JournalEntryUpdateWithWhereUniqueWithoutStepInput {
   data: JournalEntryUpdateWithoutStepDataInput!
+  where: JournalEntryWhereUniqueInput!
+}
+
+input JournalEntryUpsertWithWhereUniqueWithoutAuthorInput {
+  create: JournalEntryCreateWithoutAuthorInput!
+  update: JournalEntryUpdateWithoutAuthorDataInput!
   where: JournalEntryWhereUniqueInput!
 }
 
@@ -1038,7 +1077,10 @@ input JournalEntryUpsertWithWhereUniqueWithoutStepInput {
 
 input JournalEntryWhereInput {
   AND: [JournalEntryWhereInput!]
-  entry: NullableStringFilter
+  author: UserWhereInput
+  authorId: IntFilter
+  createdAt: DateTimeFilter
+  entry: StringFilter
   id: IntFilter
   NOT: [JournalEntryWhereInput!]
   OR: [JournalEntryWhereInput!]
@@ -1151,11 +1193,6 @@ input NullableStringFilter {
   startsWith: String
 }
 
-enum OrderByArg {
-  asc
-  desc
-}
-
 type Query {
   findManyDashboard(cursor: DashboardWhereUniqueInput, orderBy: DashboardOrderByInput, skip: Int, take: Int, where: DashboardWhereInput): [Dashboard!]
   findManyDashboardCount(cursor: DashboardWhereUniqueInput, orderBy: DashboardOrderByInput, skip: Int, take: Int, where: DashboardWhereInput): Int!
@@ -1213,7 +1250,7 @@ input SectionCreateInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int!
+  order: Int
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1233,7 +1270,7 @@ input SectionCreateOneWithoutStepsInput {
 input SectionCreateWithoutDashboardInput {
   createdAt: DateTime
   name: String!
-  order: Int!
+  order: Int
   published: Boolean
   steps: StepCreateManyWithoutSectionInput
   successCriteria: String
@@ -1244,7 +1281,7 @@ input SectionCreateWithoutStepsInput {
   createdAt: DateTime
   dashboard: DashboardCreateOneWithoutSectionsInput
   name: String!
-  order: Int!
+  order: Int
   published: Boolean
   successCriteria: String
   updatedAt: DateTime
@@ -1269,14 +1306,14 @@ type SectionMinAggregateOutputType {
 }
 
 input SectionOrderByInput {
-  createdAt: OrderByArg
-  dashboardId: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  order: OrderByArg
-  published: OrderByArg
-  successCriteria: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  dashboardId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  order: SortOrder
+  published: SortOrder
+  successCriteria: SortOrder
+  updatedAt: SortOrder
 }
 
 input SectionScalarWhereInput {
@@ -1303,7 +1340,6 @@ type SectionSumAggregateOutputType {
 input SectionUpdateInput {
   createdAt: DateTime
   dashboard: DashboardUpdateOneWithoutSectionsInput
-  id: Int
   name: String
   order: Int
   published: Boolean
@@ -1314,7 +1350,6 @@ input SectionUpdateInput {
 
 input SectionUpdateManyDataInput {
   createdAt: DateTime
-  id: Int
   name: String
   order: Int
   published: Boolean
@@ -1324,7 +1359,6 @@ input SectionUpdateManyDataInput {
 
 input SectionUpdateManyMutationInput {
   createdAt: DateTime
-  id: Int
   name: String
   order: Int
   published: Boolean
@@ -1358,7 +1392,6 @@ input SectionUpdateOneRequiredWithoutStepsInput {
 
 input SectionUpdateWithoutDashboardDataInput {
   createdAt: DateTime
-  id: Int
   name: String
   order: Int
   published: Boolean
@@ -1370,7 +1403,6 @@ input SectionUpdateWithoutDashboardDataInput {
 input SectionUpdateWithoutStepsDataInput {
   createdAt: DateTime
   dashboard: DashboardUpdateOneWithoutSectionsInput
-  id: Int
   name: String
   order: Int
   published: Boolean
@@ -1415,6 +1447,11 @@ input SectionWhereUniqueInput {
   name: String
 }
 
+enum SortOrder {
+  asc
+  desc
+}
+
 type Step {
   createdAt: DateTime!
   id: Int!
@@ -1441,7 +1478,7 @@ input StepCreateInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int!
+  order: Int
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1466,7 +1503,7 @@ input StepCreateWithoutJobInput {
   createdAt: DateTime
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int!
+  order: Int
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1476,7 +1513,7 @@ input StepCreateWithoutJournalEntriesInput {
   createdAt: DateTime
   job: JobCreateOneWithoutStepInput!
   name: String!
-  order: Int!
+  order: Int
   section: SectionCreateOneWithoutStepsInput!
   successCriteria: String
   updatedAt: DateTime
@@ -1487,7 +1524,7 @@ input StepCreateWithoutSectionInput {
   job: JobCreateOneWithoutStepInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
-  order: Int!
+  order: Int
   successCriteria: String
   updatedAt: DateTime
 }
@@ -1513,14 +1550,14 @@ type StepMinAggregateOutputType {
 }
 
 input StepOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  jobId: OrderByArg
-  name: OrderByArg
-  order: OrderByArg
-  sectionId: OrderByArg
-  successCriteria: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  name: SortOrder
+  order: SortOrder
+  sectionId: SortOrder
+  successCriteria: SortOrder
+  updatedAt: SortOrder
 }
 
 input StepScalarWhereInput {
@@ -1547,7 +1584,6 @@ type StepSumAggregateOutputType {
 
 input StepUpdateInput {
   createdAt: DateTime
-  id: Int
   job: JobUpdateOneRequiredWithoutStepInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
   name: String
@@ -1559,7 +1595,6 @@ input StepUpdateInput {
 
 input StepUpdateManyDataInput {
   createdAt: DateTime
-  id: Int
   name: String
   order: Int
   successCriteria: String
@@ -1568,7 +1603,6 @@ input StepUpdateManyDataInput {
 
 input StepUpdateManyMutationInput {
   createdAt: DateTime
-  id: Int
   name: String
   order: Int
   successCriteria: String
@@ -1613,7 +1647,6 @@ input StepUpdateOneRequiredWithoutJournalEntriesInput {
 
 input StepUpdateWithoutJobDataInput {
   createdAt: DateTime
-  id: Int
   journalEntries: JournalEntryUpdateManyWithoutStepInput
   name: String
   order: Int
@@ -1624,7 +1657,6 @@ input StepUpdateWithoutJobDataInput {
 
 input StepUpdateWithoutJournalEntriesDataInput {
   createdAt: DateTime
-  id: Int
   job: JobUpdateOneRequiredWithoutStepInput
   name: String
   order: Int
@@ -1635,7 +1667,6 @@ input StepUpdateWithoutJournalEntriesDataInput {
 
 input StepUpdateWithoutSectionDataInput {
   createdAt: DateTime
-  id: Int
   job: JobUpdateOneRequiredWithoutStepInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
   name: String
@@ -1745,6 +1776,7 @@ type User {
   groupId: Int
   id: Int!
   isAdmin: Boolean!
+  JournalEntries(cursor: JournalEntryWhereUniqueInput, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
   name: String
   password: String!
 }
@@ -1758,6 +1790,8 @@ input UserCreateInput {
   createdAt: DateTime
   email: String!
   group: GroupCreateOneWithoutUsersInput
+  isAdmin: Boolean
+  JournalEntries: JournalEntryCreateManyWithoutAuthorInput
   name: String
   password: String!
 }
@@ -1767,9 +1801,25 @@ input UserCreateManyWithoutGroupInput {
   create: [UserCreateWithoutGroupInput!]
 }
 
+input UserCreateOneWithoutJournalEntriesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutJournalEntriesInput
+}
+
 input UserCreateWithoutGroupInput {
   createdAt: DateTime
   email: String!
+  isAdmin: Boolean
+  JournalEntries: JournalEntryCreateManyWithoutAuthorInput
+  name: String
+  password: String!
+}
+
+input UserCreateWithoutJournalEntriesInput {
+  createdAt: DateTime
+  email: String!
+  group: GroupCreateOneWithoutUsersInput
+  isAdmin: Boolean
   name: String
   password: String!
 }
@@ -1791,12 +1841,13 @@ type UserMinAggregateOutputType {
 }
 
 input UserOrderByInput {
-  createdAt: OrderByArg
-  email: OrderByArg
-  groupId: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  password: OrderByArg
+  createdAt: SortOrder
+  email: SortOrder
+  groupId: SortOrder
+  id: SortOrder
+  isAdmin: SortOrder
+  name: SortOrder
+  password: SortOrder
 }
 
 input UserScalarWhereInput {
@@ -1805,6 +1856,8 @@ input UserScalarWhereInput {
   email: StringFilter
   groupId: NullableIntFilter
   id: IntFilter
+  isAdmin: BooleanFilter
+  JournalEntries: JournalEntryFilter
   name: NullableStringFilter
   NOT: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
@@ -1820,7 +1873,8 @@ input UserUpdateInput {
   createdAt: DateTime
   email: String
   group: GroupUpdateOneWithoutUsersInput
-  id: Int
+  isAdmin: Boolean
+  JournalEntries: JournalEntryUpdateManyWithoutAuthorInput
   name: String
   password: String
 }
@@ -1828,7 +1882,7 @@ input UserUpdateInput {
 input UserUpdateManyDataInput {
   createdAt: DateTime
   email: String
-  id: Int
+  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1836,7 +1890,7 @@ input UserUpdateManyDataInput {
 input UserUpdateManyMutationInput {
   createdAt: DateTime
   email: String
-  id: Int
+  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1858,10 +1912,27 @@ input UserUpdateManyWithWhereNestedInput {
   where: UserScalarWhereInput!
 }
 
+input UserUpdateOneRequiredWithoutJournalEntriesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutJournalEntriesInput
+  update: UserUpdateWithoutJournalEntriesDataInput
+  upsert: UserUpsertWithoutJournalEntriesInput
+}
+
 input UserUpdateWithoutGroupDataInput {
   createdAt: DateTime
   email: String
-  id: Int
+  isAdmin: Boolean
+  JournalEntries: JournalEntryUpdateManyWithoutAuthorInput
+  name: String
+  password: String
+}
+
+input UserUpdateWithoutJournalEntriesDataInput {
+  createdAt: DateTime
+  email: String
+  group: GroupUpdateOneWithoutUsersInput
+  isAdmin: Boolean
   name: String
   password: String
 }
@@ -1869,6 +1940,11 @@ input UserUpdateWithoutGroupDataInput {
 input UserUpdateWithWhereUniqueWithoutGroupInput {
   data: UserUpdateWithoutGroupDataInput!
   where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithoutJournalEntriesInput {
+  create: UserCreateWithoutJournalEntriesInput!
+  update: UserUpdateWithoutJournalEntriesDataInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutGroupInput {
@@ -1884,6 +1960,8 @@ input UserWhereInput {
   group: GroupWhereInput
   groupId: NullableIntFilter
   id: IntFilter
+  isAdmin: BooleanFilter
+  JournalEntries: JournalEntryFilter
   name: NullableStringFilter
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
