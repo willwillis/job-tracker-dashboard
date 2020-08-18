@@ -12,7 +12,7 @@ interface Option {
   label: string;
 }
 
-export default function () {
+export default function Index() {
   const { data: dashboards } = useFindManyDashboardQuery();
   const { data: groups } = useFindManyGroupQuery();
   const [group, setGroup] = useState<Option>({ value: undefined, label: 'All groups' });
