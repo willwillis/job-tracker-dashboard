@@ -5,7 +5,6 @@ export const Job = objectType({
   definition(t) {
     t.int('id', { nullable: false })
     t.string('name', { nullable: false })
-    t.int('joid', { nullable: true })
     t.field('createdAt', { nullable: false, type: 'DateTime' })
     t.field('updatedAt', { nullable: false, type: 'DateTime' })
     t.field('runs', {

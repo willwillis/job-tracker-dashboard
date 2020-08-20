@@ -1129,26 +1129,6 @@
           "order": -1
         },
         {
-          "id": "Job.joid",
-          "name": "joid",
-          "type": "Int",
-          "isId": false,
-          "unique": true,
-          "list": false,
-          "required": false,
-          "kind": "scalar",
-          "relationField": false,
-          "title": "Joid",
-          "create": true,
-          "update": true,
-          "editor": false,
-          "upload": false,
-          "read": true,
-          "filter": true,
-          "sort": true,
-          "order": -1
-        },
-        {
           "id": "Job.createdAt",
           "name": "createdAt",
           "type": "DateTime",
@@ -1275,26 +1255,6 @@
           "upload": false,
           "relationField": false,
           "order": 1,
-          "kind": "scalar"
-        },
-        {
-          "id": "Job Run.joid",
-          "name": "joid",
-          "title": "Joid",
-          "type": "Int",
-          "list": false,
-          "required": false,
-          "isId": false,
-          "unique": false,
-          "create": true,
-          "update": true,
-          "read": true,
-          "filter": true,
-          "sort": true,
-          "editor": false,
-          "upload": false,
-          "relationField": false,
-          "order": 2,
           "kind": "scalar"
         },
         {

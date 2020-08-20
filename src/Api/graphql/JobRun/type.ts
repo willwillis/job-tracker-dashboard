@@ -4,7 +4,6 @@ export const JobRun = objectType({
   name: 'JobRun',
   definition(t) {
     t.int('id', { nullable: false })
-    t.int('joid', { nullable: true })
     t.int('jobRunId', { nullable: true })
     t.field('createdAt', { nullable: false, type: 'DateTime' })
     t.field('updatedAt', { nullable: false, type: 'DateTime' })

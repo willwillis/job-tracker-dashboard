@@ -49,6 +49,7 @@ async function main() {
                   order: 0,
                   job: {
                     create: {
+                      id: 999999192354 + num,
                       name: makeid(9) + ' Job',
                     },
                   },
@@ -64,6 +65,7 @@ async function main() {
                   order: 0,
                   job: {
                     create: {
+                      id: 999999123956 + num,
                       name: makeid(9) + ' Job',
                     },
                   },
@@ -79,6 +81,7 @@ async function main() {
                   order: 0,
                   job: {
                     create: {
+                      id: 9999991999 + num,
                       name: makeid(9) + ' Job',
                     },
                   },
@@ -94,6 +97,7 @@ async function main() {
                   order: 0,
                   job: {
                     create: {
+                      id: 999929912354 + num,
                       name: makeid(9) + ' Job',
                     },
                   },
@@ -162,5 +166,5 @@ main()
     throw e;
   })
   .finally(async () => {
-    await prisma.$disconnect();
+    await prisma.disconnect();
   });
