@@ -577,7 +577,7 @@ export type Job = {
   jobType?: Maybe<JobType>;
   name: Scalars['String'];
   runs: Array<JobRun>;
-  Step: Array<Step>;
+  Steps: Array<Step>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -591,7 +591,7 @@ export type JobRunsArgs = {
 };
 
 
-export type JobStepArgs = {
+export type JobStepsArgs = {
   cursor?: Maybe<StepWhereUniqueInput>;
   orderBy?: Maybe<StepOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
@@ -610,7 +610,7 @@ export type JobCreateInput = {
   jobType?: Maybe<JobType>;
   name: Scalars['String'];
   runs?: Maybe<JobRunCreateManyWithoutJobInput>;
-  Step?: Maybe<StepCreateManyWithoutJobInput>;
+  Steps?: Maybe<StepCreateManyWithoutJobInput>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -619,9 +619,9 @@ export type JobCreateOneWithoutRunsInput = {
   create?: Maybe<JobCreateWithoutRunsInput>;
 };
 
-export type JobCreateOneWithoutStepInput = {
+export type JobCreateOneWithoutStepsInput = {
   connect?: Maybe<JobWhereUniqueInput>;
-  create?: Maybe<JobCreateWithoutStepInput>;
+  create?: Maybe<JobCreateWithoutStepsInput>;
 };
 
 export type JobCreateWithoutRunsInput = {
@@ -629,11 +629,11 @@ export type JobCreateWithoutRunsInput = {
   id: Scalars['Int'];
   jobType?: Maybe<JobType>;
   name: Scalars['String'];
-  Step?: Maybe<StepCreateManyWithoutJobInput>;
+  Steps?: Maybe<StepCreateManyWithoutJobInput>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type JobCreateWithoutStepInput = {
+export type JobCreateWithoutStepsInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
   jobType?: Maybe<JobType>;
@@ -907,7 +907,7 @@ export type JobUpdateInput = {
   jobType?: Maybe<JobType>;
   name?: Maybe<Scalars['String']>;
   runs?: Maybe<JobRunUpdateManyWithoutJobInput>;
-  Step?: Maybe<StepUpdateManyWithoutJobInput>;
+  Steps?: Maybe<StepUpdateManyWithoutJobInput>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -926,11 +926,11 @@ export type JobUpdateOneRequiredWithoutRunsInput = {
   upsert?: Maybe<JobUpsertWithoutRunsInput>;
 };
 
-export type JobUpdateOneRequiredWithoutStepInput = {
+export type JobUpdateOneRequiredWithoutStepsInput = {
   connect?: Maybe<JobWhereUniqueInput>;
-  create?: Maybe<JobCreateWithoutStepInput>;
-  update?: Maybe<JobUpdateWithoutStepDataInput>;
-  upsert?: Maybe<JobUpsertWithoutStepInput>;
+  create?: Maybe<JobCreateWithoutStepsInput>;
+  update?: Maybe<JobUpdateWithoutStepsDataInput>;
+  upsert?: Maybe<JobUpsertWithoutStepsInput>;
 };
 
 export type JobUpdateWithoutRunsDataInput = {
@@ -938,11 +938,11 @@ export type JobUpdateWithoutRunsDataInput = {
   id?: Maybe<Scalars['Int']>;
   jobType?: Maybe<JobType>;
   name?: Maybe<Scalars['String']>;
-  Step?: Maybe<StepUpdateManyWithoutJobInput>;
+  Steps?: Maybe<StepUpdateManyWithoutJobInput>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type JobUpdateWithoutStepDataInput = {
+export type JobUpdateWithoutStepsDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['Int']>;
   jobType?: Maybe<JobType>;
@@ -956,9 +956,9 @@ export type JobUpsertWithoutRunsInput = {
   update: JobUpdateWithoutRunsDataInput;
 };
 
-export type JobUpsertWithoutStepInput = {
-  create: JobCreateWithoutStepInput;
-  update: JobUpdateWithoutStepDataInput;
+export type JobUpsertWithoutStepsInput = {
+  create: JobCreateWithoutStepsInput;
+  update: JobUpdateWithoutStepsDataInput;
 };
 
 export type JobWhereInput = {
@@ -970,7 +970,7 @@ export type JobWhereInput = {
   NOT?: Maybe<Array<JobWhereInput>>;
   OR?: Maybe<Array<JobWhereInput>>;
   runs?: Maybe<JobRunFilter>;
-  Step?: Maybe<StepFilter>;
+  Steps?: Maybe<StepFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -1981,7 +1981,7 @@ export type StepAvgAggregateOutputType = {
 
 export type StepCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job: JobCreateOneWithoutStepInput;
+  job: JobCreateOneWithoutStepsInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
   order?: Maybe<Scalars['Int']>;
@@ -2017,7 +2017,7 @@ export type StepCreateWithoutJobInput = {
 
 export type StepCreateWithoutJournalEntriesInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job: JobCreateOneWithoutStepInput;
+  job: JobCreateOneWithoutStepsInput;
   name: Scalars['String'];
   order?: Maybe<Scalars['Int']>;
   section: SectionCreateOneWithoutStepsInput;
@@ -2027,7 +2027,7 @@ export type StepCreateWithoutJournalEntriesInput = {
 
 export type StepCreateWithoutSectionInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job: JobCreateOneWithoutStepInput;
+  job: JobCreateOneWithoutStepsInput;
   journalEntries?: Maybe<JournalEntryCreateManyWithoutStepInput>;
   name: Scalars['String'];
   order?: Maybe<Scalars['Int']>;
@@ -2093,7 +2093,7 @@ export type StepSumAggregateOutputType = {
 
 export type StepUpdateInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job?: Maybe<JobUpdateOneRequiredWithoutStepInput>;
+  job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
   journalEntries?: Maybe<JournalEntryUpdateManyWithoutStepInput>;
   name?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
@@ -2166,7 +2166,7 @@ export type StepUpdateWithoutJobDataInput = {
 
 export type StepUpdateWithoutJournalEntriesDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job?: Maybe<JobUpdateOneRequiredWithoutStepInput>;
+  job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
   name?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
   section?: Maybe<SectionUpdateOneRequiredWithoutStepsInput>;
@@ -2176,7 +2176,7 @@ export type StepUpdateWithoutJournalEntriesDataInput = {
 
 export type StepUpdateWithoutSectionDataInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
-  job?: Maybe<JobUpdateOneRequiredWithoutStepInput>;
+  job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
   journalEntries?: Maybe<JournalEntryUpdateManyWithoutStepInput>;
   name?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;

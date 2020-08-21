@@ -1208,15 +1208,15 @@
           "order": -1
         },
         {
-          "id": "Job.Step",
-          "name": "Step",
+          "id": "Job.Steps",
+          "name": "Steps",
           "type": "Step",
           "isId": false,
           "unique": false,
           "list": true,
           "required": false,
           "kind": "object",
-          "title": "Step",
+          "title": "Steps",
           "create": true,
           "update": true,
           "editor": false,

@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Job",
+      "field": "Steps",
+      "type": "Step",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Job",
+      "field": "Step"
+    }
+  ]
+}

@@ -510,7 +510,7 @@ type Job {
   jobType: JobType
   name: String!
   runs(cursor: JobRunWhereUniqueInput, orderBy: JobRunOrderByInput, skip: Int, take: Int, where: JobRunWhereInput): [JobRun!]!
-  Step(cursor: StepWhereUniqueInput, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
+  Steps(cursor: StepWhereUniqueInput, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
   updatedAt: DateTime!
 }
 
@@ -524,7 +524,7 @@ input JobCreateInput {
   jobType: JobType
   name: String!
   runs: JobRunCreateManyWithoutJobInput
-  Step: StepCreateManyWithoutJobInput
+  Steps: StepCreateManyWithoutJobInput
   updatedAt: DateTime
 }
 
@@ -533,9 +533,9 @@ input JobCreateOneWithoutRunsInput {
   create: JobCreateWithoutRunsInput
 }
 
-input JobCreateOneWithoutStepInput {
+input JobCreateOneWithoutStepsInput {
   connect: JobWhereUniqueInput
-  create: JobCreateWithoutStepInput
+  create: JobCreateWithoutStepsInput
 }
 
 input JobCreateWithoutRunsInput {
@@ -543,11 +543,11 @@ input JobCreateWithoutRunsInput {
   id: Int!
   jobType: JobType
   name: String!
-  Step: StepCreateManyWithoutJobInput
+  Steps: StepCreateManyWithoutJobInput
   updatedAt: DateTime
 }
 
-input JobCreateWithoutStepInput {
+input JobCreateWithoutStepsInput {
   createdAt: DateTime
   id: Int!
   jobType: JobType
@@ -813,7 +813,7 @@ input JobUpdateInput {
   jobType: JobType
   name: String
   runs: JobRunUpdateManyWithoutJobInput
-  Step: StepUpdateManyWithoutJobInput
+  Steps: StepUpdateManyWithoutJobInput
   updatedAt: DateTime
 }
 
@@ -832,11 +832,11 @@ input JobUpdateOneRequiredWithoutRunsInput {
   upsert: JobUpsertWithoutRunsInput
 }
 
-input JobUpdateOneRequiredWithoutStepInput {
+input JobUpdateOneRequiredWithoutStepsInput {
   connect: JobWhereUniqueInput
-  create: JobCreateWithoutStepInput
-  update: JobUpdateWithoutStepDataInput
-  upsert: JobUpsertWithoutStepInput
+  create: JobCreateWithoutStepsInput
+  update: JobUpdateWithoutStepsDataInput
+  upsert: JobUpsertWithoutStepsInput
 }
 
 input JobUpdateWithoutRunsDataInput {
@@ -844,11 +844,11 @@ input JobUpdateWithoutRunsDataInput {
   id: Int
   jobType: JobType
   name: String
-  Step: StepUpdateManyWithoutJobInput
+  Steps: StepUpdateManyWithoutJobInput
   updatedAt: DateTime
 }
 
-input JobUpdateWithoutStepDataInput {
+input JobUpdateWithoutStepsDataInput {
   createdAt: DateTime
   id: Int
   jobType: JobType
@@ -862,9 +862,9 @@ input JobUpsertWithoutRunsInput {
   update: JobUpdateWithoutRunsDataInput!
 }
 
-input JobUpsertWithoutStepInput {
-  create: JobCreateWithoutStepInput!
-  update: JobUpdateWithoutStepDataInput!
+input JobUpsertWithoutStepsInput {
+  create: JobCreateWithoutStepsInput!
+  update: JobUpdateWithoutStepsDataInput!
 }
 
 input JobWhereInput {
@@ -876,7 +876,7 @@ input JobWhereInput {
   NOT: [JobWhereInput!]
   OR: [JobWhereInput!]
   runs: JobRunFilter
-  Step: StepFilter
+  Steps: StepFilter
   updatedAt: DateTimeFilter
 }
 
@@ -1453,7 +1453,7 @@ type StepAvgAggregateOutputType {
 
 input StepCreateInput {
   createdAt: DateTime
-  job: JobCreateOneWithoutStepInput!
+  job: JobCreateOneWithoutStepsInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
   order: Int
@@ -1489,7 +1489,7 @@ input StepCreateWithoutJobInput {
 
 input StepCreateWithoutJournalEntriesInput {
   createdAt: DateTime
-  job: JobCreateOneWithoutStepInput!
+  job: JobCreateOneWithoutStepsInput!
   name: String!
   order: Int
   section: SectionCreateOneWithoutStepsInput!
@@ -1499,7 +1499,7 @@ input StepCreateWithoutJournalEntriesInput {
 
 input StepCreateWithoutSectionInput {
   createdAt: DateTime
-  job: JobCreateOneWithoutStepInput!
+  job: JobCreateOneWithoutStepsInput!
   journalEntries: JournalEntryCreateManyWithoutStepInput
   name: String!
   order: Int
@@ -1562,7 +1562,7 @@ type StepSumAggregateOutputType {
 
 input StepUpdateInput {
   createdAt: DateTime
-  job: JobUpdateOneRequiredWithoutStepInput
+  job: JobUpdateOneRequiredWithoutStepsInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
   name: String
   order: Int
@@ -1635,7 +1635,7 @@ input StepUpdateWithoutJobDataInput {
 
 input StepUpdateWithoutJournalEntriesDataInput {
   createdAt: DateTime
-  job: JobUpdateOneRequiredWithoutStepInput
+  job: JobUpdateOneRequiredWithoutStepsInput
   name: String
   order: Int
   section: SectionUpdateOneRequiredWithoutStepsInput
@@ -1645,7 +1645,7 @@ input StepUpdateWithoutJournalEntriesDataInput {
 
 input StepUpdateWithoutSectionDataInput {
   createdAt: DateTime
-  job: JobUpdateOneRequiredWithoutStepInput
+  job: JobUpdateOneRequiredWithoutStepsInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
   name: String
   order: Int

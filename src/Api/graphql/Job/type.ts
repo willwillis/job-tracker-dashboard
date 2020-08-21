@@ -23,7 +23,7 @@ export const Job = objectType({
       },
     })
     t.field('jobType', { nullable: true, type: 'JobType' })
-    t.field('Step', {
+    t.field('Steps', {
       nullable: false,
       list: [true],
       type: 'Step',
@@ -35,7 +35,7 @@ export const Job = objectType({
         skip: 'Int',
       },
       resolve(parent: any) {
-        return parent['Step']
+        return parent['Steps']
       },
     })
   },
