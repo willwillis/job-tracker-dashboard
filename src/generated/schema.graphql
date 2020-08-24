@@ -556,6 +556,11 @@ input JobCreateWithoutStepsInput {
   updatedAt: DateTime
 }
 
+input JobIdStartTimeCompoundUniqueInput {
+  jobId: Int!
+  startTime: DateTime!
+}
+
 type JobMaxAggregateOutputType {
   id: Int!
 }
@@ -769,6 +774,7 @@ input JobRunWhereInput {
 
 input JobRunWhereUniqueInput {
   id: Int
+  jobId_startTime: JobIdStartTimeCompoundUniqueInput
 }
 
 enum JobStatus {
