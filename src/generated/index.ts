@@ -642,6 +642,11 @@ export type JobCreateWithoutStepsInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export type JobIdStartTimeCompoundUniqueInput = {
+  jobId: Scalars['Int'];
+  startTime: Scalars['DateTime'];
+};
+
 export type JobMaxAggregateOutputType = {
   __typename?: 'JobMaxAggregateOutputType';
   id: Scalars['Int'];
@@ -862,6 +867,7 @@ export type JobRunWhereInput = {
 
 export type JobRunWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
+  jobId_startTime?: Maybe<JobIdStartTimeCompoundUniqueInput>;
 };
 
 export enum JobStatus {
