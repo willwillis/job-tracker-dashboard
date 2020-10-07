@@ -21,7 +21,7 @@
     "db-drop": "ts-node --transpile-only -P nexus.tsconfig.json scripts/drop-database"
   },
   "dependencies": {
-    "@apollo/client": "3.1.3",
+    "@apollo/client": "^3.1.3",
     "@apollo/react-ssr": "4.0.0",
     "@nexus/schema": "0.15.0",
     "@paljs/admin": "1.1.12",
@@ -32,10 +32,10 @@
     "apollo-server-micro": "2.16.1",
     "bcryptjs": "2.4.3",
     "cookie": "0.4.1",
-    "graphql": "15.3.0",
-    "graphql-tag": "2.11.0",
+    "graphql-language-service-parser": "^1.6.4",
+    "graphql-tag": "^2.11.0",
     "graphql-tools": "6.0.18",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "^8.5.1",
     "micro-cors": "^0.1.1",
     "moment": "^2.27.0",
     "next": "9.5.2",
@@ -49,7 +49,7 @@
     "@graphql-codegen/typescript": "1.17.8",
     "@graphql-codegen/typescript-operations": "1.17.8",
     "@graphql-codegen/typescript-react-apollo": "2.0.6",
-    "@prisma/cli": "2.3.0",
+    "@prisma/cli": "^2.3.0",
     "@types/bcryptjs": "2.4.2",
     "@types/cookie": "0.4.0",
     "@types/graphql": "14.5.0",
@@ -67,10 +67,13 @@
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.6",
+    "graphql": "^15.3.0",
     "husky": "4.2.5",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
-    "typescript": "3.9.7"
+    "to": "^0.2.9",
+    "typescript": "3.9.7",
+    "update": "^0.7.4"
   },
   "husky": {
     "hooks": {

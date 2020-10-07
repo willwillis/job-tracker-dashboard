@@ -46,11 +46,11 @@ export const AuthMutations = extendType({
         ctx.res.setHeader(
           'Set-Cookie',
           cookie.serialize('token', sign({ userId: user.id }, JWT_SECRET), {
-            httpOnly: true,
-            maxAge: 6 * 60 * 60,
-            path: '/',
-            sameSite: 'lax',
-            secure: process.env.NODE_ENV === 'production',
+            // httpOnly: false,
+            // maxAge: 6 * 60 * 60,
+            // path: '/',
+            // sameSite: 'lax',
+            // secure: process.env.NODE_ENV === 'production',
           }),
         )
         return user
@@ -79,11 +79,11 @@ export const AuthMutations = extendType({
         ctx.res.setHeader(
           'Set-Cookie',
           cookie.serialize('token', sign({ userId: user.id }, JWT_SECRET), {
-            httpOnly: true,
-            maxAge: 6 * 60 * 60,
-            path: '/',
-            sameSite: 'lax',
-            secure: process.env.NODE_ENV === 'production',
+            // httpOnly: false,
+            // maxAge: 6 * 60 * 60,
+            // path: '/',
+            // sameSite: 'lax',
+            // secure: process.env.NODE_ENV === 'production',
           }),
         )
         return user
@@ -95,11 +95,11 @@ export const AuthMutations = extendType({
         ctx.res.setHeader(
           'Set-Cookie',
           cookie.serialize('token', '', {
-            httpOnly: true,
-            maxAge: -1,
-            path: '/',
-            sameSite: 'lax',
-            secure: process.env.NODE_ENV === 'production',
+            // httpOnly: false,
+            // maxAge: -1,
+            // path: '/',
+            // sameSite: 'lax',
+            // secure: process.env.NODE_ENV === 'production',
           }),
         )
         return true
