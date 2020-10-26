@@ -28,6 +28,7 @@ export const Section = objectType({
         cursor: 'StepWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'StepDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['steps']

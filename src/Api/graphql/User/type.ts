@@ -27,6 +27,7 @@ export const User = objectType({
         cursor: 'JournalEntryWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'JournalEntryDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['JournalEntries']

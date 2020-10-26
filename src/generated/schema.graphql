@@ -70,19 +70,23 @@ type BatchPayload {
   count: Int!
 }
 
-input BooleanFilter {
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
   equals: Boolean
-  not: Boolean
+  not: NestedBoolFilter
 }
 
 type Dashboard {
   createdAt: DateTime!
-  groups(cursor: GroupWhereUniqueInput, orderBy: GroupOrderByInput, skip: Int, take: Int, where: GroupWhereInput): [Group!]!
+  groups(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: GroupOrderByInput, skip: Int, take: Int, where: GroupWhereInput): [Group!]!
   id: Int!
   minuteOffset: Int!
   name: String!
   published: Boolean!
-  sections(cursor: SectionWhereUniqueInput, orderBy: SectionOrderByInput, skip: Int, take: Int, where: SectionWhereInput): [Section!]!
+  sections(cursor: SectionWhereUniqueInput, distinct: SectionDistinctFieldEnum, orderBy: SectionOrderByInput, skip: Int, take: Int, where: SectionWhereInput): [Section!]!
   updatedAt: DateTime!
 }
 
@@ -129,7 +133,16 @@ input DashboardCreateWithoutSectionsInput {
   updatedAt: DateTime
 }
 
-input DashboardFilter {
+enum DashboardDistinctFieldEnum {
+  createdAt
+  id
+  minuteOffset
+  name
+  published
+  updatedAt
+}
+
+input DashboardListRelationFilter {
   every: DashboardWhereInput
   none: DashboardWhereInput
   some: DashboardWhereInput
@@ -146,25 +159,28 @@ type DashboardMinAggregateOutputType {
 }
 
 input DashboardOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  minuteOffset: OrderByArg
-  name: OrderByArg
-  published: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  minuteOffset: SortOrder
+  name: SortOrder
+  published: SortOrder
+  updatedAt: SortOrder
+}
+
+input DashboardRelationFilter {
+  is: DashboardWhereInput
+  isNot: DashboardWhereInput
 }
 
 input DashboardScalarWhereInput {
   AND: [DashboardScalarWhereInput!]
   createdAt: DateTimeFilter
-  groups: GroupFilter
   id: IntFilter
   minuteOffset: IntFilter
   name: StringFilter
   NOT: [DashboardScalarWhereInput!]
   OR: [DashboardScalarWhereInput!]
-  published: BooleanFilter
-  sections: SectionFilter
+  published: BoolFilter
   updatedAt: DateTimeFilter
 }
 
@@ -174,29 +190,29 @@ type DashboardSumAggregateOutputType {
 }
 
 input DashboardUpdateInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   groups: GroupUpdateManyWithoutDashboardsInput
-  minuteOffset: Int
-  name: String
-  published: Boolean
+  minuteOffset: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
   sections: SectionUpdateManyWithoutDashboardInput
-  updatedAt: DateTime
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input DashboardUpdateManyDataInput {
-  createdAt: DateTime
-  minuteOffset: Int
-  name: String
-  published: Boolean
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  minuteOffset: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input DashboardUpdateManyMutationInput {
-  createdAt: DateTime
-  minuteOffset: Int
-  name: String
-  published: Boolean
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  minuteOffset: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input DashboardUpdateManyWithoutGroupsInput {
@@ -226,21 +242,21 @@ input DashboardUpdateOneWithoutSectionsInput {
 }
 
 input DashboardUpdateWithoutGroupsDataInput {
-  createdAt: DateTime
-  minuteOffset: Int
-  name: String
-  published: Boolean
+  createdAt: DateTimeFieldUpdateOperationsInput
+  minuteOffset: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
   sections: SectionUpdateManyWithoutDashboardInput
-  updatedAt: DateTime
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input DashboardUpdateWithoutSectionsDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   groups: GroupUpdateManyWithoutDashboardsInput
-  minuteOffset: Int
-  name: String
-  published: Boolean
-  updatedAt: DateTime
+  minuteOffset: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input DashboardUpdateWithWhereUniqueWithoutGroupsInput {
@@ -262,14 +278,14 @@ input DashboardUpsertWithWhereUniqueWithoutGroupsInput {
 input DashboardWhereInput {
   AND: [DashboardWhereInput!]
   createdAt: DateTimeFilter
-  groups: GroupFilter
+  groups: GroupListRelationFilter
   id: IntFilter
   minuteOffset: IntFilter
   name: StringFilter
   NOT: [DashboardWhereInput!]
   OR: [DashboardWhereInput!]
-  published: BooleanFilter
-  sections: SectionFilter
+  published: BoolFilter
+  sections: SectionListRelationFilter
   updatedAt: DateTimeFilter
 }
 
@@ -281,6 +297,10 @@ input DashboardWhereUniqueInput {
 """Date custom scalar type"""
 scalar DateTime
 
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
 input DateTimeFilter {
   equals: DateTime
   gt: DateTime
@@ -288,13 +308,42 @@ input DateTimeFilter {
   in: [DateTime!]
   lt: DateTime
   lte: DateTime
-  not: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
   notIn: [DateTime!]
 }
 
 type Enum {
   fields: [String!]!
   name: String!
+}
+
+input EnumJobStatusFieldUpdateOperationsInput {
+  set: JobStatus
+}
+
+input EnumJobStatusFilter {
+  equals: JobStatus
+  in: [JobStatus!]
+  not: NestedEnumJobStatusFilter
+  notIn: [JobStatus!]
+}
+
+input EnumJobTypeNullableFilter {
+  equals: JobType
+  in: [JobType!]
+  not: NestedEnumJobTypeNullableFilter
+  notIn: [JobType!]
 }
 
 type Field {
@@ -320,11 +369,11 @@ type Field {
 
 type Group {
   createdAt: DateTime!
-  dashboards(cursor: DashboardWhereUniqueInput, orderBy: DashboardOrderByInput, skip: Int, take: Int, where: DashboardWhereInput): [Dashboard!]!
+  dashboards(cursor: DashboardWhereUniqueInput, distinct: DashboardDistinctFieldEnum, orderBy: DashboardOrderByInput, skip: Int, take: Int, where: DashboardWhereInput): [Dashboard!]!
   id: Int!
   name: String!
   updatedAt: DateTime!
-  users(cursor: UserWhereUniqueInput, orderBy: UserOrderByInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  users(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: UserOrderByInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
 }
 
 type GroupAvgAggregateOutputType {
@@ -363,7 +412,14 @@ input GroupCreateWithoutUsersInput {
   updatedAt: DateTime
 }
 
-input GroupFilter {
+enum GroupDistinctFieldEnum {
+  createdAt
+  id
+  name
+  updatedAt
+}
+
+input GroupListRelationFilter {
   every: GroupWhereInput
   none: GroupWhereInput
   some: GroupWhereInput
@@ -378,22 +434,25 @@ type GroupMinAggregateOutputType {
 }
 
 input GroupOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input GroupRelationFilter {
+  is: GroupWhereInput
+  isNot: GroupWhereInput
 }
 
 input GroupScalarWhereInput {
   AND: [GroupScalarWhereInput!]
   createdAt: DateTimeFilter
-  dashboards: DashboardFilter
   id: IntFilter
   name: StringFilter
   NOT: [GroupScalarWhereInput!]
   OR: [GroupScalarWhereInput!]
   updatedAt: DateTimeFilter
-  users: UserFilter
 }
 
 type GroupSumAggregateOutputType {
@@ -401,23 +460,23 @@ type GroupSumAggregateOutputType {
 }
 
 input GroupUpdateInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   dashboards: DashboardUpdateManyWithoutGroupsInput
-  name: String
-  updatedAt: DateTime
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
   users: UserUpdateManyWithoutGroupInput
 }
 
 input GroupUpdateManyDataInput {
-  createdAt: DateTime
-  name: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GroupUpdateManyMutationInput {
-  createdAt: DateTime
-  name: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GroupUpdateManyWithoutDashboardsInput {
@@ -447,17 +506,17 @@ input GroupUpdateOneWithoutUsersInput {
 }
 
 input GroupUpdateWithoutDashboardsDataInput {
-  createdAt: DateTime
-  name: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
   users: UserUpdateManyWithoutGroupInput
 }
 
 input GroupUpdateWithoutUsersDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   dashboards: DashboardUpdateManyWithoutGroupsInput
-  name: String
-  updatedAt: DateTime
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GroupUpdateWithWhereUniqueWithoutDashboardsInput {
@@ -479,18 +538,22 @@ input GroupUpsertWithWhereUniqueWithoutDashboardsInput {
 input GroupWhereInput {
   AND: [GroupWhereInput!]
   createdAt: DateTimeFilter
-  dashboards: DashboardFilter
+  dashboards: DashboardListRelationFilter
   id: IntFilter
   name: StringFilter
   NOT: [GroupWhereInput!]
   OR: [GroupWhereInput!]
   updatedAt: DateTimeFilter
-  users: UserFilter
+  users: UserListRelationFilter
 }
 
 input GroupWhereUniqueInput {
   id: Int
   name: String
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
 }
 
 input IntFilter {
@@ -500,7 +563,18 @@ input IntFilter {
   in: [Int!]
   lt: Int
   lte: Int
-  not: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
   notIn: [Int!]
 }
 
@@ -509,8 +583,8 @@ type Job {
   id: Int!
   jobType: JobType
   name: String!
-  runs(cursor: JobRunWhereUniqueInput, orderBy: JobRunOrderByInput, skip: Int, take: Int, where: JobRunWhereInput): [JobRun!]!
-  Steps(cursor: StepWhereUniqueInput, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
+  runs(cursor: JobRunWhereUniqueInput, distinct: JobRunDistinctFieldEnum, orderBy: JobRunOrderByInput, skip: Int, take: Int, where: JobRunWhereInput): [JobRun!]!
+  Steps(cursor: StepWhereUniqueInput, distinct: StepDistinctFieldEnum, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
   updatedAt: DateTime!
 }
 
@@ -556,6 +630,14 @@ input JobCreateWithoutStepsInput {
   updatedAt: DateTime
 }
 
+enum JobDistinctFieldEnum {
+  createdAt
+  id
+  jobType
+  name
+  updatedAt
+}
+
 input JobIdStartTimeCompoundUniqueInput {
   jobId: Int!
   startTime: DateTime!
@@ -570,11 +652,16 @@ type JobMinAggregateOutputType {
 }
 
 input JobOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  jobType: OrderByArg
-  name: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  jobType: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input JobRelationFilter {
+  is: JobWhereInput
+  isNot: JobWhereInput
 }
 
 type JobRun {
@@ -626,7 +713,20 @@ input JobRunCreateWithoutJobInput {
   updatedAt: DateTime
 }
 
-input JobRunFilter {
+enum JobRunDistinctFieldEnum {
+  createdAt
+  endTime
+  exitCode
+  id
+  jobId
+  jobRunId
+  moreInfo
+  startTime
+  status
+  updatedAt
+}
+
+input JobRunListRelationFilter {
   every: JobRunWhereInput
   none: JobRunWhereInput
   some: JobRunWhereInput
@@ -647,31 +747,31 @@ type JobRunMinAggregateOutputType {
 }
 
 input JobRunOrderByInput {
-  createdAt: OrderByArg
-  endTime: OrderByArg
-  exitCode: OrderByArg
-  id: OrderByArg
-  jobId: OrderByArg
-  jobRunId: OrderByArg
-  moreInfo: OrderByArg
-  startTime: OrderByArg
-  status: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  endTime: SortOrder
+  exitCode: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  jobRunId: SortOrder
+  moreInfo: SortOrder
+  startTime: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
 }
 
 input JobRunScalarWhereInput {
   AND: [JobRunScalarWhereInput!]
   createdAt: DateTimeFilter
-  endTime: NullableDateTimeFilter
-  exitCode: NullableIntFilter
+  endTime: DateTimeNullableFilter
+  exitCode: IntNullableFilter
   id: IntFilter
   jobId: IntFilter
-  jobRunId: NullableIntFilter
-  moreInfo: NullableStringFilter
+  jobRunId: IntNullableFilter
+  moreInfo: StringNullableFilter
   NOT: [JobRunScalarWhereInput!]
   OR: [JobRunScalarWhereInput!]
   startTime: DateTimeFilter
-  status: JobStatusFilter
+  status: EnumJobStatusFilter
   updatedAt: DateTimeFilter
 }
 
@@ -683,37 +783,37 @@ type JobRunSumAggregateOutputType {
 }
 
 input JobRunUpdateInput {
-  createdAt: DateTime
-  endTime: DateTime
-  exitCode: Int
+  createdAt: DateTimeFieldUpdateOperationsInput
+  endTime: NullableDateTimeFieldUpdateOperationsInput
+  exitCode: NullableIntFieldUpdateOperationsInput
   job: JobUpdateOneRequiredWithoutRunsInput
-  jobRunId: Int
-  moreInfo: String
-  startTime: DateTime
-  status: JobStatus
-  updatedAt: DateTime
+  jobRunId: NullableIntFieldUpdateOperationsInput
+  moreInfo: NullableStringFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  status: EnumJobStatusFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobRunUpdateManyDataInput {
-  createdAt: DateTime
-  endTime: DateTime
-  exitCode: Int
-  jobRunId: Int
-  moreInfo: String
-  startTime: DateTime
-  status: JobStatus
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  endTime: NullableDateTimeFieldUpdateOperationsInput
+  exitCode: NullableIntFieldUpdateOperationsInput
+  jobRunId: NullableIntFieldUpdateOperationsInput
+  moreInfo: NullableStringFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  status: EnumJobStatusFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobRunUpdateManyMutationInput {
-  createdAt: DateTime
-  endTime: DateTime
-  exitCode: Int
-  jobRunId: Int
-  moreInfo: String
-  startTime: DateTime
-  status: JobStatus
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  endTime: NullableDateTimeFieldUpdateOperationsInput
+  exitCode: NullableIntFieldUpdateOperationsInput
+  jobRunId: NullableIntFieldUpdateOperationsInput
+  moreInfo: NullableStringFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  status: EnumJobStatusFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobRunUpdateManyWithoutJobInput {
@@ -734,14 +834,14 @@ input JobRunUpdateManyWithWhereNestedInput {
 }
 
 input JobRunUpdateWithoutJobDataInput {
-  createdAt: DateTime
-  endTime: DateTime
-  exitCode: Int
-  jobRunId: Int
-  moreInfo: String
-  startTime: DateTime
-  status: JobStatus
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  endTime: NullableDateTimeFieldUpdateOperationsInput
+  exitCode: NullableIntFieldUpdateOperationsInput
+  jobRunId: NullableIntFieldUpdateOperationsInput
+  moreInfo: NullableStringFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  status: EnumJobStatusFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobRunUpdateWithWhereUniqueWithoutJobInput {
@@ -758,17 +858,17 @@ input JobRunUpsertWithWhereUniqueWithoutJobInput {
 input JobRunWhereInput {
   AND: [JobRunWhereInput!]
   createdAt: DateTimeFilter
-  endTime: NullableDateTimeFilter
-  exitCode: NullableIntFilter
+  endTime: DateTimeNullableFilter
+  exitCode: IntNullableFilter
   id: IntFilter
   job: JobWhereInput
   jobId: IntFilter
-  jobRunId: NullableIntFilter
-  moreInfo: NullableStringFilter
+  jobRunId: IntNullableFilter
+  moreInfo: StringNullableFilter
   NOT: [JobRunWhereInput!]
   OR: [JobRunWhereInput!]
   startTime: DateTimeFilter
-  status: JobStatusFilter
+  status: EnumJobStatusFilter
   updatedAt: DateTimeFilter
 }
 
@@ -795,13 +895,6 @@ enum JobStatus {
   WAIT_REPLY
 }
 
-input JobStatusFilter {
-  equals: JobStatus
-  in: [JobStatus!]
-  not: JobStatus
-  notIn: [JobStatus!]
-}
-
 type JobSumAggregateOutputType {
   id: Int!
 }
@@ -814,21 +907,21 @@ enum JobType {
 }
 
 input JobUpdateInput {
-  createdAt: DateTime
-  id: Int
-  jobType: JobType
-  name: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  jobType: NullableEnumJobTypeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
   runs: JobRunUpdateManyWithoutJobInput
   Steps: StepUpdateManyWithoutJobInput
-  updatedAt: DateTime
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobUpdateManyMutationInput {
-  createdAt: DateTime
-  id: Int
-  jobType: JobType
-  name: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  jobType: NullableEnumJobTypeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobUpdateOneRequiredWithoutRunsInput {
@@ -846,21 +939,21 @@ input JobUpdateOneRequiredWithoutStepsInput {
 }
 
 input JobUpdateWithoutRunsDataInput {
-  createdAt: DateTime
-  id: Int
-  jobType: JobType
-  name: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  jobType: NullableEnumJobTypeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
   Steps: StepUpdateManyWithoutJobInput
-  updatedAt: DateTime
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobUpdateWithoutStepsDataInput {
-  createdAt: DateTime
-  id: Int
-  jobType: JobType
-  name: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  jobType: NullableEnumJobTypeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
   runs: JobRunUpdateManyWithoutJobInput
-  updatedAt: DateTime
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input JobUpsertWithoutRunsInput {
@@ -877,12 +970,12 @@ input JobWhereInput {
   AND: [JobWhereInput!]
   createdAt: DateTimeFilter
   id: IntFilter
-  jobType: NullableJobTypeFilter
+  jobType: EnumJobTypeNullableFilter
   name: StringFilter
   NOT: [JobWhereInput!]
   OR: [JobWhereInput!]
-  runs: JobRunFilter
-  Steps: StepFilter
+  runs: JobRunListRelationFilter
+  Steps: StepListRelationFilter
   updatedAt: DateTimeFilter
 }
 
@@ -936,7 +1029,15 @@ input JournalEntryCreateWithoutStepInput {
   entry: String!
 }
 
-input JournalEntryFilter {
+enum JournalEntryDistinctFieldEnum {
+  authorId
+  createdAt
+  entry
+  id
+  stepId
+}
+
+input JournalEntryListRelationFilter {
   every: JournalEntryWhereInput
   none: JournalEntryWhereInput
   some: JournalEntryWhereInput
@@ -955,11 +1056,11 @@ type JournalEntryMinAggregateOutputType {
 }
 
 input JournalEntryOrderByInput {
-  authorId: OrderByArg
-  createdAt: OrderByArg
-  entry: OrderByArg
-  id: OrderByArg
-  stepId: OrderByArg
+  authorId: SortOrder
+  createdAt: SortOrder
+  entry: SortOrder
+  id: SortOrder
+  stepId: SortOrder
 }
 
 input JournalEntryScalarWhereInput {
@@ -981,19 +1082,19 @@ type JournalEntrySumAggregateOutputType {
 
 input JournalEntryUpdateInput {
   author: UserUpdateOneRequiredWithoutJournalEntriesInput
-  createdAt: DateTime
-  entry: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  entry: StringFieldUpdateOperationsInput
   step: StepUpdateOneRequiredWithoutJournalEntriesInput
 }
 
 input JournalEntryUpdateManyDataInput {
-  createdAt: DateTime
-  entry: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  entry: StringFieldUpdateOperationsInput
 }
 
 input JournalEntryUpdateManyMutationInput {
-  createdAt: DateTime
-  entry: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  entry: StringFieldUpdateOperationsInput
 }
 
 input JournalEntryUpdateManyWithoutAuthorInput {
@@ -1026,15 +1127,15 @@ input JournalEntryUpdateManyWithWhereNestedInput {
 }
 
 input JournalEntryUpdateWithoutAuthorDataInput {
-  createdAt: DateTime
-  entry: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  entry: StringFieldUpdateOperationsInput
   step: StepUpdateOneRequiredWithoutJournalEntriesInput
 }
 
 input JournalEntryUpdateWithoutStepDataInput {
   author: UserUpdateOneRequiredWithoutJournalEntriesInput
-  createdAt: DateTime
-  entry: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  entry: StringFieldUpdateOperationsInput
 }
 
 input JournalEntryUpdateWithWhereUniqueWithoutAuthorInput {
@@ -1075,6 +1176,9 @@ input JournalEntryWhereInput {
 input JournalEntryWhereUniqueInput {
   id: Int
 }
+
+"""Json custom scalar type"""
+scalar Json
 
 enum KindEnum {
   enum
@@ -1134,36 +1238,70 @@ type Mutation {
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
-input NullableDateTimeFilter {
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedDateTimeFilter {
   equals: DateTime
   gt: DateTime
   gte: DateTime
   in: [DateTime!]
   lt: DateTime
   lte: DateTime
-  not: DateTime
+  not: NestedDateTimeFilter
   notIn: [DateTime!]
 }
 
-input NullableIntFilter {
+input NestedDateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
+  notIn: [DateTime!]
+}
+
+input NestedEnumJobStatusFilter {
+  equals: JobStatus
+  in: [JobStatus!]
+  not: NestedEnumJobStatusFilter
+  notIn: [JobStatus!]
+}
+
+input NestedEnumJobTypeNullableFilter {
+  equals: JobType
+  in: [JobType!]
+  not: NestedEnumJobTypeNullableFilter
+  notIn: [JobType!]
+}
+
+input NestedIntFilter {
   equals: Int
   gt: Int
   gte: Int
   in: [Int!]
   lt: Int
   lte: Int
-  not: Int
+  not: NestedIntFilter
   notIn: [Int!]
 }
 
-input NullableJobTypeFilter {
-  equals: JobType
-  in: [JobType!]
-  not: JobType
-  notIn: [JobType!]
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
 }
 
-input NullableStringFilter {
+input NestedStringFilter {
   contains: String
   endsWith: String
   equals: String
@@ -1172,14 +1310,39 @@ input NullableStringFilter {
   in: [String!]
   lt: String
   lte: String
-  not: String
+  not: NestedStringFilter
   notIn: [String!]
   startsWith: String
 }
 
-enum OrderByArg {
-  asc
-  desc
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NullableDateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input NullableEnumJobTypeFieldUpdateOperationsInput {
+  set: JobType
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  set: Int
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
 }
 
 type Query {
@@ -1211,6 +1374,11 @@ type Query {
   me: User
 }
 
+enum QueryMode {
+  default
+  insensitive
+}
+
 type Schema {
   enums: [Enum!]!
   models: [Model!]!
@@ -1224,7 +1392,7 @@ type Section {
   name: String!
   order: Int!
   published: Boolean!
-  steps(cursor: StepWhereUniqueInput, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
+  steps(cursor: StepWhereUniqueInput, distinct: StepDistinctFieldEnum, orderBy: StepOrderByInput, skip: Int, take: Int, where: StepWhereInput): [Step!]!
   successCriteria: String
   updatedAt: DateTime!
 }
@@ -1276,7 +1444,18 @@ input SectionCreateWithoutStepsInput {
   updatedAt: DateTime
 }
 
-input SectionFilter {
+enum SectionDistinctFieldEnum {
+  createdAt
+  dashboardId
+  id
+  name
+  order
+  published
+  successCriteria
+  updatedAt
+}
+
+input SectionListRelationFilter {
   every: SectionWhereInput
   none: SectionWhereInput
   some: SectionWhereInput
@@ -1295,28 +1474,32 @@ type SectionMinAggregateOutputType {
 }
 
 input SectionOrderByInput {
-  createdAt: OrderByArg
-  dashboardId: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  order: OrderByArg
-  published: OrderByArg
-  successCriteria: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  dashboardId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  order: SortOrder
+  published: SortOrder
+  successCriteria: SortOrder
+  updatedAt: SortOrder
+}
+
+input SectionRelationFilter {
+  is: SectionWhereInput
+  isNot: SectionWhereInput
 }
 
 input SectionScalarWhereInput {
   AND: [SectionScalarWhereInput!]
   createdAt: DateTimeFilter
-  dashboardId: NullableIntFilter
+  dashboardId: IntNullableFilter
   id: IntFilter
   name: StringFilter
   NOT: [SectionScalarWhereInput!]
   OR: [SectionScalarWhereInput!]
   order: IntFilter
-  published: BooleanFilter
-  steps: StepFilter
-  successCriteria: NullableStringFilter
+  published: BoolFilter
+  successCriteria: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 
@@ -1327,32 +1510,32 @@ type SectionSumAggregateOutputType {
 }
 
 input SectionUpdateInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   dashboard: DashboardUpdateOneWithoutSectionsInput
-  name: String
-  order: Int
-  published: Boolean
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
   steps: StepUpdateManyWithoutSectionInput
-  successCriteria: String
-  updatedAt: DateTime
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input SectionUpdateManyDataInput {
-  createdAt: DateTime
-  name: String
-  order: Int
-  published: Boolean
-  successCriteria: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input SectionUpdateManyMutationInput {
-  createdAt: DateTime
-  name: String
-  order: Int
-  published: Boolean
-  successCriteria: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input SectionUpdateManyWithoutDashboardInput {
@@ -1380,23 +1563,23 @@ input SectionUpdateOneRequiredWithoutStepsInput {
 }
 
 input SectionUpdateWithoutDashboardDataInput {
-  createdAt: DateTime
-  name: String
-  order: Int
-  published: Boolean
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
   steps: StepUpdateManyWithoutSectionInput
-  successCriteria: String
-  updatedAt: DateTime
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input SectionUpdateWithoutStepsDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   dashboard: DashboardUpdateOneWithoutSectionsInput
-  name: String
-  order: Int
-  published: Boolean
-  successCriteria: String
-  updatedAt: DateTime
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input SectionUpdateWithWhereUniqueWithoutDashboardInput {
@@ -1419,15 +1602,15 @@ input SectionWhereInput {
   AND: [SectionWhereInput!]
   createdAt: DateTimeFilter
   dashboard: DashboardWhereInput
-  dashboardId: NullableIntFilter
+  dashboardId: IntNullableFilter
   id: IntFilter
   name: StringFilter
   NOT: [SectionWhereInput!]
   OR: [SectionWhereInput!]
   order: IntFilter
-  published: BooleanFilter
-  steps: StepFilter
-  successCriteria: NullableStringFilter
+  published: BoolFilter
+  steps: StepListRelationFilter
+  successCriteria: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 
@@ -1436,12 +1619,17 @@ input SectionWhereUniqueInput {
   name: String
 }
 
+enum SortOrder {
+  asc
+  desc
+}
+
 type Step {
   createdAt: DateTime!
   id: Int!
   job: Job!
   jobId: Int!
-  journalEntries(cursor: JournalEntryWhereUniqueInput, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
+  journalEntries(cursor: JournalEntryWhereUniqueInput, distinct: JournalEntryDistinctFieldEnum, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
   name: String!
   order: Int!
   section: Section!
@@ -1513,7 +1701,18 @@ input StepCreateWithoutSectionInput {
   updatedAt: DateTime
 }
 
-input StepFilter {
+enum StepDistinctFieldEnum {
+  createdAt
+  id
+  jobId
+  name
+  order
+  sectionId
+  successCriteria
+  updatedAt
+}
+
+input StepListRelationFilter {
   every: StepWhereInput
   none: StepWhereInput
   some: StepWhereInput
@@ -1534,14 +1733,19 @@ type StepMinAggregateOutputType {
 }
 
 input StepOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  jobId: OrderByArg
-  name: OrderByArg
-  order: OrderByArg
-  sectionId: OrderByArg
-  successCriteria: OrderByArg
-  updatedAt: OrderByArg
+  createdAt: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  name: SortOrder
+  order: SortOrder
+  sectionId: SortOrder
+  successCriteria: SortOrder
+  updatedAt: SortOrder
+}
+
+input StepRelationFilter {
+  is: StepWhereInput
+  isNot: StepWhereInput
 }
 
 input StepScalarWhereInput {
@@ -1549,13 +1753,12 @@ input StepScalarWhereInput {
   createdAt: DateTimeFilter
   id: IntFilter
   jobId: IntFilter
-  journalEntries: JournalEntryFilter
   name: StringFilter
   NOT: [StepScalarWhereInput!]
   OR: [StepScalarWhereInput!]
   order: IntFilter
   sectionId: IntFilter
-  successCriteria: NullableStringFilter
+  successCriteria: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 
@@ -1567,30 +1770,30 @@ type StepSumAggregateOutputType {
 }
 
 input StepUpdateInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   job: JobUpdateOneRequiredWithoutStepsInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
-  name: String
-  order: Int
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
   section: SectionUpdateOneRequiredWithoutStepsInput
-  successCriteria: String
-  updatedAt: DateTime
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateManyDataInput {
-  createdAt: DateTime
-  name: String
-  order: Int
-  successCriteria: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateManyMutationInput {
-  createdAt: DateTime
-  name: String
-  order: Int
-  successCriteria: String
-  updatedAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateManyWithoutJobInput {
@@ -1630,33 +1833,33 @@ input StepUpdateOneRequiredWithoutJournalEntriesInput {
 }
 
 input StepUpdateWithoutJobDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
-  name: String
-  order: Int
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
   section: SectionUpdateOneRequiredWithoutStepsInput
-  successCriteria: String
-  updatedAt: DateTime
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateWithoutJournalEntriesDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   job: JobUpdateOneRequiredWithoutStepsInput
-  name: String
-  order: Int
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
   section: SectionUpdateOneRequiredWithoutStepsInput
-  successCriteria: String
-  updatedAt: DateTime
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateWithoutSectionDataInput {
-  createdAt: DateTime
+  createdAt: DateTimeFieldUpdateOperationsInput
   job: JobUpdateOneRequiredWithoutStepsInput
   journalEntries: JournalEntryUpdateManyWithoutStepInput
-  name: String
-  order: Int
-  successCriteria: String
-  updatedAt: DateTime
+  name: StringFieldUpdateOperationsInput
+  order: IntFieldUpdateOperationsInput
+  successCriteria: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input StepUpdateWithWhereUniqueWithoutJobInput {
@@ -1692,20 +1895,24 @@ input StepWhereInput {
   id: IntFilter
   job: JobWhereInput
   jobId: IntFilter
-  journalEntries: JournalEntryFilter
+  journalEntries: JournalEntryListRelationFilter
   name: StringFilter
   NOT: [StepWhereInput!]
   OR: [StepWhereInput!]
   order: IntFilter
   section: SectionWhereInput
   sectionId: IntFilter
-  successCriteria: NullableStringFilter
+  successCriteria: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 
 input StepWhereUniqueInput {
   id: Int
   name: String
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
 }
 
 input StringFilter {
@@ -1717,7 +1924,23 @@ input StringFilter {
   in: [String!]
   lt: String
   lte: String
-  not: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
   notIn: [String!]
   startsWith: String
 }
@@ -1760,7 +1983,7 @@ type User {
   groupId: Int
   id: Int!
   isAdmin: Boolean!
-  JournalEntries(cursor: JournalEntryWhereUniqueInput, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
+  JournalEntries(cursor: JournalEntryWhereUniqueInput, distinct: JournalEntryDistinctFieldEnum, orderBy: JournalEntryOrderByInput, skip: Int, take: Int, where: JournalEntryWhereInput): [JournalEntry!]!
   name: String
   password: String!
 }
@@ -1808,7 +2031,17 @@ input UserCreateWithoutJournalEntriesInput {
   password: String!
 }
 
-input UserFilter {
+enum UserDistinctFieldEnum {
+  createdAt
+  email
+  groupId
+  id
+  isAdmin
+  name
+  password
+}
+
+input UserListRelationFilter {
   every: UserWhereInput
   none: UserWhereInput
   some: UserWhereInput
@@ -1825,24 +2058,28 @@ type UserMinAggregateOutputType {
 }
 
 input UserOrderByInput {
-  createdAt: OrderByArg
-  email: OrderByArg
-  groupId: OrderByArg
-  id: OrderByArg
-  isAdmin: OrderByArg
-  name: OrderByArg
-  password: OrderByArg
+  createdAt: SortOrder
+  email: SortOrder
+  groupId: SortOrder
+  id: SortOrder
+  isAdmin: SortOrder
+  name: SortOrder
+  password: SortOrder
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
 }
 
 input UserScalarWhereInput {
   AND: [UserScalarWhereInput!]
   createdAt: DateTimeFilter
   email: StringFilter
-  groupId: NullableIntFilter
+  groupId: IntNullableFilter
   id: IntFilter
-  isAdmin: BooleanFilter
-  JournalEntries: JournalEntryFilter
-  name: NullableStringFilter
+  isAdmin: BoolFilter
+  name: StringNullableFilter
   NOT: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
   password: StringFilter
@@ -1854,29 +2091,29 @@ type UserSumAggregateOutputType {
 }
 
 input UserUpdateInput {
-  createdAt: DateTime
-  email: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
-  isAdmin: Boolean
+  isAdmin: BoolFieldUpdateOperationsInput
   JournalEntries: JournalEntryUpdateManyWithoutAuthorInput
-  name: String
-  password: String
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyDataInput {
-  createdAt: DateTime
-  email: String
-  isAdmin: Boolean
-  name: String
-  password: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  isAdmin: BoolFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
-  createdAt: DateTime
-  email: String
-  isAdmin: Boolean
-  name: String
-  password: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  isAdmin: BoolFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyWithoutGroupInput {
@@ -1904,21 +2141,21 @@ input UserUpdateOneRequiredWithoutJournalEntriesInput {
 }
 
 input UserUpdateWithoutGroupDataInput {
-  createdAt: DateTime
-  email: String
-  isAdmin: Boolean
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  isAdmin: BoolFieldUpdateOperationsInput
   JournalEntries: JournalEntryUpdateManyWithoutAuthorInput
-  name: String
-  password: String
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutJournalEntriesDataInput {
-  createdAt: DateTime
-  email: String
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
-  isAdmin: Boolean
-  name: String
-  password: String
+  isAdmin: BoolFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithWhereUniqueWithoutGroupInput {
@@ -1942,11 +2179,11 @@ input UserWhereInput {
   createdAt: DateTimeFilter
   email: StringFilter
   group: GroupWhereInput
-  groupId: NullableIntFilter
+  groupId: IntNullableFilter
   id: IntFilter
-  isAdmin: BooleanFilter
-  JournalEntries: JournalEntryFilter
-  name: NullableStringFilter
+  isAdmin: BoolFilter
+  JournalEntries: JournalEntryListRelationFilter
+  name: StringNullableFilter
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
   password: StringFilter

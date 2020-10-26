@@ -17,6 +17,7 @@ export const Group = objectType({
         cursor: 'DashboardWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'DashboardDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['dashboards']
@@ -32,6 +33,7 @@ export const Group = objectType({
         cursor: 'UserWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'UserDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['users']

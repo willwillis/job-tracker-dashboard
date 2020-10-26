@@ -11,6 +11,8 @@ export type Scalars = {
   Float: number;
   /** Date custom scalar type */
   DateTime: any;
+  /** Json custom scalar type */
+  Json: any;
 };
 
 export type AggregateDashboard = {
@@ -90,9 +92,13 @@ export type BatchPayload = {
   count: Scalars['Int'];
 };
 
-export type BooleanFilter = {
+export type BoolFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['Boolean']>;
+};
+
+export type BoolFilter = {
   equals?: Maybe<Scalars['Boolean']>;
-  not?: Maybe<Scalars['Boolean']>;
+  not?: Maybe<NestedBoolFilter>;
 };
 
 export type Dashboard = {
@@ -110,6 +116,7 @@ export type Dashboard = {
 
 export type DashboardGroupsArgs = {
   cursor?: Maybe<GroupWhereUniqueInput>;
+  distinct?: Maybe<GroupDistinctFieldEnum>;
   orderBy?: Maybe<GroupOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -119,6 +126,7 @@ export type DashboardGroupsArgs = {
 
 export type DashboardSectionsArgs = {
   cursor?: Maybe<SectionWhereUniqueInput>;
+  distinct?: Maybe<SectionDistinctFieldEnum>;
   orderBy?: Maybe<SectionOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -169,7 +177,16 @@ export type DashboardCreateWithoutSectionsInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type DashboardFilter = {
+export enum DashboardDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  MinuteOffset = 'minuteOffset',
+  Name = 'name',
+  Published = 'published',
+  UpdatedAt = 'updatedAt'
+}
+
+export type DashboardListRelationFilter = {
   every?: Maybe<DashboardWhereInput>;
   none?: Maybe<DashboardWhereInput>;
   some?: Maybe<DashboardWhereInput>;
@@ -188,25 +205,28 @@ export type DashboardMinAggregateOutputType = {
 };
 
 export type DashboardOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  minuteOffset?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  published?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  minuteOffset?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  published?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type DashboardRelationFilter = {
+  is?: Maybe<DashboardWhereInput>;
+  isNot?: Maybe<DashboardWhereInput>;
 };
 
 export type DashboardScalarWhereInput = {
   AND?: Maybe<Array<DashboardScalarWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  groups?: Maybe<GroupFilter>;
   id?: Maybe<IntFilter>;
   minuteOffset?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<DashboardScalarWhereInput>>;
   OR?: Maybe<Array<DashboardScalarWhereInput>>;
-  published?: Maybe<BooleanFilter>;
-  sections?: Maybe<SectionFilter>;
+  published?: Maybe<BoolFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -217,29 +237,29 @@ export type DashboardSumAggregateOutputType = {
 };
 
 export type DashboardUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   groups?: Maybe<GroupUpdateManyWithoutDashboardsInput>;
-  minuteOffset?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
+  minuteOffset?: Maybe<IntFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
   sections?: Maybe<SectionUpdateManyWithoutDashboardInput>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type DashboardUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  minuteOffset?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  minuteOffset?: Maybe<IntFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type DashboardUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  minuteOffset?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  minuteOffset?: Maybe<IntFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type DashboardUpdateManyWithoutGroupsInput = {
@@ -269,21 +289,21 @@ export type DashboardUpdateOneWithoutSectionsInput = {
 };
 
 export type DashboardUpdateWithoutGroupsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  minuteOffset?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  minuteOffset?: Maybe<IntFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
   sections?: Maybe<SectionUpdateManyWithoutDashboardInput>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type DashboardUpdateWithoutSectionsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   groups?: Maybe<GroupUpdateManyWithoutDashboardsInput>;
-  minuteOffset?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  minuteOffset?: Maybe<IntFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type DashboardUpdateWithWhereUniqueWithoutGroupsInput = {
@@ -305,14 +325,14 @@ export type DashboardUpsertWithWhereUniqueWithoutGroupsInput = {
 export type DashboardWhereInput = {
   AND?: Maybe<Array<DashboardWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  groups?: Maybe<GroupFilter>;
+  groups?: Maybe<GroupListRelationFilter>;
   id?: Maybe<IntFilter>;
   minuteOffset?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<DashboardWhereInput>>;
   OR?: Maybe<Array<DashboardWhereInput>>;
-  published?: Maybe<BooleanFilter>;
-  sections?: Maybe<SectionFilter>;
+  published?: Maybe<BoolFilter>;
+  sections?: Maybe<SectionListRelationFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -322,6 +342,10 @@ export type DashboardWhereUniqueInput = {
 };
 
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['DateTime']>;
+};
+
 export type DateTimeFilter = {
   equals?: Maybe<Scalars['DateTime']>;
   gt?: Maybe<Scalars['DateTime']>;
@@ -329,7 +353,18 @@ export type DateTimeFilter = {
   in?: Maybe<Array<Scalars['DateTime']>>;
   lt?: Maybe<Scalars['DateTime']>;
   lte?: Maybe<Scalars['DateTime']>;
-  not?: Maybe<Scalars['DateTime']>;
+  not?: Maybe<NestedDateTimeFilter>;
+  notIn?: Maybe<Array<Scalars['DateTime']>>;
+};
+
+export type DateTimeNullableFilter = {
+  equals?: Maybe<Scalars['DateTime']>;
+  gt?: Maybe<Scalars['DateTime']>;
+  gte?: Maybe<Scalars['DateTime']>;
+  in?: Maybe<Array<Scalars['DateTime']>>;
+  lt?: Maybe<Scalars['DateTime']>;
+  lte?: Maybe<Scalars['DateTime']>;
+  not?: Maybe<NestedDateTimeNullableFilter>;
   notIn?: Maybe<Array<Scalars['DateTime']>>;
 };
 
@@ -337,6 +372,24 @@ export type Enum = {
   __typename?: 'Enum';
   fields: Array<Scalars['String']>;
   name: Scalars['String'];
+};
+
+export type EnumJobStatusFieldUpdateOperationsInput = {
+  set?: Maybe<JobStatus>;
+};
+
+export type EnumJobStatusFilter = {
+  equals?: Maybe<JobStatus>;
+  in?: Maybe<Array<JobStatus>>;
+  not?: Maybe<NestedEnumJobStatusFilter>;
+  notIn?: Maybe<Array<JobStatus>>;
+};
+
+export type EnumJobTypeNullableFilter = {
+  equals?: Maybe<JobType>;
+  in?: Maybe<Array<JobType>>;
+  not?: Maybe<NestedEnumJobTypeNullableFilter>;
+  notIn?: Maybe<Array<JobType>>;
 };
 
 export type Field = {
@@ -374,6 +427,7 @@ export type Group = {
 
 export type GroupDashboardsArgs = {
   cursor?: Maybe<DashboardWhereUniqueInput>;
+  distinct?: Maybe<DashboardDistinctFieldEnum>;
   orderBy?: Maybe<DashboardOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -383,6 +437,7 @@ export type GroupDashboardsArgs = {
 
 export type GroupUsersArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
+  distinct?: Maybe<UserDistinctFieldEnum>;
   orderBy?: Maybe<UserOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -426,7 +481,14 @@ export type GroupCreateWithoutUsersInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type GroupFilter = {
+export enum GroupDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  Name = 'name',
+  UpdatedAt = 'updatedAt'
+}
+
+export type GroupListRelationFilter = {
   every?: Maybe<GroupWhereInput>;
   none?: Maybe<GroupWhereInput>;
   some?: Maybe<GroupWhereInput>;
@@ -443,22 +505,25 @@ export type GroupMinAggregateOutputType = {
 };
 
 export type GroupOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type GroupRelationFilter = {
+  is?: Maybe<GroupWhereInput>;
+  isNot?: Maybe<GroupWhereInput>;
 };
 
 export type GroupScalarWhereInput = {
   AND?: Maybe<Array<GroupScalarWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  dashboards?: Maybe<DashboardFilter>;
   id?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<GroupScalarWhereInput>>;
   OR?: Maybe<Array<GroupScalarWhereInput>>;
   updatedAt?: Maybe<DateTimeFilter>;
-  users?: Maybe<UserFilter>;
 };
 
 export type GroupSumAggregateOutputType = {
@@ -467,23 +532,23 @@ export type GroupSumAggregateOutputType = {
 };
 
 export type GroupUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   dashboards?: Maybe<DashboardUpdateManyWithoutGroupsInput>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   users?: Maybe<UserUpdateManyWithoutGroupInput>;
 };
 
 export type GroupUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GroupUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GroupUpdateManyWithoutDashboardsInput = {
@@ -513,17 +578,17 @@ export type GroupUpdateOneWithoutUsersInput = {
 };
 
 export type GroupUpdateWithoutDashboardsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   users?: Maybe<UserUpdateManyWithoutGroupInput>;
 };
 
 export type GroupUpdateWithoutUsersDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   dashboards?: Maybe<DashboardUpdateManyWithoutGroupsInput>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GroupUpdateWithWhereUniqueWithoutDashboardsInput = {
@@ -545,18 +610,22 @@ export type GroupUpsertWithWhereUniqueWithoutDashboardsInput = {
 export type GroupWhereInput = {
   AND?: Maybe<Array<GroupWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  dashboards?: Maybe<DashboardFilter>;
+  dashboards?: Maybe<DashboardListRelationFilter>;
   id?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<GroupWhereInput>>;
   OR?: Maybe<Array<GroupWhereInput>>;
   updatedAt?: Maybe<DateTimeFilter>;
-  users?: Maybe<UserFilter>;
+  users?: Maybe<UserListRelationFilter>;
 };
 
 export type GroupWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+};
+
+export type IntFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['Int']>;
 };
 
 export type IntFilter = {
@@ -566,7 +635,18 @@ export type IntFilter = {
   in?: Maybe<Array<Scalars['Int']>>;
   lt?: Maybe<Scalars['Int']>;
   lte?: Maybe<Scalars['Int']>;
-  not?: Maybe<Scalars['Int']>;
+  not?: Maybe<NestedIntFilter>;
+  notIn?: Maybe<Array<Scalars['Int']>>;
+};
+
+export type IntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>;
+  gt?: Maybe<Scalars['Int']>;
+  gte?: Maybe<Scalars['Int']>;
+  in?: Maybe<Array<Scalars['Int']>>;
+  lt?: Maybe<Scalars['Int']>;
+  lte?: Maybe<Scalars['Int']>;
+  not?: Maybe<NestedIntNullableFilter>;
   notIn?: Maybe<Array<Scalars['Int']>>;
 };
 
@@ -584,6 +664,7 @@ export type Job = {
 
 export type JobRunsArgs = {
   cursor?: Maybe<JobRunWhereUniqueInput>;
+  distinct?: Maybe<JobRunDistinctFieldEnum>;
   orderBy?: Maybe<JobRunOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -593,6 +674,7 @@ export type JobRunsArgs = {
 
 export type JobStepsArgs = {
   cursor?: Maybe<StepWhereUniqueInput>;
+  distinct?: Maybe<StepDistinctFieldEnum>;
   orderBy?: Maybe<StepOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -642,6 +724,14 @@ export type JobCreateWithoutStepsInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export enum JobDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  JobType = 'jobType',
+  Name = 'name',
+  UpdatedAt = 'updatedAt'
+}
+
 export type JobIdStartTimeCompoundUniqueInput = {
   jobId: Scalars['Int'];
   startTime: Scalars['DateTime'];
@@ -658,11 +748,16 @@ export type JobMinAggregateOutputType = {
 };
 
 export type JobOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  jobType?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  jobType?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type JobRelationFilter = {
+  is?: Maybe<JobWhereInput>;
+  isNot?: Maybe<JobWhereInput>;
 };
 
 export type JobRun = {
@@ -716,7 +811,20 @@ export type JobRunCreateWithoutJobInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type JobRunFilter = {
+export enum JobRunDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  EndTime = 'endTime',
+  ExitCode = 'exitCode',
+  Id = 'id',
+  JobId = 'jobId',
+  JobRunId = 'jobRunId',
+  MoreInfo = 'moreInfo',
+  StartTime = 'startTime',
+  Status = 'status',
+  UpdatedAt = 'updatedAt'
+}
+
+export type JobRunListRelationFilter = {
   every?: Maybe<JobRunWhereInput>;
   none?: Maybe<JobRunWhereInput>;
   some?: Maybe<JobRunWhereInput>;
@@ -739,31 +847,31 @@ export type JobRunMinAggregateOutputType = {
 };
 
 export type JobRunOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  endTime?: Maybe<OrderByArg>;
-  exitCode?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  jobId?: Maybe<OrderByArg>;
-  jobRunId?: Maybe<OrderByArg>;
-  moreInfo?: Maybe<OrderByArg>;
-  startTime?: Maybe<OrderByArg>;
-  status?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  endTime?: Maybe<SortOrder>;
+  exitCode?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  jobId?: Maybe<SortOrder>;
+  jobRunId?: Maybe<SortOrder>;
+  moreInfo?: Maybe<SortOrder>;
+  startTime?: Maybe<SortOrder>;
+  status?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
 };
 
 export type JobRunScalarWhereInput = {
   AND?: Maybe<Array<JobRunScalarWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  endTime?: Maybe<NullableDateTimeFilter>;
-  exitCode?: Maybe<NullableIntFilter>;
+  endTime?: Maybe<DateTimeNullableFilter>;
+  exitCode?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
   jobId?: Maybe<IntFilter>;
-  jobRunId?: Maybe<NullableIntFilter>;
-  moreInfo?: Maybe<NullableStringFilter>;
+  jobRunId?: Maybe<IntNullableFilter>;
+  moreInfo?: Maybe<StringNullableFilter>;
   NOT?: Maybe<Array<JobRunScalarWhereInput>>;
   OR?: Maybe<Array<JobRunScalarWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<JobStatusFilter>;
+  status?: Maybe<EnumJobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -776,37 +884,37 @@ export type JobRunSumAggregateOutputType = {
 };
 
 export type JobRunUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  endTime?: Maybe<Scalars['DateTime']>;
-  exitCode?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  endTime?: Maybe<NullableDateTimeFieldUpdateOperationsInput>;
+  exitCode?: Maybe<NullableIntFieldUpdateOperationsInput>;
   job?: Maybe<JobUpdateOneRequiredWithoutRunsInput>;
-  jobRunId?: Maybe<Scalars['Int']>;
-  moreInfo?: Maybe<Scalars['String']>;
-  startTime?: Maybe<Scalars['DateTime']>;
-  status?: Maybe<JobStatus>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  jobRunId?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  moreInfo?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  startTime?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  status?: Maybe<EnumJobStatusFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobRunUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  endTime?: Maybe<Scalars['DateTime']>;
-  exitCode?: Maybe<Scalars['Int']>;
-  jobRunId?: Maybe<Scalars['Int']>;
-  moreInfo?: Maybe<Scalars['String']>;
-  startTime?: Maybe<Scalars['DateTime']>;
-  status?: Maybe<JobStatus>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  endTime?: Maybe<NullableDateTimeFieldUpdateOperationsInput>;
+  exitCode?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  jobRunId?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  moreInfo?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  startTime?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  status?: Maybe<EnumJobStatusFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobRunUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  endTime?: Maybe<Scalars['DateTime']>;
-  exitCode?: Maybe<Scalars['Int']>;
-  jobRunId?: Maybe<Scalars['Int']>;
-  moreInfo?: Maybe<Scalars['String']>;
-  startTime?: Maybe<Scalars['DateTime']>;
-  status?: Maybe<JobStatus>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  endTime?: Maybe<NullableDateTimeFieldUpdateOperationsInput>;
+  exitCode?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  jobRunId?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  moreInfo?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  startTime?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  status?: Maybe<EnumJobStatusFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobRunUpdateManyWithoutJobInput = {
@@ -827,14 +935,14 @@ export type JobRunUpdateManyWithWhereNestedInput = {
 };
 
 export type JobRunUpdateWithoutJobDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  endTime?: Maybe<Scalars['DateTime']>;
-  exitCode?: Maybe<Scalars['Int']>;
-  jobRunId?: Maybe<Scalars['Int']>;
-  moreInfo?: Maybe<Scalars['String']>;
-  startTime?: Maybe<Scalars['DateTime']>;
-  status?: Maybe<JobStatus>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  endTime?: Maybe<NullableDateTimeFieldUpdateOperationsInput>;
+  exitCode?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  jobRunId?: Maybe<NullableIntFieldUpdateOperationsInput>;
+  moreInfo?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  startTime?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  status?: Maybe<EnumJobStatusFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobRunUpdateWithWhereUniqueWithoutJobInput = {
@@ -851,17 +959,17 @@ export type JobRunUpsertWithWhereUniqueWithoutJobInput = {
 export type JobRunWhereInput = {
   AND?: Maybe<Array<JobRunWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  endTime?: Maybe<NullableDateTimeFilter>;
-  exitCode?: Maybe<NullableIntFilter>;
+  endTime?: Maybe<DateTimeNullableFilter>;
+  exitCode?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
   job?: Maybe<JobWhereInput>;
   jobId?: Maybe<IntFilter>;
-  jobRunId?: Maybe<NullableIntFilter>;
-  moreInfo?: Maybe<NullableStringFilter>;
+  jobRunId?: Maybe<IntNullableFilter>;
+  moreInfo?: Maybe<StringNullableFilter>;
   NOT?: Maybe<Array<JobRunWhereInput>>;
   OR?: Maybe<Array<JobRunWhereInput>>;
   startTime?: Maybe<DateTimeFilter>;
-  status?: Maybe<JobStatusFilter>;
+  status?: Maybe<EnumJobStatusFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -888,13 +996,6 @@ export enum JobStatus {
   WaitReply = 'WAIT_REPLY'
 }
 
-export type JobStatusFilter = {
-  equals?: Maybe<JobStatus>;
-  in?: Maybe<Array<JobStatus>>;
-  not?: Maybe<JobStatus>;
-  notIn?: Maybe<Array<JobStatus>>;
-};
-
 export type JobSumAggregateOutputType = {
   __typename?: 'JobSumAggregateOutputType';
   id: Scalars['Int'];
@@ -908,21 +1009,21 @@ export enum JobType {
 }
 
 export type JobUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['Int']>;
-  jobType?: Maybe<JobType>;
-  name?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  id?: Maybe<IntFieldUpdateOperationsInput>;
+  jobType?: Maybe<NullableEnumJobTypeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
   runs?: Maybe<JobRunUpdateManyWithoutJobInput>;
   Steps?: Maybe<StepUpdateManyWithoutJobInput>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['Int']>;
-  jobType?: Maybe<JobType>;
-  name?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  id?: Maybe<IntFieldUpdateOperationsInput>;
+  jobType?: Maybe<NullableEnumJobTypeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobUpdateOneRequiredWithoutRunsInput = {
@@ -940,21 +1041,21 @@ export type JobUpdateOneRequiredWithoutStepsInput = {
 };
 
 export type JobUpdateWithoutRunsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['Int']>;
-  jobType?: Maybe<JobType>;
-  name?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  id?: Maybe<IntFieldUpdateOperationsInput>;
+  jobType?: Maybe<NullableEnumJobTypeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
   Steps?: Maybe<StepUpdateManyWithoutJobInput>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobUpdateWithoutStepsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['Int']>;
-  jobType?: Maybe<JobType>;
-  name?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  id?: Maybe<IntFieldUpdateOperationsInput>;
+  jobType?: Maybe<NullableEnumJobTypeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
   runs?: Maybe<JobRunUpdateManyWithoutJobInput>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type JobUpsertWithoutRunsInput = {
@@ -971,12 +1072,12 @@ export type JobWhereInput = {
   AND?: Maybe<Array<JobWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
   id?: Maybe<IntFilter>;
-  jobType?: Maybe<NullableJobTypeFilter>;
+  jobType?: Maybe<EnumJobTypeNullableFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<JobWhereInput>>;
   OR?: Maybe<Array<JobWhereInput>>;
-  runs?: Maybe<JobRunFilter>;
-  Steps?: Maybe<StepFilter>;
+  runs?: Maybe<JobRunListRelationFilter>;
+  Steps?: Maybe<StepListRelationFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -1032,7 +1133,15 @@ export type JournalEntryCreateWithoutStepInput = {
   entry: Scalars['String'];
 };
 
-export type JournalEntryFilter = {
+export enum JournalEntryDistinctFieldEnum {
+  AuthorId = 'authorId',
+  CreatedAt = 'createdAt',
+  Entry = 'entry',
+  Id = 'id',
+  StepId = 'stepId'
+}
+
+export type JournalEntryListRelationFilter = {
   every?: Maybe<JournalEntryWhereInput>;
   none?: Maybe<JournalEntryWhereInput>;
   some?: Maybe<JournalEntryWhereInput>;
@@ -1053,11 +1162,11 @@ export type JournalEntryMinAggregateOutputType = {
 };
 
 export type JournalEntryOrderByInput = {
-  authorId?: Maybe<OrderByArg>;
-  createdAt?: Maybe<OrderByArg>;
-  entry?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  stepId?: Maybe<OrderByArg>;
+  authorId?: Maybe<SortOrder>;
+  createdAt?: Maybe<SortOrder>;
+  entry?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  stepId?: Maybe<SortOrder>;
 };
 
 export type JournalEntryScalarWhereInput = {
@@ -1080,19 +1189,19 @@ export type JournalEntrySumAggregateOutputType = {
 
 export type JournalEntryUpdateInput = {
   author?: Maybe<UserUpdateOneRequiredWithoutJournalEntriesInput>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  entry?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  entry?: Maybe<StringFieldUpdateOperationsInput>;
   step?: Maybe<StepUpdateOneRequiredWithoutJournalEntriesInput>;
 };
 
 export type JournalEntryUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  entry?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  entry?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type JournalEntryUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  entry?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  entry?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type JournalEntryUpdateManyWithoutAuthorInput = {
@@ -1125,15 +1234,15 @@ export type JournalEntryUpdateManyWithWhereNestedInput = {
 };
 
 export type JournalEntryUpdateWithoutAuthorDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  entry?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  entry?: Maybe<StringFieldUpdateOperationsInput>;
   step?: Maybe<StepUpdateOneRequiredWithoutJournalEntriesInput>;
 };
 
 export type JournalEntryUpdateWithoutStepDataInput = {
   author?: Maybe<UserUpdateOneRequiredWithoutJournalEntriesInput>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  entry?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  entry?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type JournalEntryUpdateWithWhereUniqueWithoutAuthorInput = {
@@ -1174,6 +1283,7 @@ export type JournalEntryWhereInput = {
 export type JournalEntryWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
 };
+
 
 export enum KindEnum {
   Enum = 'enum',
@@ -1451,36 +1561,70 @@ export type MutationUpsertOneUserArgs = {
   where: UserWhereUniqueInput;
 };
 
-export type NullableDateTimeFilter = {
+export type NestedBoolFilter = {
+  equals?: Maybe<Scalars['Boolean']>;
+  not?: Maybe<NestedBoolFilter>;
+};
+
+export type NestedDateTimeFilter = {
   equals?: Maybe<Scalars['DateTime']>;
   gt?: Maybe<Scalars['DateTime']>;
   gte?: Maybe<Scalars['DateTime']>;
   in?: Maybe<Array<Scalars['DateTime']>>;
   lt?: Maybe<Scalars['DateTime']>;
   lte?: Maybe<Scalars['DateTime']>;
-  not?: Maybe<Scalars['DateTime']>;
+  not?: Maybe<NestedDateTimeFilter>;
   notIn?: Maybe<Array<Scalars['DateTime']>>;
 };
 
-export type NullableIntFilter = {
+export type NestedDateTimeNullableFilter = {
+  equals?: Maybe<Scalars['DateTime']>;
+  gt?: Maybe<Scalars['DateTime']>;
+  gte?: Maybe<Scalars['DateTime']>;
+  in?: Maybe<Array<Scalars['DateTime']>>;
+  lt?: Maybe<Scalars['DateTime']>;
+  lte?: Maybe<Scalars['DateTime']>;
+  not?: Maybe<NestedDateTimeNullableFilter>;
+  notIn?: Maybe<Array<Scalars['DateTime']>>;
+};
+
+export type NestedEnumJobStatusFilter = {
+  equals?: Maybe<JobStatus>;
+  in?: Maybe<Array<JobStatus>>;
+  not?: Maybe<NestedEnumJobStatusFilter>;
+  notIn?: Maybe<Array<JobStatus>>;
+};
+
+export type NestedEnumJobTypeNullableFilter = {
+  equals?: Maybe<JobType>;
+  in?: Maybe<Array<JobType>>;
+  not?: Maybe<NestedEnumJobTypeNullableFilter>;
+  notIn?: Maybe<Array<JobType>>;
+};
+
+export type NestedIntFilter = {
   equals?: Maybe<Scalars['Int']>;
   gt?: Maybe<Scalars['Int']>;
   gte?: Maybe<Scalars['Int']>;
   in?: Maybe<Array<Scalars['Int']>>;
   lt?: Maybe<Scalars['Int']>;
   lte?: Maybe<Scalars['Int']>;
-  not?: Maybe<Scalars['Int']>;
+  not?: Maybe<NestedIntFilter>;
   notIn?: Maybe<Array<Scalars['Int']>>;
 };
 
-export type NullableJobTypeFilter = {
-  equals?: Maybe<JobType>;
-  in?: Maybe<Array<JobType>>;
-  not?: Maybe<JobType>;
-  notIn?: Maybe<Array<JobType>>;
+export type NestedIntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>;
+  gt?: Maybe<Scalars['Int']>;
+  gte?: Maybe<Scalars['Int']>;
+  in?: Maybe<Array<Scalars['Int']>>;
+  lt?: Maybe<Scalars['Int']>;
+  lte?: Maybe<Scalars['Int']>;
+  not?: Maybe<NestedIntNullableFilter>;
+  notIn?: Maybe<Array<Scalars['Int']>>;
 };
 
-export type NullableStringFilter = {
+export type NestedStringFilter = {
   contains?: Maybe<Scalars['String']>;
   endsWith?: Maybe<Scalars['String']>;
   equals?: Maybe<Scalars['String']>;
@@ -1489,15 +1633,40 @@ export type NullableStringFilter = {
   in?: Maybe<Array<Scalars['String']>>;
   lt?: Maybe<Scalars['String']>;
   lte?: Maybe<Scalars['String']>;
-  not?: Maybe<Scalars['String']>;
+  not?: Maybe<NestedStringFilter>;
   notIn?: Maybe<Array<Scalars['String']>>;
   startsWith?: Maybe<Scalars['String']>;
 };
 
-export enum OrderByArg {
-  Asc = 'asc',
-  Desc = 'desc'
-}
+export type NestedStringNullableFilter = {
+  contains?: Maybe<Scalars['String']>;
+  endsWith?: Maybe<Scalars['String']>;
+  equals?: Maybe<Scalars['String']>;
+  gt?: Maybe<Scalars['String']>;
+  gte?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Scalars['String']>>;
+  lt?: Maybe<Scalars['String']>;
+  lte?: Maybe<Scalars['String']>;
+  not?: Maybe<NestedStringNullableFilter>;
+  notIn?: Maybe<Array<Scalars['String']>>;
+  startsWith?: Maybe<Scalars['String']>;
+};
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['DateTime']>;
+};
+
+export type NullableEnumJobTypeFieldUpdateOperationsInput = {
+  set?: Maybe<JobType>;
+};
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['Int']>;
+};
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['String']>;
+};
 
 export type Query = {
   __typename?: 'Query';
@@ -1713,6 +1882,11 @@ export type QueryFindOneUserArgs = {
   where: UserWhereUniqueInput;
 };
 
+export enum QueryMode {
+  Default = 'default',
+  Insensitive = 'insensitive'
+}
+
 export type Schema = {
   __typename?: 'Schema';
   enums: Array<Enum>;
@@ -1736,6 +1910,7 @@ export type Section = {
 
 export type SectionStepsArgs = {
   cursor?: Maybe<StepWhereUniqueInput>;
+  distinct?: Maybe<StepDistinctFieldEnum>;
   orderBy?: Maybe<StepOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1790,7 +1965,18 @@ export type SectionCreateWithoutStepsInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type SectionFilter = {
+export enum SectionDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  DashboardId = 'dashboardId',
+  Id = 'id',
+  Name = 'name',
+  Order = 'order',
+  Published = 'published',
+  SuccessCriteria = 'successCriteria',
+  UpdatedAt = 'updatedAt'
+}
+
+export type SectionListRelationFilter = {
   every?: Maybe<SectionWhereInput>;
   none?: Maybe<SectionWhereInput>;
   some?: Maybe<SectionWhereInput>;
@@ -1811,28 +1997,32 @@ export type SectionMinAggregateOutputType = {
 };
 
 export type SectionOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  dashboardId?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  order?: Maybe<OrderByArg>;
-  published?: Maybe<OrderByArg>;
-  successCriteria?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  dashboardId?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  order?: Maybe<SortOrder>;
+  published?: Maybe<SortOrder>;
+  successCriteria?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type SectionRelationFilter = {
+  is?: Maybe<SectionWhereInput>;
+  isNot?: Maybe<SectionWhereInput>;
 };
 
 export type SectionScalarWhereInput = {
   AND?: Maybe<Array<SectionScalarWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
-  dashboardId?: Maybe<NullableIntFilter>;
+  dashboardId?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<SectionScalarWhereInput>>;
   OR?: Maybe<Array<SectionScalarWhereInput>>;
   order?: Maybe<IntFilter>;
-  published?: Maybe<BooleanFilter>;
-  steps?: Maybe<StepFilter>;
-  successCriteria?: Maybe<NullableStringFilter>;
+  published?: Maybe<BoolFilter>;
+  successCriteria?: Maybe<StringNullableFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -1844,32 +2034,32 @@ export type SectionSumAggregateOutputType = {
 };
 
 export type SectionUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   dashboard?: Maybe<DashboardUpdateOneWithoutSectionsInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  published?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
   steps?: Maybe<StepUpdateManyWithoutSectionInput>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type SectionUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  published?: Maybe<Scalars['Boolean']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type SectionUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  published?: Maybe<Scalars['Boolean']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type SectionUpdateManyWithoutDashboardInput = {
@@ -1897,23 +2087,23 @@ export type SectionUpdateOneRequiredWithoutStepsInput = {
 };
 
 export type SectionUpdateWithoutDashboardDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  published?: Maybe<Scalars['Boolean']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
   steps?: Maybe<StepUpdateManyWithoutSectionInput>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type SectionUpdateWithoutStepsDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   dashboard?: Maybe<DashboardUpdateOneWithoutSectionsInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  published?: Maybe<Scalars['Boolean']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  published?: Maybe<BoolFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type SectionUpdateWithWhereUniqueWithoutDashboardInput = {
@@ -1936,15 +2126,15 @@ export type SectionWhereInput = {
   AND?: Maybe<Array<SectionWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
   dashboard?: Maybe<DashboardWhereInput>;
-  dashboardId?: Maybe<NullableIntFilter>;
+  dashboardId?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<SectionWhereInput>>;
   OR?: Maybe<Array<SectionWhereInput>>;
   order?: Maybe<IntFilter>;
-  published?: Maybe<BooleanFilter>;
-  steps?: Maybe<StepFilter>;
-  successCriteria?: Maybe<NullableStringFilter>;
+  published?: Maybe<BoolFilter>;
+  steps?: Maybe<StepListRelationFilter>;
+  successCriteria?: Maybe<StringNullableFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -1952,6 +2142,11 @@ export type SectionWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
+
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc'
+}
 
 export type Step = {
   __typename?: 'Step';
@@ -1971,6 +2166,7 @@ export type Step = {
 
 export type StepJournalEntriesArgs = {
   cursor?: Maybe<JournalEntryWhereUniqueInput>;
+  distinct?: Maybe<JournalEntryDistinctFieldEnum>;
   orderBy?: Maybe<JournalEntryOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -2041,7 +2237,18 @@ export type StepCreateWithoutSectionInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type StepFilter = {
+export enum StepDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  JobId = 'jobId',
+  Name = 'name',
+  Order = 'order',
+  SectionId = 'sectionId',
+  SuccessCriteria = 'successCriteria',
+  UpdatedAt = 'updatedAt'
+}
+
+export type StepListRelationFilter = {
   every?: Maybe<StepWhereInput>;
   none?: Maybe<StepWhereInput>;
   some?: Maybe<StepWhereInput>;
@@ -2064,14 +2271,19 @@ export type StepMinAggregateOutputType = {
 };
 
 export type StepOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  jobId?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  order?: Maybe<OrderByArg>;
-  sectionId?: Maybe<OrderByArg>;
-  successCriteria?: Maybe<OrderByArg>;
-  updatedAt?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  jobId?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  order?: Maybe<SortOrder>;
+  sectionId?: Maybe<SortOrder>;
+  successCriteria?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type StepRelationFilter = {
+  is?: Maybe<StepWhereInput>;
+  isNot?: Maybe<StepWhereInput>;
 };
 
 export type StepScalarWhereInput = {
@@ -2079,13 +2291,12 @@ export type StepScalarWhereInput = {
   createdAt?: Maybe<DateTimeFilter>;
   id?: Maybe<IntFilter>;
   jobId?: Maybe<IntFilter>;
-  journalEntries?: Maybe<JournalEntryFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<StepScalarWhereInput>>;
   OR?: Maybe<Array<StepScalarWhereInput>>;
   order?: Maybe<IntFilter>;
   sectionId?: Maybe<IntFilter>;
-  successCriteria?: Maybe<NullableStringFilter>;
+  successCriteria?: Maybe<StringNullableFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
@@ -2098,30 +2309,30 @@ export type StepSumAggregateOutputType = {
 };
 
 export type StepUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
   journalEntries?: Maybe<JournalEntryUpdateManyWithoutStepInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
   section?: Maybe<SectionUpdateOneRequiredWithoutStepsInput>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateManyWithoutJobInput = {
@@ -2161,33 +2372,33 @@ export type StepUpdateOneRequiredWithoutJournalEntriesInput = {
 };
 
 export type StepUpdateWithoutJobDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   journalEntries?: Maybe<JournalEntryUpdateManyWithoutStepInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
   section?: Maybe<SectionUpdateOneRequiredWithoutStepsInput>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateWithoutJournalEntriesDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
   section?: Maybe<SectionUpdateOneRequiredWithoutStepsInput>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateWithoutSectionDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   job?: Maybe<JobUpdateOneRequiredWithoutStepsInput>;
   journalEntries?: Maybe<JournalEntryUpdateManyWithoutStepInput>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  successCriteria?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
+  name?: Maybe<StringFieldUpdateOperationsInput>;
+  order?: Maybe<IntFieldUpdateOperationsInput>;
+  successCriteria?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type StepUpdateWithWhereUniqueWithoutJobInput = {
@@ -2223,20 +2434,24 @@ export type StepWhereInput = {
   id?: Maybe<IntFilter>;
   job?: Maybe<JobWhereInput>;
   jobId?: Maybe<IntFilter>;
-  journalEntries?: Maybe<JournalEntryFilter>;
+  journalEntries?: Maybe<JournalEntryListRelationFilter>;
   name?: Maybe<StringFilter>;
   NOT?: Maybe<Array<StepWhereInput>>;
   OR?: Maybe<Array<StepWhereInput>>;
   order?: Maybe<IntFilter>;
   section?: Maybe<SectionWhereInput>;
   sectionId?: Maybe<IntFilter>;
-  successCriteria?: Maybe<NullableStringFilter>;
+  successCriteria?: Maybe<StringNullableFilter>;
   updatedAt?: Maybe<DateTimeFilter>;
 };
 
 export type StepWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+};
+
+export type StringFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['String']>;
 };
 
 export type StringFilter = {
@@ -2248,7 +2463,23 @@ export type StringFilter = {
   in?: Maybe<Array<Scalars['String']>>;
   lt?: Maybe<Scalars['String']>;
   lte?: Maybe<Scalars['String']>;
-  not?: Maybe<Scalars['String']>;
+  mode?: Maybe<QueryMode>;
+  not?: Maybe<NestedStringFilter>;
+  notIn?: Maybe<Array<Scalars['String']>>;
+  startsWith?: Maybe<Scalars['String']>;
+};
+
+export type StringNullableFilter = {
+  contains?: Maybe<Scalars['String']>;
+  endsWith?: Maybe<Scalars['String']>;
+  equals?: Maybe<Scalars['String']>;
+  gt?: Maybe<Scalars['String']>;
+  gte?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Scalars['String']>>;
+  lt?: Maybe<Scalars['String']>;
+  lte?: Maybe<Scalars['String']>;
+  mode?: Maybe<QueryMode>;
+  not?: Maybe<NestedStringNullableFilter>;
   notIn?: Maybe<Array<Scalars['String']>>;
   startsWith?: Maybe<Scalars['String']>;
 };
@@ -2300,6 +2531,7 @@ export type User = {
 
 export type UserJournalEntriesArgs = {
   cursor?: Maybe<JournalEntryWhereUniqueInput>;
+  distinct?: Maybe<JournalEntryDistinctFieldEnum>;
   orderBy?: Maybe<JournalEntryOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -2350,7 +2582,17 @@ export type UserCreateWithoutJournalEntriesInput = {
   password: Scalars['String'];
 };
 
-export type UserFilter = {
+export enum UserDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Email = 'email',
+  GroupId = 'groupId',
+  Id = 'id',
+  IsAdmin = 'isAdmin',
+  Name = 'name',
+  Password = 'password'
+}
+
+export type UserListRelationFilter = {
   every?: Maybe<UserWhereInput>;
   none?: Maybe<UserWhereInput>;
   some?: Maybe<UserWhereInput>;
@@ -2369,24 +2611,28 @@ export type UserMinAggregateOutputType = {
 };
 
 export type UserOrderByInput = {
-  createdAt?: Maybe<OrderByArg>;
-  email?: Maybe<OrderByArg>;
-  groupId?: Maybe<OrderByArg>;
-  id?: Maybe<OrderByArg>;
-  isAdmin?: Maybe<OrderByArg>;
-  name?: Maybe<OrderByArg>;
-  password?: Maybe<OrderByArg>;
+  createdAt?: Maybe<SortOrder>;
+  email?: Maybe<SortOrder>;
+  groupId?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  isAdmin?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+  password?: Maybe<SortOrder>;
+};
+
+export type UserRelationFilter = {
+  is?: Maybe<UserWhereInput>;
+  isNot?: Maybe<UserWhereInput>;
 };
 
 export type UserScalarWhereInput = {
   AND?: Maybe<Array<UserScalarWhereInput>>;
   createdAt?: Maybe<DateTimeFilter>;
   email?: Maybe<StringFilter>;
-  groupId?: Maybe<NullableIntFilter>;
+  groupId?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
-  isAdmin?: Maybe<BooleanFilter>;
-  JournalEntries?: Maybe<JournalEntryFilter>;
-  name?: Maybe<NullableStringFilter>;
+  isAdmin?: Maybe<BoolFilter>;
+  name?: Maybe<StringNullableFilter>;
   NOT?: Maybe<Array<UserScalarWhereInput>>;
   OR?: Maybe<Array<UserScalarWhereInput>>;
   password?: Maybe<StringFilter>;
@@ -2399,29 +2645,29 @@ export type UserSumAggregateOutputType = {
 };
 
 export type UserUpdateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
   group?: Maybe<GroupUpdateOneWithoutUsersInput>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
+  isAdmin?: Maybe<BoolFieldUpdateOperationsInput>;
   JournalEntries?: Maybe<JournalEntryUpdateManyWithoutAuthorInput>;
-  name?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateManyDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
+  isAdmin?: Maybe<BoolFieldUpdateOperationsInput>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateManyMutationInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
+  isAdmin?: Maybe<BoolFieldUpdateOperationsInput>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateManyWithoutGroupInput = {
@@ -2449,21 +2695,21 @@ export type UserUpdateOneRequiredWithoutJournalEntriesInput = {
 };
 
 export type UserUpdateWithoutGroupDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
+  isAdmin?: Maybe<BoolFieldUpdateOperationsInput>;
   JournalEntries?: Maybe<JournalEntryUpdateManyWithoutAuthorInput>;
-  name?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithoutJournalEntriesDataInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
   group?: Maybe<GroupUpdateOneWithoutUsersInput>;
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
+  isAdmin?: Maybe<BoolFieldUpdateOperationsInput>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateWithWhereUniqueWithoutGroupInput = {
@@ -2487,11 +2733,11 @@ export type UserWhereInput = {
   createdAt?: Maybe<DateTimeFilter>;
   email?: Maybe<StringFilter>;
   group?: Maybe<GroupWhereInput>;
-  groupId?: Maybe<NullableIntFilter>;
+  groupId?: Maybe<IntNullableFilter>;
   id?: Maybe<IntFilter>;
-  isAdmin?: Maybe<BooleanFilter>;
-  JournalEntries?: Maybe<JournalEntryFilter>;
-  name?: Maybe<NullableStringFilter>;
+  isAdmin?: Maybe<BoolFilter>;
+  JournalEntries?: Maybe<JournalEntryListRelationFilter>;
+  name?: Maybe<StringNullableFilter>;
   NOT?: Maybe<Array<UserWhereInput>>;
   OR?: Maybe<Array<UserWhereInput>>;
   password?: Maybe<StringFilter>;

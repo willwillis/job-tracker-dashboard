@@ -17,6 +17,7 @@ export const Job = objectType({
         cursor: 'JobRunWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'JobRunDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['runs']
@@ -33,6 +34,7 @@ export const Job = objectType({
         cursor: 'StepWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'StepDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['Steps']

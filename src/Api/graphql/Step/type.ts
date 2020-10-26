@@ -27,6 +27,7 @@ export const Step = objectType({
         cursor: 'JournalEntryWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
+        distinct: 'JournalEntryDistinctFieldEnum',
       },
       resolve(parent: any) {
         return parent['journalEntries']
